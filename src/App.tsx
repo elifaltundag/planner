@@ -47,7 +47,7 @@ const App: React.FC = () => {
     }])
   useEffect(() => {
     if (localStorage.getItem("taskList")) {
-      setTaskList(JSON.parse(localStorage.getItem("taskList")));
+      /* setTaskList(JSON.parse(localStorage.getItem("taskList"))); */
       console.log("it should be getting it\n" + localStorage.getItem("taskList"))
     }
   }, [])
