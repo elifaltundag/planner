@@ -1,0 +1,41 @@
+@use "../utilities/colors.scss" as *;
+
+.new-task {
+    text-align: center;
+    font-size: 1.5rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min(100%, 600px);
+    margin: 0 auto;
+    
+    * {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: 600;
+        border-radius: 38rem;
+    }
+
+    &__input {
+        width: 100%;
+        line-height: 1;
+        padding: 0.6em 1.2em;
+
+    }
+
+    &__btn {
+        position: absolute;
+        right: 0.3em;
+        padding: 0.3em 0.6em;
+        background-color: var(--clr-acc-dark);
+        color: var(--clr-txt);
+        font-weight: 600;
+
+        &:hover {
+            background-color: var(--clr-acc-light);
+            transform-origin: center;
+            transform: scale(0.95);
+        }
+    }
+}

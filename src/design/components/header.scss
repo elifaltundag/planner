@@ -1,0 +1,15 @@
+@use "../utilities/colors.scss" as *;
+
+.header {
+    text-align: center;
+    
+    .header__title {
+        font-size: 2rem;
+    }
+    
+    .header__info {
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: var(--clr-acc-light);
+    }
+}

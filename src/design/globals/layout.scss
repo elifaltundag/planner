@@ -1,0 +1,21 @@
+.main-layout {
+    display: grid;
+    grid-template: repeat(2, auto) / repeat(2, 1fr);
+    grid-template-areas: 
+        "new-task new-task"
+        "to-do-list done-list";
+    row-gap: 2em;
+    column-gap: 1em;
+}
+
+.new-task {
+    grid-area: new-task;
+}
+
+.to-do-list {
+    grid-area: to-do-list;
+}
+
+.done-list {
+    grid-area: done-list;
+}
