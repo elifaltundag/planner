@@ -28,8 +28,7 @@ const App: React.FC = () => {
   * If there is already data stored in localStorage use it, else empty array
   */
  
-  const [taskList, setTaskList] = useState<Array<Task>>(JSON.parse(localStorage.getItem("taskList")!)
-    /* {
+  const [taskList, setTaskList] = useState<Array<Task>>(JSON.parse(localStorage.getItem("taskList")!)  /* {
       id: 693,
       definition: "finish prev ts-react project (algorithm visualizer)",
       isDone: false
@@ -45,7 +44,8 @@ const App: React.FC = () => {
       id: 943,
       definition: "play with and pet Köri",
       isDone: true
-    } */)
+    } */ 
+    || [])
   /* useEffect(() => {
     if (localStorage.getItem("taskList")) {
       setTaskList(JSON.parse(localStorage.getItem("taskList")));
@@ -121,12 +121,12 @@ const App: React.FC = () => {
         
         <List 
           name="to-do" 
-          taskList={taskList.filter(task => !task.isDone)}
+          taskList={taskList ? taskList.filter(task => !task.isDone) : []}
           handleToggle={handleToggle} />
       
         <List 
           name="done" 
-          taskList={taskList.filter(task => task.isDone)}
+          taskList={taskList ? taskList.filter(task => task.isDone) : []}
           handleToggle={handleToggle} />
       </main>
     </div>
