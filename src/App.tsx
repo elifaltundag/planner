@@ -28,7 +28,8 @@ const App: React.FC = () => {
   * If there is already data stored in localStorage use it, else empty array
   */
  
-  const [taskList, setTaskList] = useState<Array<Task>>([{
+  const [taskList, setTaskList] = useState<Array<Task>>(JSON.parse(localStorage.getItem("taskList")!)
+    /* {
       id: 693,
       definition: "finish prev ts-react project (algorithm visualizer)",
       isDone: false
@@ -44,13 +45,13 @@ const App: React.FC = () => {
       id: 943,
       definition: "play with and pet Köri",
       isDone: true
-    }])
-  useEffect(() => {
+    } */)
+  /* useEffect(() => {
     if (localStorage.getItem("taskList")) {
-      /* setTaskList(JSON.parse(localStorage.getItem("taskList"))); */
+      setTaskList(JSON.parse(localStorage.getItem("taskList")));
       console.log("it should be getting it\n" + localStorage.getItem("taskList"))
     }
-  }, [])
+  }, []) */
   
 
 
