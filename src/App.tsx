@@ -6,7 +6,7 @@ import "./design/globals/app-boilerplate.scss";
 import "./design/globals/layout.scss";
 
 // Interfaces
-import { Task } from './app/model/interfaces';
+/* import { Task } from './app/model/interfaces'; */
 
 // Components
 import Header from './app/components/Header';
@@ -115,7 +115,7 @@ const App: React.FC = () => {
     e.preventDefault();
 
     // Create a new task with the most recent task definition 
-    
+    setTaskList({})
     // Add the new task to task list and reset input area
     
     /* 
