@@ -6,17 +6,17 @@ import "../../design/components/new-task.scss";
 // Props interface
 import { NewTaskProps } from "../model/interfaces";
 
-function NewTask({taskDef, setTaskDef, inputRef}: NewTaskProps) {
-    console.log(taskDef)
+function NewTask({taskDef, setTaskDef, inputRef, handleChange, handleSubmit}: NewTaskProps) {
 
     return (
-        <form className="new-task">
+        <form className="new-task" onSubmit={() => handleSubmit}>
             <input 
                 ref={inputRef}
                 type="text" 
                 value={taskDef}
                 placeholder="Enter a task" 
                 className="new-task__input"
+                onChange={(e) => handleChange(e)}
             />
             <button
                 className="new-task__btn"

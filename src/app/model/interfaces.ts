@@ -53,3 +53,8 @@ export interface ListProps {
     taskList: Array<any>
 };
 
+export interface TaskViewProps {
+    taskDef: string;
+    status: "toDo" | "inProgress" | "done";
+    
+}

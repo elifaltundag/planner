@@ -6,7 +6,7 @@ import "./design/globals/app-boilerplate.scss";
 import "./design/globals/layout.scss";
 
 // Interfaces
-/* import { Task } from './app/model/interfaces'; */
+import { Task } from './app/model/interfaces';
 
 // Components
 import Header from './app/components/Header';
@@ -54,7 +54,8 @@ const App: React.FC = () => {
       }
     })  
   
-  const [tasksToDo, tasksInProgress, tasksDone] = getTasksSortedByStatus(taskList)    
+  const [tasksSorted, setTasksSorted] = useState(getTasksSortedByStatus(taskList) || [[], [], []])
+    
 
 
   let inputRef = useRef(null)
@@ -63,25 +64,16 @@ const App: React.FC = () => {
   /* -------------- */ 
   /* -------------- */ 
   /* Task Functions */
-  /* function filterOutTasks(taskList, taskStatus): Array<Task> {
-    let filteredArr = []
-
-
-
-
-    return filteredArr
-  } */
   /* 
   Return and array of 3 arrays: 
   * 0 : tasksToDo       = []  
   * 1 : tasksInProgress = [] 
   * 2 : tasksDone       = [] 
   */
-  
-  function getTasksSortedByStatus(taskList: any): any {
-    let tasksToDo: any = []
-    let tasksInProgress: any = []
-    let tasksDone: any = []
+  function getTasksSortedByStatus(taskList: any): Array<Array<Task>> {
+    let tasksToDo: Array<Task> = []
+    let tasksInProgress: Array<Task> = []
+    let tasksDone: Array<Task> = []
 
     for (let task in taskList) {
       let taskArr;
@@ -115,7 +107,16 @@ const App: React.FC = () => {
     e.preventDefault();
 
     // Create a new task with the most recent task definition 
-    setTaskList({})
+    const newTask: Task = {
+      definition: taskDef,
+      status: "toDo",
+      dateAdded: Date.now()
+    } 
+
+    console.log(newTask)
+
+    setTaskList({mostRecentlyAddedTask: newTask})
+    setTasksSorted(getTasksSortedByStatus(taskList))
     // Add the new task to task list and reset input area
     
     /* 
@@ -126,23 +127,16 @@ const App: React.FC = () => {
   
   
   function handleInputChange(e: React.FormEvent<HTMLInputElement>) {
-    
+    setTaskDef(e.currentTarget.value)
   }
  
 
 
   // Update localstorage
   useEffect(() => {
-    
     localStorage.setItem("taskList", JSON.stringify(taskList))
-
   }, [taskList])
   
-  /* console.log(taskList) */
-  /* console.log(filterOutTasks("to-do", taskList)) */
-
-  
-
 
 
   return (
@@ -160,17 +154,17 @@ const App: React.FC = () => {
         
         {<List 
           status="to-do"
-          taskList={tasksToDo} 
+          taskList={tasksSorted[0]} 
         />}
 
         {<List 
           status="in-progress"
-          taskList={tasksInProgress} 
+          taskList={tasksSorted[1]} 
         />}
       
         {<List 
           status="done"
-          taskList={tasksDone} 
+          taskList={tasksSorted[2]} 
         />}
       </main>
     </div>
