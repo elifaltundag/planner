@@ -49,7 +49,7 @@ export interface NewTaskProps{
 
 
 export interface ListProps {
-    name: string;
+    status: string;
     taskList: Array<any>
 };
 

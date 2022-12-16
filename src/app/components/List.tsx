@@ -3,23 +3,23 @@ import { Task, ListProps } from "../model/interfaces";
 
 import "../../design/components/list.scss"
 
-function List({ name, taskList }: ListProps) {
+function List({ status, taskList }: ListProps) {
     const styles:React.CSSProperties = {
-        backgroundColor: `var(--clr-bg-${name})`,
-        color: `var(--clr-txt-${name})`
+        backgroundColor: `var(--clr-bg-${status})`,
+        color: `var(--clr-txt-${status})`
     }
 
     console.log(taskList)
 
     return (
-        <div className={`${name}-list`} style={styles}>
-            <h2 className={`${name}-list__title`}>{`${name.toUpperCase()}`}</h2>
+        <div className={`${status}-list`} style={styles}>
+            <h2 className={`${status}-list__title`}>{`${status.toUpperCase()}`}</h2>
 
             {<ul>
                 {taskList.map((task: Task) => {
                     return (
                         <li 
-                            className={`${name}--item`}
+                            className={`${status}--item`}
                         >
                             {task.definition}
                         </li>)

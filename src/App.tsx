@@ -53,7 +53,8 @@ const App: React.FC = () => {
         dateAdded: "0405"
       }
     })  
-    
+  
+  const [tasksToDo, tasksInProgress, tasksDone] = getTasksSortedByStatus(taskList)    
 
 
   let inputRef = useRef(null)
@@ -132,13 +133,15 @@ const App: React.FC = () => {
 
   // Update localstorage
   useEffect(() => {
+    
     localStorage.setItem("taskList", JSON.stringify(taskList))
+
   }, [taskList])
   
   /* console.log(taskList) */
   /* console.log(filterOutTasks("to-do", taskList)) */
 
-  const [tasksToDo, tasksInProgress, tasksDone] = getTasksSortedByStatus(taskList)
+  
 
 
 
@@ -156,17 +159,17 @@ const App: React.FC = () => {
         
         
         {<List 
-          name="to-do"
+          status="to-do"
           taskList={tasksToDo} 
         />}
 
         {<List 
-          name="in-progress"
+          status="in-progress"
           taskList={tasksInProgress} 
         />}
       
         {<List 
-          name="done"
+          status="done"
           taskList={tasksDone} 
         />}
       </main>
