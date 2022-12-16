@@ -21,38 +21,39 @@ const App: React.FC = () => {
   /* -------------- */ 
   /* -------------- */ 
   /* Default states */
-  const [taskDef, setTaskDef] = useState<string>("");
-
-  /* 
-  ! Hard-coded initial list task list --> REMOVE  
-  * If there is already data stored in localStorage use it, else empty array
-  */
- 
-  const [taskList, setTaskList] = useState<Array<Task>>(JSON.parse(localStorage.getItem("taskList")!)  /* {
-      id: 693,
-      definition: "finish prev ts-react project (algorithm visualizer)",
-      isDone: false
-    }, {
-      id: 502,
-      definition: "stutter freely",
-      isDone: false
-    }, {
-      id: 176,
-      definition: "start new ts-react project :/",
-      isDone: true
-    }, {
-      id: 943,
-      definition: "play with and pet Köri",
-      isDone: true
-    } */ 
-    || [])
-  /* useEffect(() => {
-    if (localStorage.getItem("taskList")) {
-      setTaskList(JSON.parse(localStorage.getItem("taskList")));
-      console.log("it should be getting it\n" + localStorage.getItem("taskList"))
-    }
-  }, []) */
-  
+  const [taskDef, setTaskDef] = useState<string>(""); 
+  const [taskList, setTaskList] = useState<{}>(
+    /* 
+    ! Hard-coded initial list task list --> REMOVE  
+    * If there is already data stored in localStorage use it, else empty array
+    JSON.parse(localStorage.getItem("taskList")!) || 
+    */ 
+   {
+      "todo1": {
+        definition: "data structures: interfaces, classes",
+        status: "toDo",
+        dateAdded: "0405"
+      }, 
+      "inProgress1": {
+        definition: "TDD",
+        status: "inProgress",
+        dateAdded: "45542684",
+        dateStarted: "1473541"
+      },
+      "done1": {
+        definition: "deploy on netlify",
+        status: "done",
+        dateAdded: "2455968",
+        dateStarted: "6541798",
+        dateFinished: "14987987"
+      },
+      "todo2": {
+        definition: "dark/light theme",
+        status: "toDo",
+        dateAdded: "0405"
+      }
+    })  
+    
 
 
   let inputRef = useRef(null)
@@ -61,31 +62,60 @@ const App: React.FC = () => {
   /* -------------- */ 
   /* -------------- */ 
   /* Task Functions */
-  function handleToggle(id: number) {
-    setTaskList(prevTaskList => {
-      return prevTaskList.map((task: Task) => {
-        return task.id === id ? {...task, isDone: !task.isDone} : {...task}
-      })
-    })
-  }
+  /* function filterOutTasks(taskList, taskStatus): Array<Task> {
+    let filteredArr = []
 
+
+
+
+    return filteredArr
+  } */
+  /* 
+  Return and array of 3 arrays: 
+  * 0 : tasksToDo       = []  
+  * 1 : tasksInProgress = [] 
+  * 2 : tasksDone       = [] 
+  */
+  
+  function getTasksSortedByStatus(taskList: any): any {
+    let tasksToDo: any = []
+    let tasksInProgress: any = []
+    let tasksDone: any = []
+
+    for (let task in taskList) {
+      let taskArr;
+      const taskStatus = taskList[task].status
+
+      switch (taskStatus) {
+        case "inProgress":
+          taskArr = tasksInProgress;
+          break;
+        
+        case "done":
+          taskArr = tasksDone;
+          break;
+      
+        default: /* toDo and anything else */ 
+          taskArr = tasksToDo;
+          break;
+      }
+
+      taskArr.push(taskList[task])
+    }
+
+    return [tasksToDo, tasksInProgress, tasksDone]
+  }
+  
   /* -------------- */ 
   /* -------------- */ 
   /* Form Functions */ 
   function handleSubmit(e: React.FormEvent<SubmitEvent>) {
-    // Prevent form from resetting when submitted
+    // Prevent form from resetting on submission
     e.preventDefault();
 
-    // Create a new task with the most recent task definition which updates on every change
-    const newTask: Task = {
-      id: 99,
-      definition: taskDef,
-      isDone: false
-    }
-
+    // Create a new task with the most recent task definition 
+    
     // Add the new task to task list and reset input area
-    setTaskList(prevTaskList => ([...prevTaskList, newTask]))
-    setTaskDef("")
     
     /* 
     ! UNCOMMENT AND FIX ERROR
@@ -95,7 +125,7 @@ const App: React.FC = () => {
   
   
   function handleInputChange(e: React.FormEvent<HTMLInputElement>) {
-    setTaskDef(e.currentTarget.value)
+    
   }
  
 
@@ -105,6 +135,12 @@ const App: React.FC = () => {
     localStorage.setItem("taskList", JSON.stringify(taskList))
   }, [taskList])
   
+  /* console.log(taskList) */
+  /* console.log(filterOutTasks("to-do", taskList)) */
+
+  const [tasksToDo, tasksInProgress, tasksDone] = getTasksSortedByStatus(taskList)
+
+
 
   return (
     <div className="App">
@@ -119,15 +155,20 @@ const App: React.FC = () => {
           handleSubmit={handleSubmit} />
         
         
-        <List 
-          name="to-do" 
-          taskList={taskList ? taskList.filter(task => !task.isDone) : []}
-          handleToggle={handleToggle} />
+        {<List 
+          name="to-do"
+          taskList={tasksToDo} 
+        />}
+
+        {<List 
+          name="in-progress"
+          taskList={tasksInProgress} 
+        />}
       
-        <List 
-          name="done" 
-          taskList={taskList ? taskList.filter(task => task.isDone) : []}
-          handleToggle={handleToggle} />
+        {<List 
+          name="done"
+          taskList={tasksDone} 
+        />}
       </main>
     </div>
   );

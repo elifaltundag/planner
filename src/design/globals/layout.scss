@@ -1,9 +1,9 @@
 .main-layout {
     display: grid;
-    grid-template: repeat(2, auto) / repeat(2, 1fr);
+    grid-template: repeat(2, auto) / repeat(3, 1fr);
     grid-template-areas: 
-        "new-task new-task"
-        "to-do-list done-list";
+        "new-task new-task new-task"
+        "to-do-list in-progress-list done-list";
     row-gap: 2em;
     column-gap: 1em;
 }
@@ -14,6 +14,10 @@
 
 .to-do-list {
     grid-area: to-do-list;
+}
+
+.in-progress-list {
+    grid-area: in-progress-list;
 }
 
 .done-list {

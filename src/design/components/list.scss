@@ -2,7 +2,7 @@ ul, li {
     list-style: none;
 }
 
-.to-do-list, .done-list {
+.to-do-list, .in-progress-list, .done-list {
     border-radius: 1em;
 
     &__title {

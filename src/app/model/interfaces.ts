@@ -1,8 +1,27 @@
+
+/* 
+TASK
+id<str> : {
+    definition: str
+    status: "toDo" || "inProgress" || "done"
+    
+    ? You can't JSON.stringfiy(DATE)
+    ? Do it manually ?!! when you add, start, finish 
+    dateAdded: id 
+    dateStarted: null || str (Date.now())
+    dateFinished: null || str (Date.now())
+}
+*/
+import React from "react";
+
+ 
  
 export interface Task {
-    id: number;
     definition: string;
-    isDone: boolean;
+    status: "toDo" | "inProgress" | "done";
+    dateAdded: number | string;
+    dateStarted?: number;
+    dateFinished?: number;
     /* 
     ! DEL isDone
     ! ADD
@@ -17,21 +36,20 @@ export interface Task {
 
 
 
+
 /* REACT COMPONENTS' PROPS */ 
 export interface NewTaskProps{
     taskDef: string;
     setTaskDef: React.Dispatch<React.SetStateAction<string>>;
-    handleChange: any;
-    handleSubmit: any;
     inputRef: React.MutableRefObject<null>;
+    handleChange: (e: React.FormEvent<HTMLInputElement>) => void;
+    handleSubmit: (e: React.FormEvent<SubmitEvent>) => void;
 };
 
 
 
 export interface ListProps {
     name: string;
-    taskList: Array<Task>;
-    handleToggle: Function;
+    taskList: Array<any>
 };
-
 

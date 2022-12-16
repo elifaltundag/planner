@@ -6,7 +6,7 @@ import "../../design/components/new-task.scss";
 // Props interface
 import { NewTaskProps } from "../model/interfaces";
 
-function NewTask({taskDef, setTaskDef, handleChange, handleSubmit, inputRef}: NewTaskProps) {
+function NewTask({taskDef, setTaskDef, inputRef}: NewTaskProps) {
     console.log(taskDef)
 
     return (
@@ -17,12 +17,10 @@ function NewTask({taskDef, setTaskDef, handleChange, handleSubmit, inputRef}: Ne
                 value={taskDef}
                 placeholder="Enter a task" 
                 className="new-task__input"
-                onChange={(e) => handleChange(e)}
             />
             <button
                 className="new-task__btn"
                 type="submit"
-                onClick={handleSubmit}
             >
                 Add
             </button>
