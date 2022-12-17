@@ -22,36 +22,36 @@ const App: React.FC = () => {
   /* -------------- */ 
   /* Default states */
   const [taskDef, setTaskDef] = useState<string>(""); 
-  const [taskList, setTaskList] = useState<{}>(
+  const [taskList, setTaskList] = useState<{[id: number]: Task}>(
     /* 
     ! Hard-coded initial list task list --> REMOVE  
     * If there is already data stored in localStorage use it, else empty array
     */ 
-    JSON.parse(localStorage.getItem("taskList")!) || 
+    /* JSON.parse(localStorage.getItem("taskList")!) ||  */
    {
-      /* "todo1": {
+      26598934: {
         definition: "data structures: interfaces, classes",
         status: 0,
-        dateAdded: "0405"
+        dateAdded: 26598934
       }, 
-      "inProgress1": {
+      45542684: {
         definition: "TDD",
         status: 1,
-        dateAdded: "45542684",
-        dateStarted: "1473541"
+        dateAdded: 45542684,
+        dateStarted: 1473541
       },
-      "done1": {
+      2455968: {
         definition: "deploy on netlify",
         status: 2,
-        dateAdded: "2455968",
-        dateStarted: "6541798",
-        dateFinished: "14987987"
+        dateAdded: 2455968,
+        dateStarted: 6541798,
+        dateFinished: 14987987
       },
-      "todo2": {
+      8405: {
         definition: "dark/light theme",
         status: 0,
-        dateAdded: "0405"
-      } */
+        dateAdded: 8405
+      }
     })  
   
   const [tasksSorted, setTasksSorted] = useState(getTasksSortedByStatus(taskList) || [[], [], []])
@@ -98,6 +98,10 @@ const App: React.FC = () => {
 
     return [tasksToDo, tasksInProgress, tasksDone]
   }
+
+  /* function handleStatusChange(id: number) {
+    setTaskList((prevTaskList) => prevTaskList)
+  } */
   
   /* -------------- */ 
   /* -------------- */ 
@@ -123,7 +127,7 @@ const App: React.FC = () => {
     // setTaskDef("") 
 
     let newTaskList: any = {...taskList}
-    newTaskList[newTask.definition] = newTask
+    newTaskList[newTask.dateAdded] = newTask
     setTaskList(newTaskList)
     setTasksSorted(getTasksSortedByStatus(newTaskList))
     setTaskDef("") 
@@ -147,6 +151,7 @@ const App: React.FC = () => {
   }, [taskList])
   
 
+  console.log(taskList)
   
 
   return (

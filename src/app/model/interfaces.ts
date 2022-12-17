@@ -19,7 +19,7 @@ import React from "react";
 export interface Task {
     definition: string;
     status: 0 | 1 | 2;
-    dateAdded: number | string;
+    dateAdded: number;
     dateStarted?: number;
     dateFinished?: number;
     /* 
