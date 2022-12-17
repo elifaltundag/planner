@@ -26,32 +26,32 @@ const App: React.FC = () => {
     /* 
     ! Hard-coded initial list task list --> REMOVE  
     * If there is already data stored in localStorage use it, else empty array
-    JSON.parse(localStorage.getItem("taskList")!) || 
     */ 
+    JSON.parse(localStorage.getItem("taskList")!) || 
    {
-      "todo1": {
+      /* "todo1": {
         definition: "data structures: interfaces, classes",
-        status: "toDo",
+        status: 0,
         dateAdded: "0405"
       }, 
       "inProgress1": {
         definition: "TDD",
-        status: "inProgress",
+        status: 1,
         dateAdded: "45542684",
         dateStarted: "1473541"
       },
       "done1": {
         definition: "deploy on netlify",
-        status: "done",
+        status: 2,
         dateAdded: "2455968",
         dateStarted: "6541798",
         dateFinished: "14987987"
       },
       "todo2": {
         definition: "dark/light theme",
-        status: "toDo",
+        status: 0,
         dateAdded: "0405"
-      }
+      } */
     })  
   
   const [tasksSorted, setTasksSorted] = useState(getTasksSortedByStatus(taskList) || [[], [], []])
@@ -80,15 +80,15 @@ const App: React.FC = () => {
       const taskStatus = taskList[task].status
 
       switch (taskStatus) {
-        case "inProgress":
+        case 1:
           taskArr = tasksInProgress;
           break;
         
-        case "done":
+        case 2:
           taskArr = tasksDone;
           break;
       
-        default: /* toDo and anything else */ 
+        default: /* 0 and anything else */ 
           taskArr = tasksToDo;
           break;
       }
@@ -109,16 +109,25 @@ const App: React.FC = () => {
     // Create a new task with the most recent task definition 
     const newTask: Task = {
       definition: taskDef,
-      status: "toDo",
-      dateAdded: Date.now()
-    } 
+      dateAdded: Date.now(),
+      status: 0
+    }
 
-    console.log(newTask)
+   
 
-    setTaskList({mostRecentlyAddedTask: newTask})
-    setTasksSorted(getTasksSortedByStatus(taskList))
-    // Add the new task to task list and reset input area
-    
+
+    // Add the new task to task list, re-sort taskList and reset input area
+    // Create new task list: prev task list + id (dateAdded) : newTask
+    // setTaskList(new task list)
+    // setTasksSorted(new task list)
+    // setTaskDef("") 
+
+    let newTaskList: any = {...taskList}
+    newTaskList[newTask.definition] = newTask
+    setTaskList(newTaskList)
+    setTasksSorted(getTasksSortedByStatus(newTaskList))
+    setTaskDef("") 
+
     /* 
     ! UNCOMMENT AND FIX ERROR
     inputRef.current.focus()
@@ -135,9 +144,11 @@ const App: React.FC = () => {
   // Update localstorage
   useEffect(() => {
     localStorage.setItem("taskList", JSON.stringify(taskList))
+    console.log(taskList)
   }, [taskList])
   
 
+  
 
   return (
     <div className="App">

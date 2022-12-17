@@ -1,7 +1,7 @@
 import React from "react";
-import { Task } from "../model/interfaces";
+import { TaskViewProps } from "../model/interfaces";
 
-function TaskView({definition, status, dateAdded}: Task) {
+function TaskView({definition, status, dateAdded}: TaskViewProps) {
 
     return (
         <form>

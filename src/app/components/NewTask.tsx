@@ -9,7 +9,10 @@ import { NewTaskProps } from "../model/interfaces";
 function NewTask({taskDef, setTaskDef, inputRef, handleChange, handleSubmit}: NewTaskProps) {
 
     return (
-        <form className="new-task" onSubmit={() => handleSubmit}>
+        <form 
+            className="new-task" 
+            onSubmit={(e)  => handleSubmit(e)}
+        >
             <input 
                 ref={inputRef}
                 type="text" 

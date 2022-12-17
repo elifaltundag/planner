@@ -18,7 +18,7 @@ import React from "react";
  
 export interface Task {
     definition: string;
-    status: "toDo" | "inProgress" | "done";
+    status: 0 | 1 | 2;
     dateAdded: number | string;
     dateStarted?: number;
     dateFinished?: number;
@@ -42,8 +42,8 @@ export interface NewTaskProps{
     taskDef: string;
     setTaskDef: React.Dispatch<React.SetStateAction<string>>;
     inputRef: React.MutableRefObject<null>;
-    handleChange: (e: React.FormEvent<HTMLInputElement>) => void;
-    handleSubmit: (e: React.FormEvent<SubmitEvent>) => void;
+    handleChange: any;
+    handleSubmit: any;
 };
 
 
@@ -53,8 +53,6 @@ export interface ListProps {
     taskList: Array<any>
 };
 
-export interface TaskViewProps {
-    taskDef: string;
-    status: "toDo" | "inProgress" | "done";
+export interface TaskViewProps extends Task {
     
 }

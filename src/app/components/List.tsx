@@ -11,6 +11,7 @@ function List({ status, taskList }: ListProps) {
         color: `var(--clr-txt-${status})`
     }
 
+
     return (
         <div className={`${status}-list`} style={styles}>
             <h2 className={`${status}-list__title`}>{`${status.toUpperCase()}`}</h2>
