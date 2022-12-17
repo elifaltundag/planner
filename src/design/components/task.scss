@@ -1,0 +1,9 @@
+.task {
+    margin: 0.5em;
+    padding: 1em;
+    background-color: hsla(0, 0%, 5%, 0.3);
+    border-radius: 0.8em;
+    display: grid;
+    grid-template-columns: 1fr repeat(2, auto);
+    color: white;
+}

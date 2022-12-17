@@ -1,6 +1,7 @@
 .main-layout {
     display: grid;
-    grid-template: repeat(2, auto) / repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-areas: 
         "new-task new-task new-task"
         "to-do-list in-progress-list done-list";
