@@ -6,12 +6,12 @@ import "../../design/components/new-task.scss";
 // Props interface
 import { NewTaskProps } from "../model/interfaces";
 
-function NewTask({taskDef, setTaskDef, inputRef, handleChange, handleSubmit}: NewTaskProps) {
+function NewTask({taskDef, setTaskDef, inputRef, handleChange, handleNewTaskSubmit}: NewTaskProps) {
 
     return (
         <form 
             className="new-task" 
-            onSubmit={(e)  => handleSubmit(e)}
+            onSubmit={(e)  => handleNewTaskSubmit(e)}
         >
             <input 
                 ref={inputRef}

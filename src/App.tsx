@@ -54,16 +54,16 @@ const App: React.FC = () => {
       } */
     })  
   
-  const [tasksSorted, setTasksSorted] = useState(getTasksSortedByStatus(taskList) || [[], [], []])
+  const [tasksSorted, setTasksSorted] = useState(getTasksSortedByStatus(taskList))
     
 
 
   let inputRef = useRef(null)
 
 
-  /* -------------- */ 
-  /* -------------- */ 
-  /* Task Functions */
+  /* ------------------ */ 
+  /* ------------------ */ 
+  /* TaskList Functions */
   /* 
   Return and array of 3 arrays: 
   * 0 : tasksToDo       = []  
@@ -74,14 +74,17 @@ const App: React.FC = () => {
     let tasksToDo: Array<Task> = []
     let tasksInProgress: Array<Task> = []
     let tasksDone: Array<Task> = []
-    let emptyTaskArr: Array<Task> = []
+    let tasksUnassigned: Array<Task> = []
 
     for (let task in taskList) {
-      console.log(task)
       let taskArr;
       const taskStatus = taskList[task].status
 
       switch (taskStatus) {
+        case (0): 
+          taskArr = tasksToDo;
+          break;
+
         case (1):
           taskArr = tasksInProgress;
           break;
@@ -90,35 +93,30 @@ const App: React.FC = () => {
           taskArr = tasksDone;
           break;
       
-        case (0): /* 0 and anything else */ 
-          taskArr = tasksToDo;
-          break;
-
         default:
-          taskArr = emptyTaskArr;
+          taskArr = tasksUnassigned;
           break;
       }
 
       taskArr.push(taskList[task])
     }
+    
+    if (tasksUnassigned.length > 0) {
+      throw new Error("Can't assign some tasks!!")
+    }
 
     return [tasksToDo, tasksInProgress, tasksDone]
   }
 
-  function handleStatusChange(e: any, id: string): void {
-    console.log("it should be working");
-    const newStatus = parseInt(e.target.value)
-    let newTaskList = {...taskList}
-    newTaskList[id] = {...newTaskList[id], status: newStatus}
 
-    setTaskList(newTaskList)
-    setTasksSorted(getTasksSortedByStatus(newTaskList))
+  /* ----------------- */ 
+  /* ----------------- */ 
+  /* NewTask Functions */
+  function handleNewTaskInputChange(e: React.FormEvent<HTMLInputElement>) {
+    setTaskDef(e.currentTarget.value)
   }
-  
-  /* -------------- */ 
-  /* -------------- */ 
-  /* Form Functions */ 
-  function handleSubmit(e: React.FormEvent<SubmitEvent>) {
+
+  function handleNewTaskSubmit(e: React.FormEvent<SubmitEvent>) {
     // Prevent form from resetting on submission
     e.preventDefault();
 
@@ -142,23 +140,38 @@ const App: React.FC = () => {
     inputRef.current.focus()
     */ 
   }
-  
-  
-  function handleInputChange(e: React.FormEvent<HTMLInputElement>) {
-    setTaskDef(e.currentTarget.value)
+
+  function handleDelete(id: string) {
+    let newTaskList = {...taskList}
+    delete newTaskList[id]
+
+    setTaskList(newTaskList)
   }
- 
+  
+
+  function handleStatusChange(e: any, id: string): void {
+    let newTaskList = {...taskList}
+    newTaskList[id] = {
+      ...newTaskList[id], 
+      status: parseInt(e.currentTarget.value)
+    }
+
+    setTaskList(newTaskList)
+    setTasksSorted(getTasksSortedByStatus(newTaskList))
+  }
+  
+  
 
 
-  // Update taskSorted and localstorage
+  // Update tasksSorted and localstorage
   useEffect(() => {
+    /* 
+    ! This is not an effect, can I move it elsewhere?
+    */
     setTasksSorted(getTasksSortedByStatus(taskList))
     localStorage.setItem("taskList", JSON.stringify(taskList))
   }, [taskList])
-  
 
-  console.log(tasksSorted)
-  console.log(taskList)
 
 
   return (
@@ -170,26 +183,29 @@ const App: React.FC = () => {
           inputRef = {inputRef} 
           taskDef={taskDef} 
           setTaskDef={setTaskDef} 
-          handleChange={handleInputChange}
-          handleSubmit={handleSubmit} />
+          handleChange={handleNewTaskInputChange}
+          handleNewTaskSubmit={handleNewTaskSubmit} />
         
         
         <List 
           status="to-do"
           taskList={tasksSorted[0]}
-          handleStatusChange={handleStatusChange} 
+          handleStatusChange={handleStatusChange}
+          handleDelete={handleDelete} 
         />
 
         <List 
           status="in-progress"
           taskList={tasksSorted[1]}
-          handleStatusChange={handleStatusChange} 
+          handleStatusChange={handleStatusChange}
+          handleDelete={handleDelete} 
         />
       
         <List 
           status="done"
           taskList={tasksSorted[2]}
-          handleStatusChange={handleStatusChange} 
+          handleStatusChange={handleStatusChange}
+          handleDelete={handleDelete} 
         />
       </main>
     </div>

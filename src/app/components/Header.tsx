@@ -5,8 +5,8 @@ import "../../design/components/header.scss"
 const Header: React.FC = () => {
     return (
         <header className="header">
-            <h1 className="header__title">Today</h1>
-            <p className="header__info">Create your simple to-do list</p>
+            <h1 className="header__title">Kanban</h1>
+            <p className="header__info">Track your project</p>
         </header>
     )
 }

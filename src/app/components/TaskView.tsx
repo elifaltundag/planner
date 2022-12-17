@@ -1,14 +1,17 @@
 import React from "react";
 import { TaskViewProps } from "../model/interfaces";
 
-function TaskView({definition, status, dateAdded, handleStatusChange}: TaskViewProps) {
+import "../../design/components/task.scss"
+
+function TaskView({definition, status, dateAdded, handleStatusChange, handleDelete}: TaskViewProps) {
 
     return (
-        <form>
+        <form className="task">
             <input 
                 type="text" 
                 defaultValue={definition}   
             />
+            
             <select 
                 value={status}
                 onChange={(e) => handleStatusChange(e, dateAdded)}
@@ -17,7 +20,8 @@ function TaskView({definition, status, dateAdded, handleStatusChange}: TaskViewP
                 <option value={1}>IN PROGRESS</option>
                 <option value={2}>DONE</option>
             </select>
-
+            
+            <button onClick={() => handleDelete(dateAdded)}>Delete</button>
         </form>
 
     )
