@@ -2,6 +2,7 @@ import React from "react";
 import { TaskViewProps } from "../model/interfaces";
 
 function TaskView({definition, status, dateAdded}: TaskViewProps) {
+    console.log()
 
     return (
         <form>
@@ -10,9 +11,9 @@ function TaskView({definition, status, dateAdded}: TaskViewProps) {
                 defaultValue={definition}   
             />
             <select value={status}>
-                <option value="toDo">TO DO</option>
-                <option value="inProgress">IN PROGRESS</option>
-                <option value="done">DONE</option>
+                <option value={0}>TO DO</option>
+                <option value={1}>IN PROGRESS</option>
+                <option value={2}>DONE</option>
             </select>
 
         </form>

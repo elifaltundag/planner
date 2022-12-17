@@ -144,7 +144,6 @@ const App: React.FC = () => {
   // Update localstorage
   useEffect(() => {
     localStorage.setItem("taskList", JSON.stringify(taskList))
-    console.log(taskList)
   }, [taskList])
   
 
