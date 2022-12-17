@@ -18,10 +18,10 @@ import React from "react";
  
 export interface Task {
     definition: string;
-    status: 0 | 1 | 2;
-    dateAdded: number;
-    dateStarted?: number;
-    dateFinished?: number;
+    status: number ;
+    dateAdded: string;
+    dateStarted?: string;
+    dateFinished?: string;
     /* 
     ! DEL isDone
     ! ADD
@@ -50,9 +50,10 @@ export interface NewTaskProps{
 
 export interface ListProps {
     status: string;
-    taskList: Array<any>
+    taskList: Array<any>;
+    handleStatusChange: any;
 };
 
 export interface TaskViewProps extends Task {
-    
+    handleStatusChange: any;
 }

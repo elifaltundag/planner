@@ -22,14 +22,14 @@ const App: React.FC = () => {
   /* -------------- */ 
   /* Default states */
   const [taskDef, setTaskDef] = useState<string>(""); 
-  const [taskList, setTaskList] = useState<{[id: number]: Task}>(
+  const [taskList, setTaskList] = useState<{[id: string]: Task}>(
     /* 
     ! Hard-coded initial list task list --> REMOVE  
     * If there is already data stored in localStorage use it, else empty array
     */ 
-    /* JSON.parse(localStorage.getItem("taskList")!) ||  */
+    JSON.parse(localStorage.getItem("taskList")!) || 
    {
-      26598934: {
+      /* 26598934: {
         definition: "data structures: interfaces, classes",
         status: 0,
         dateAdded: 26598934
@@ -51,7 +51,7 @@ const App: React.FC = () => {
         definition: "dark/light theme",
         status: 0,
         dateAdded: 8405
-      }
+      } */
     })  
   
   const [tasksSorted, setTasksSorted] = useState(getTasksSortedByStatus(taskList) || [[], [], []])
@@ -74,22 +74,28 @@ const App: React.FC = () => {
     let tasksToDo: Array<Task> = []
     let tasksInProgress: Array<Task> = []
     let tasksDone: Array<Task> = []
+    let emptyTaskArr: Array<Task> = []
 
     for (let task in taskList) {
+      console.log(task)
       let taskArr;
       const taskStatus = taskList[task].status
 
       switch (taskStatus) {
-        case 1:
+        case (1):
           taskArr = tasksInProgress;
           break;
         
-        case 2:
+        case (2):
           taskArr = tasksDone;
           break;
       
-        default: /* 0 and anything else */ 
+        case (0): /* 0 and anything else */ 
           taskArr = tasksToDo;
+          break;
+
+        default:
+          taskArr = emptyTaskArr;
           break;
       }
 
@@ -99,9 +105,15 @@ const App: React.FC = () => {
     return [tasksToDo, tasksInProgress, tasksDone]
   }
 
-  /* function handleStatusChange(id: number) {
-    setTaskList((prevTaskList) => prevTaskList)
-  } */
+  function handleStatusChange(e: any, id: string): void {
+    console.log("it should be working");
+    const newStatus = parseInt(e.target.value)
+    let newTaskList = {...taskList}
+    newTaskList[id] = {...newTaskList[id], status: newStatus}
+
+    setTaskList(newTaskList)
+    setTasksSorted(getTasksSortedByStatus(newTaskList))
+  }
   
   /* -------------- */ 
   /* -------------- */ 
@@ -113,23 +125,16 @@ const App: React.FC = () => {
     // Create a new task with the most recent task definition 
     const newTask: Task = {
       definition: taskDef,
-      dateAdded: Date.now(),
+      dateAdded: Date.now().toString(),
       status: 0
     }
+    let newTaskList: {[id: string]: Task}  = {...taskList}
+    newTaskList[newTask.dateAdded] = newTask
 
    
-
-
-    // Add the new task to task list, re-sort taskList and reset input area
-    // Create new task list: prev task list + id (dateAdded) : newTask
-    // setTaskList(new task list)
-    // setTasksSorted(new task list)
-    // setTaskDef("") 
-
-    let newTaskList: any = {...taskList}
-    newTaskList[newTask.dateAdded] = newTask
+    // Set the new task list as taskList, re-sort taskList and reset input area
     setTaskList(newTaskList)
-    setTasksSorted(getTasksSortedByStatus(newTaskList))
+    /* setTasksSorted(getTasksSortedByStatus(newTaskList)) */
     setTaskDef("") 
 
     /* 
@@ -145,14 +150,16 @@ const App: React.FC = () => {
  
 
 
-  // Update localstorage
+  // Update taskSorted and localstorage
   useEffect(() => {
+    setTasksSorted(getTasksSortedByStatus(taskList))
     localStorage.setItem("taskList", JSON.stringify(taskList))
   }, [taskList])
   
 
+  console.log(tasksSorted)
   console.log(taskList)
-  
+
 
   return (
     <div className="App">
@@ -167,20 +174,23 @@ const App: React.FC = () => {
           handleSubmit={handleSubmit} />
         
         
-        {<List 
+        <List 
           status="to-do"
-          taskList={tasksSorted[0]} 
-        />}
+          taskList={tasksSorted[0]}
+          handleStatusChange={handleStatusChange} 
+        />
 
-        {<List 
+        <List 
           status="in-progress"
-          taskList={tasksSorted[1]} 
-        />}
+          taskList={tasksSorted[1]}
+          handleStatusChange={handleStatusChange} 
+        />
       
-        {<List 
+        <List 
           status="done"
-          taskList={tasksSorted[2]} 
-        />}
+          taskList={tasksSorted[2]}
+          handleStatusChange={handleStatusChange} 
+        />
       </main>
     </div>
   );

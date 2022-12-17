@@ -5,7 +5,7 @@ import { Task, ListProps } from "../model/interfaces";
 
 import "../../design/components/list.scss"
 
-function List({ status, taskList }: ListProps) {
+function List({ status, taskList , handleStatusChange }: ListProps) {
     const styles:React.CSSProperties = {
         backgroundColor: `var(--clr-bg-${status})`,
         color: `var(--clr-txt-${status})`
@@ -22,7 +22,8 @@ function List({ status, taskList }: ListProps) {
                     <TaskView
                         definition={task.definition}
                         status={task.status}
-                        dateAdded={task.dateAdded} />)
+                        dateAdded={task.dateAdded}
+                        handleStatusChange={handleStatusChange} />)
             })}
             
 
