@@ -22,5 +22,7 @@ export function getSortedTasks(taskList: TaskList): Array<Array<Task>>{
 } 
 
 export function getTaskList(): TaskList {
-    return JSON.parse(localStorage.getItem("taskList")!)
+    const taskListStr = localStorage.getItem("taskList") || ""
+
+    return JSON.parse(taskListStr)
 }

@@ -25,7 +25,7 @@ function NewTask({inputRef, taskList, setTaskList}: NewTaskProps) {
         e.preventDefault();
 
         // Create a new instance of Task
-        const newTask = new Task(newTaskDef, Status.DONE, true, Date.now())
+        const newTask = new Task(newTaskDef, Status.TODO, false, Date.now())
         
         // Add the new task to taskList
         setTaskList(addNewTaskToTaskList(taskList, newTask))

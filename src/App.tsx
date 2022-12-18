@@ -26,9 +26,11 @@ const App: React.FC = () => {
   /* Default states */
   // If there is already data stored in localStorage use it, else empty object
   
-  const [taskList, setTaskList] = useState<TaskList>(getTaskList() || {})  
+  const [taskList, setTaskList] = useState<TaskList>(getTaskList())  
 
   let inputRef = useRef(null)
+
+  
 
 
 
@@ -38,6 +40,7 @@ const App: React.FC = () => {
   }, [taskList])
 
   const tasksSorted = getSortedTasks(taskList)
+
 
   return (
     <div className="App">

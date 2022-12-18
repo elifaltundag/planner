@@ -58,9 +58,3 @@ export interface ListProps {
     ! Add state setters
 };
 */
-
-export interface TaskViewProps extends Task {
-    handleStatusChange: any;
-    handleDelete: any;
-    handleTaskDefinitionChange: any
-}
