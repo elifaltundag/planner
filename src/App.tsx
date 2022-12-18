@@ -6,7 +6,7 @@ import "./design/globals/app-boilerplate.scss";
 import "./design/globals/layout.scss";
 
 // Types, interfaces, classes and enums
-import { Status, Task, TaskList } from './app/model/dataStructures';
+import { Status, TaskList } from './app/model/dataStructures';
 
 
 // Components
