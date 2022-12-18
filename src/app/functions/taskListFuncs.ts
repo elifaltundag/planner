@@ -1,4 +1,4 @@
-import { Status, Task, TaskList } from "../model/dataStructures";
+import { /* Status,  */Task, TaskList } from "../model/dataStructures";
 
 export function addNewTaskToTaskList(curTaskList: TaskList, newTask: Task): TaskList {
     // Copy current task list
@@ -13,9 +13,9 @@ export function addNewTaskToTaskList(curTaskList: TaskList, newTask: Task): Task
 export function getSortedTasks(taskList: TaskList): Array<Array<Task>>{
     let sortedTasks: Array<Array<Task>> = [[], [], []]
 
-    for (const task in taskList) {
-        const taskObj = taskList[task]
-        sortedTasks[taskObj.status].push(taskObj)
+    for (const taskID in taskList) {
+        const task = taskList[taskID]
+        sortedTasks[task.status].push(task)
     }
 
     return sortedTasks

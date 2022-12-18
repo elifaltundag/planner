@@ -6,13 +6,13 @@ import "./design/globals/app-boilerplate.scss";
 import "./design/globals/layout.scss";
 
 // Types, interfaces, classes and enums
-import { Status, Task, TaskList } from './app/model/dataStructures';
+import { /* Status, Task,  */TaskList } from './app/model/dataStructures';
 
 
 // Components
 import Header from './app/components/Header';
 import NewTask from './app/components/NewTask';
-import List from './app/components/List';
+/* import List from './app/components/List'; */
 
 // Functions
 import { getSortedTasks } from './app/functions/taskListFuncs';

@@ -4,9 +4,7 @@ import React, { useState } from "react";
 import "../../design/components/new-task.scss";
 
 // Types, interfaces, classes and enums
-import { Status } from "../model/dataStructures";
-import { Task, TaskList } from "../model/dataStructures";
-import { NewTaskProps } from "../model/dataStructures";
+import { Status, Task, NewTaskProps } from "../model/dataStructures";
 
 import { addNewTaskToTaskList } from "../functions/taskListFuncs";
 
