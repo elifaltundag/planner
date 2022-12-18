@@ -4,6 +4,10 @@
     background-color: hsla(0, 0%, 5%, 0.3);
     border-radius: 0.8em;
     display: grid;
-    grid-template-columns: 1fr repeat(2, auto);
+    grid-template-columns: 1fr repeat(3, auto);
     color: white;
+}
+
+.btn__save-task-def {
+    border: 5px solid red;
 }
