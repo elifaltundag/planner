@@ -1,12 +1,12 @@
 import React from "react";
 
 import TaskView from "./TaskView";
-import { Task, ListProps } from "../model/interfaces";
+import { Task, ListProps } from "../model/dataStructures";
 
 import "../../design/components/list.scss"
 
-function List({ status, taskList , handleStatusChange, handleDelete }: ListProps) {
-    const styles:React.CSSProperties = {
+function List({tasks, setTaskList}: ListProps) {
+    /* const styles:React.CSSProperties = {
         backgroundColor: `var(--clr-bg-${status})`,
         color: `var(--clr-txt-${status})`
     }
@@ -38,14 +38,17 @@ function List({ status, taskList , handleStatusChange, handleDelete }: ListProps
                         status={task.status}
                         dateAdded={task.dateAdded}
                         handleStatusChange={handleStatusChange}
-                        handleDelete={handleDelete} />)
+                        handleDelete={handleDelete}
+                        handleTaskDefinitionChange={handleTaskDefinitionChange} />)
             })}
             
 
 
 
-        </div>
-    )
+        </div> 
+        )
+    */
+        return <div></div>
 }
 
 
