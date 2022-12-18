@@ -1,54 +1,57 @@
 import React from "react";
 
 import TaskView from "./TaskView";
-import { Task, ListProps } from "../model/dataStructures";
+import { Task, Status } from "../model/dataStructures";
+import { ListProps } from "../model/componentPropsInterfaces";
 
 import "../../design/components/list.scss"
 
-function List({tasks, setTaskList}: ListProps) {
-    /* const styles:React.CSSProperties = {
+function List({status, taskList, tasks, setTaskList}: ListProps) {
+    const styles:React.CSSProperties = {
         backgroundColor: `var(--clr-bg-${status})`,
         color: `var(--clr-txt-${status})`
     }
 
-    // Replaces "-" with " "
-    function generateListTitle(status: string): string {
-        let title = ""
 
-        for (let i = 0; i < status.length; i++) {
-            const char = status[i] === "-" ? " " : status[i]
-            
-            title += char
+    function generateListTitle(listStatus: Status): string {
+        let title = "";
+
+        switch (listStatus) {
+            case 0:
+                title += "TO DO";
+                break;
+            case 1:
+                title += "IN PROGRESS";
+                break;
+            case 2:
+                title += "DONE";
+                break;
         }
 
         return title
     }
 
     return (
-        <div className={`${status}-list`} style={styles}>
-            <h2 className={`${status}-list__title`}>
+        <div 
+            className={`list-${status}`}
+            style={styles}
+        >
+            <h2 className={`list-${status}__title`}>
                 {generateListTitle(status)}
             </h2>
 
-            
-            {taskList.map((task: Task) => {
+ 
+            {tasks.map((task: Task) => {
                 return (
-                    <TaskView
-                        definition={task.definition}
-                        status={task.status}
-                        dateAdded={task.dateAdded}
-                        handleStatusChange={handleStatusChange}
-                        handleDelete={handleDelete}
-                        handleTaskDefinitionChange={handleTaskDefinitionChange} />)
-            })}
-            
-
-
-
-        </div> 
+                    <TaskView 
+                        task={task}
+                        taskList={taskList}
+                        setTaskList={setTaskList} />)
+            })}    
+        </div>
         )
-    */
-        return <div></div>
+   
+        
 }
 
 

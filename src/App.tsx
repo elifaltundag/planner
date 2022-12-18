@@ -6,16 +6,16 @@ import "./design/globals/app-boilerplate.scss";
 import "./design/globals/layout.scss";
 
 // Types, interfaces, classes and enums
-import { /* Status, Task,  */TaskList } from './app/model/dataStructures';
+import { Status, Task, TaskList } from './app/model/dataStructures';
 
 
 // Components
 import Header from './app/components/Header';
 import NewTask from './app/components/NewTask';
-/* import List from './app/components/List'; */
+import List from './app/components/List';
 
 // Functions
-import { getSortedTasks } from './app/functions/taskListFuncs';
+import { getTaskList, getSortedTasks } from './app/functions/taskListFuncs';
 
 
 const App: React.FC = () => {
@@ -26,8 +26,7 @@ const App: React.FC = () => {
   /* Default states */
   // If there is already data stored in localStorage use it, else empty object
   
-  const [taskList, setTaskList] = useState<TaskList>(
-    JSON.parse(localStorage.getItem("taskList")!) || {})  
+  const [taskList, setTaskList] = useState<TaskList>(getTaskList() || {})  
 
   let inputRef = useRef(null)
 
@@ -39,8 +38,6 @@ const App: React.FC = () => {
   }, [taskList])
 
   const tasksSorted = getSortedTasks(taskList)
-  console.log(tasksSorted)
-
 
   return (
     <div className="App">
@@ -54,29 +51,26 @@ const App: React.FC = () => {
         />
         
         
-        {/* <List 
-          status="to-do"
-          taskList={tasksSorted[0]}
-          handleStatusChange={handleStatusChange}
-          handleDelete={handleDelete} 
-          handleTaskDefinitionChange={handleTaskDefinitionChange}
+        <List 
+          status={Status.TODO}
+          tasks={tasksSorted[Status.TODO]}
+          taskList={taskList}
+          setTaskList={setTaskList}
         />
 
         <List 
-          status="in-progress"
-          taskList={tasksSorted[1]}
-          handleStatusChange={handleStatusChange}
-          handleDelete={handleDelete} 
-          handleTaskDefinitionChange={handleTaskDefinitionChange}
+          status={Status.INPROGRESS}
+          tasks={tasksSorted[Status.INPROGRESS]}
+          taskList={taskList}
+          setTaskList={setTaskList}
         />
       
         <List 
-          status="done"
-          taskList={tasksSorted[2]}
-          handleStatusChange={handleStatusChange}
-          handleDelete={handleDelete} 
-          handleTaskDefinitionChange={handleTaskDefinitionChange}
-        /> */}
+          status={Status.DONE}
+          tasks={tasksSorted[Status.DONE]}
+          taskList={taskList}
+          setTaskList={setTaskList}
+        />
       </main>
     </div>
   );

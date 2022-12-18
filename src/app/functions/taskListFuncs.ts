@@ -20,3 +20,7 @@ export function getSortedTasks(taskList: TaskList): Array<Array<Task>>{
 
     return sortedTasks
 } 
+
+export function getTaskList(): TaskList {
+    return JSON.parse(localStorage.getItem("taskList")!)
+}

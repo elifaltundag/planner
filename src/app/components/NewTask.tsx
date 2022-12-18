@@ -4,9 +4,13 @@ import React, { useState } from "react";
 import "../../design/components/new-task.scss";
 
 // Types, interfaces, classes and enums
-import { Status, Task, NewTaskProps } from "../model/dataStructures";
+import { Status, Task } from "../model/dataStructures";
+import { NewTaskProps } from "../model/componentPropsInterfaces";
 
+// Functions
 import { addNewTaskToTaskList } from "../functions/taskListFuncs";
+
+
 
 function NewTask({inputRef, taskList, setTaskList}: NewTaskProps) {
     const [newTaskDef, setNewTaskDef] = useState<string>(""); 
@@ -21,7 +25,7 @@ function NewTask({inputRef, taskList, setTaskList}: NewTaskProps) {
         e.preventDefault();
 
         // Create a new instance of Task
-        const newTask = new Task(newTaskDef, Status.TODO, Date.now())
+        const newTask = new Task(newTaskDef, Status.DONE, true, Date.now())
         
         // Add the new task to taskList
         setTaskList(addNewTaskToTaskList(taskList, newTask))

@@ -10,6 +10,7 @@ export class Task {
     constructor(
         public definition: string,
         public status: Status,
+        public isEditOn: boolean,
         public dateAdded: number,
         public dateStarted?: number,
         public dateFinished?: number
@@ -21,19 +22,6 @@ export interface TaskList {
     [id: number]: Task
 }
 
-
-/* REACT COMPONENTS' PROPS */ 
-export interface NewTaskProps {
-    inputRef: React.MutableRefObject<null>;
-    taskList: TaskList;
-    setTaskList: React.Dispatch<React.SetStateAction<TaskList>>;
-};
-
-
-export interface ListProps {
-    tasks: Array<Task>
-    setTaskList: React.Dispatch<React.SetStateAction<TaskList>>;
-}
 
 
 
