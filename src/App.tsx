@@ -28,10 +28,47 @@ const App: React.FC = () => {
   
   const [taskList, setTaskList] = useState<TaskList>(getTaskList())  
 
-  let inputRef = useRef(null)
+  let inputRef = useRef<HTMLInputElement>(null)
 
   
+  /* FUNCTIONS */
+  function handleDelete(id: number) {
+    let newTaskList = {...taskList}
+    delete newTaskList[id]
 
+    
+    setTaskList(newTaskList)
+  }
+
+  function handleEdit(e: any, id: number, ref: React.RefObject<HTMLInputElement>) {
+    e.preventDefault();
+    console.log("it runs")
+    let newTaskList = {...taskList}
+    
+    
+    if (ref.current) {
+      newTaskList[id].definition = ref.current.value
+    }
+    
+    newTaskList[id].isEditOn = false
+    /*  newTaskList[id] = {
+      ...newTaskList[id],
+      definition: ref.current.value,
+      isEditOn: false,
+    } */
+
+    setTaskList(newTaskList)
+  }
+
+  function handleTurnEditOn(id: number) {
+    let newTaskList = {...taskList}
+    newTaskList[id] = {
+      ...newTaskList[id],
+      isEditOn: true
+    }
+
+    setTaskList(newTaskList)
+  }
 
 
   // Update localstorage
@@ -59,6 +96,9 @@ const App: React.FC = () => {
           tasks={tasksSorted[Status.TODO]}
           taskList={taskList}
           setTaskList={setTaskList}
+          handleDelete={handleDelete}
+          handleEdit={handleEdit}  
+          handleTurnEditOn={handleTurnEditOn}
         />
 
         <List 
@@ -66,6 +106,9 @@ const App: React.FC = () => {
           tasks={tasksSorted[Status.INPROGRESS]}
           taskList={taskList}
           setTaskList={setTaskList}
+          handleDelete={handleDelete}
+          handleEdit={handleEdit}
+          handleTurnEditOn={handleTurnEditOn}
         />
       
         <List 
@@ -73,6 +116,9 @@ const App: React.FC = () => {
           tasks={tasksSorted[Status.DONE]}
           taskList={taskList}
           setTaskList={setTaskList}
+          handleDelete={handleDelete}
+          handleEdit={handleEdit}
+          handleTurnEditOn={handleTurnEditOn}
         />
       </main>
     </div>

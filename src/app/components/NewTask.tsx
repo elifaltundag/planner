@@ -37,7 +37,6 @@ function NewTask({inputRef, taskList, setTaskList}: NewTaskProps) {
 
     return (
         <form 
-            ref={inputRef}
             className="new-task" 
             onSubmit={(e) => handleNewTaskSubmit(e)} 
         >
