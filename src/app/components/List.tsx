@@ -6,7 +6,7 @@ import { ListProps } from "../model/componentPropsInterfaces";
 
 import "../../design/components/list.scss"
 
-function List({status, taskList, tasks, setTaskList, handleDelete, handleEdit, handleTurnEditOn}: ListProps) {
+function List({status, taskList, tasks, setTaskList, handleDelete, handleTaskDefinitionEdit, handleTurnEditOn, handleStatusChange}: ListProps) {
     const styles:React.CSSProperties = {
         backgroundColor: `var(--clr-bg-${status})`,
         color: `var(--clr-txt-${status})`
@@ -50,8 +50,9 @@ function List({status, taskList, tasks, setTaskList, handleDelete, handleEdit, h
                         taskList={taskList}
                         setTaskList={setTaskList}
                         handleDelete={handleDelete}
-                        handleEdit={handleEdit} 
+                        handleTaskDefinitionEdit={handleTaskDefinitionEdit} 
                         handleTurnEditOn={handleTurnEditOn}
+                        handleStatusChange={handleStatusChange}
                     />)
             })}    
         </div>

@@ -14,8 +14,9 @@ export interface ListProps {
     tasks: Array<Task>;
     setTaskList: React.Dispatch<React.SetStateAction<TaskList>>;
     handleDelete: any;
-    handleEdit: any;
+    handleTaskDefinitionEdit: any;
     handleTurnEditOn: any;
+    handleStatusChange: any;
 }
 
 export interface TaskViewProps {
@@ -23,6 +24,7 @@ export interface TaskViewProps {
     taskList: TaskList;
     setTaskList: React.Dispatch<React.SetStateAction<TaskList>>;
     handleDelete: any;
-    handleEdit: any;
+    handleTaskDefinitionEdit: any;
     handleTurnEditOn: any;
+    handleStatusChange: any;
 }

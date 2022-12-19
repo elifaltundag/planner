@@ -3,9 +3,10 @@ import React, { useRef } from "react";
 
 import "../../design/components/task.scss"
 import { TaskViewProps } from "../model/componentPropsInterfaces";
-import { Status } from "../model/dataStructures";
+import { Status, TaskEvent } from "../model/dataStructures";
 
-function TaskView({task, taskList, setTaskList, handleDelete, handleEdit, handleTurnEditOn}: TaskViewProps) {
+function TaskView({task, taskList, setTaskList, handleDelete, handleTaskDefinitionEdit, handleTurnEditOn, handleStatusChange}: TaskViewProps) {
+    // Generate task Ref 
     const taskRef = useRef<HTMLInputElement>(null)
 
     
@@ -24,7 +25,7 @@ function TaskView({task, taskList, setTaskList, handleDelete, handleEdit, handle
                             />
                             <button 
                                 className="btn__save-task-def"
-                                onClick={(e) => handleEdit(e, task.dateAdded, taskRef)}
+                                onClick={(e) => handleTaskDefinitionEdit(e, task.dateAdded, taskRef)}
                             >
                                 Save
                             </button>
@@ -38,6 +39,7 @@ function TaskView({task, taskList, setTaskList, handleDelete, handleEdit, handle
 
             <select
                 value={task.status}
+                onChange={(e) => handleStatusChange(e, task.dateAdded)}
             >
                 <option value={Status.TODO}>TO DO</option>
                 <option value={Status.INPROGRESS}>IN PROGRESS</option>

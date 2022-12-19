@@ -6,7 +6,7 @@ import "./design/globals/app-boilerplate.scss";
 import "./design/globals/layout.scss";
 
 // Types, interfaces, classes and enums
-import { Status, TaskList } from './app/model/dataStructures';
+import { Status, TaskEvent, TaskList } from './app/model/dataStructures';
 
 
 // Components
@@ -33,43 +33,55 @@ const App: React.FC = () => {
   
   /* FUNCTIONS */
   function handleDelete(id: number) {
+    // Copy task list
     let newTaskList = {...taskList}
+    
+    // Delete the unwanted task
     delete newTaskList[id]
 
-    
+    // Update task list
     setTaskList(newTaskList)
   }
 
-  function handleEdit(e: any, id: number, ref: React.RefObject<HTMLInputElement>) {
-    e.preventDefault();
-    console.log("it runs")
+  function handleTaskDefinitionEdit(e: any, id: number, ref: React.RefObject<HTMLInputElement>) {
+    // Prevent the form to reset the page on submission 
+    /* e.preventDefault(); */
+
+    // Copy task list
     let newTaskList = {...taskList}
     
-    
+    // Change tasks definition in new list (if there is in an input element)
     if (ref.current) {
       newTaskList[id].definition = ref.current.value
     }
     
+    // Turn edit mode off
     newTaskList[id].isEditOn = false
-    /*  newTaskList[id] = {
-      ...newTaskList[id],
-      definition: ref.current.value,
-      isEditOn: false,
-    } */
 
+    // Update task list
     setTaskList(newTaskList)
   }
 
   function handleTurnEditOn(id: number) {
+    // Copy task list
+    let newTaskList = {...taskList}
+    
+    // Turn edit mode on for that task 
+    newTaskList[id].isEditOn = true
+    
+    // Update task list 
+    setTaskList(newTaskList)
+  }
+
+  function handleStatusChange(e: any, id: number): void {
     let newTaskList = {...taskList}
     newTaskList[id] = {
-      ...newTaskList[id],
-      isEditOn: true
+      ...newTaskList[id], 
+      status: parseInt(e.currentTarget.value)
     }
 
     setTaskList(newTaskList)
   }
-
 
   // Update localstorage
   useEffect(() => {
@@ -97,8 +109,9 @@ const App: React.FC = () => {
           taskList={taskList}
           setTaskList={setTaskList}
           handleDelete={handleDelete}
-          handleEdit={handleEdit}  
+          handleTaskDefinitionEdit={handleTaskDefinitionEdit}  
           handleTurnEditOn={handleTurnEditOn}
+          handleStatusChange={handleStatusChange}
         />
 
         <List 
@@ -107,8 +120,9 @@ const App: React.FC = () => {
           taskList={taskList}
           setTaskList={setTaskList}
           handleDelete={handleDelete}
-          handleEdit={handleEdit}
+          handleTaskDefinitionEdit={handleTaskDefinitionEdit}
           handleTurnEditOn={handleTurnEditOn}
+          handleStatusChange={handleStatusChange}
         />
       
         <List 
@@ -117,8 +131,9 @@ const App: React.FC = () => {
           taskList={taskList}
           setTaskList={setTaskList}
           handleDelete={handleDelete}
-          handleEdit={handleEdit}
+          handleTaskDefinitionEdit={handleTaskDefinitionEdit}
           handleTurnEditOn={handleTurnEditOn}
+          handleStatusChange={handleStatusChange}
         />
       </main>
     </div>
