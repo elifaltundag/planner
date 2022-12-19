@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 
 import "../../design/components/task.scss"
 import { TaskViewProps } from "../model/componentPropsInterfaces";
-import { Status, TaskEvent } from "../model/dataStructures";
+import { Status } from "../model/dataStructures";
 
 function TaskView({task, taskList, setTaskList, handleDelete, handleTaskDefinitionEdit, handleTurnEditOn, handleStatusChange}: TaskViewProps) {
     // Generate task Ref 

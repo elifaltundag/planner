@@ -6,11 +6,11 @@ export const enum Status {
     DONE
 }
 
-export const enum TaskEvent {
+/* export const enum TaskEvent {
     DELETE,
     EDIT_DEFINITION,
     EDIT_STATUS
-}
+} */
 
 export class Task {
     constructor(
