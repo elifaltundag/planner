@@ -1,30 +1,30 @@
-import { Status, Task, TaskList } from "./dataStructures";
+import { Status, Task, TaskList, TasksData } from "./dataStructures";
 
 /* REACT COMPONENTS' PROPS */ 
 export interface NewTaskProps {
     inputRef: React.RefObject<HTMLInputElement>;
-    taskList: TaskList;
-    setTaskList: React.Dispatch<React.SetStateAction<TaskList>>;
+    tasksData: TasksData;
+    setTasksData: React.Dispatch<React.SetStateAction<TasksData>>;
 };
 
 
 export interface ListProps {
     status: Status;
-    taskList: TaskList;
-    tasks: Array<Task>;
-    setTaskList: React.Dispatch<React.SetStateAction<TaskList>>;
-    handleDelete: any;
-    handleTaskDefinitionEdit: any;
-    handleTurnEditOn: any;
-    handleStatusChange: any;
+    tasksData: TasksData;
+    setTasksData: React.Dispatch<React.SetStateAction<TasksData>>;
+    
+    taskList?: TaskList;
+    tasks?: Array<Task>;
+    setTaskList?: React.Dispatch<React.SetStateAction<TaskList>>;
+    handleDelete?: any;
+    handleTaskDefinitionEdit?: any;
+    handleTurnEditOn?: any;
+    handleStatusChange?: any;
 }
 
-export interface TaskViewProps {
+export interface SingleTaskProps {
     task: Task;
-    taskList: TaskList;
-    setTaskList: React.Dispatch<React.SetStateAction<TaskList>>;
-    handleDelete: any;
-    handleTaskDefinitionEdit: any;
-    handleTurnEditOn: any;
-    handleStatusChange: any;
+    index: number;
+    tasksData: TasksData;
+    setTasksData: React.Dispatch<React.SetStateAction<TasksData>>;
 }

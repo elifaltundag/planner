@@ -8,11 +8,11 @@ import { Status, Task } from "../model/dataStructures";
 import { NewTaskProps } from "../model/componentPropsInterfaces";
 
 // Functions
-import { addNewTaskToTaskList } from "../functions/taskListFuncs";
+import { addNewTaskToTasksData } from "../functions/tasksDataFunctions";
 
 
 
-function NewTask({inputRef, taskList, setTaskList}: NewTaskProps) {
+function NewTask({inputRef, tasksData, setTasksData}: NewTaskProps) {
     const [newTaskDef, setNewTaskDef] = useState<string>(""); 
 
 
@@ -25,14 +25,18 @@ function NewTask({inputRef, taskList, setTaskList}: NewTaskProps) {
         e.preventDefault();
 
         // Create a new instance of Task
-        const newTask = new Task(newTaskDef, Status.TODO, false, Date.now())
+        const newTask = new Task(newTaskDef.trim(), Status.TODO, Date.now().toString())
         
-        // Add the new task to taskList
-        setTaskList(addNewTaskToTaskList(taskList, newTask))
+        // Add the new task to tasksData
+        setTasksData(addNewTaskToTasksData(tasksData, newTask))
 
         // Reset input area
         setNewTaskDef("")
 
+
+        inputRef.current?.focus()
+
+        console.log("it should be doing something")
     }
 
     return (

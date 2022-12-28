@@ -16,51 +16,25 @@ export class Task {
     constructor(
         public definition: string,
         public status: Status,
-        public isEditOn: boolean,
-        public dateAdded: number,
+        public dateAdded: string/* ,
         public dateStarted?: number,
-        public dateFinished?: number
+        public dateFinished?: number */
     ){}
 }
 
+export interface TasksMap {
+    // Use Task.dateAdded as taskId
+    [taskId: string]: Task
+}
+
 export interface TaskList {
-    // Use Task.dateAdded as id
-    [id: number]: Task
+    taskListStatus: Status;
+    taskIdsOrder: Array<string>;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-export interface ListProps {
-     
-    status: string;
-    taskList: Array<any>;
-    handleStatusChange: any;
-    handleDelete: any;
-    handleTaskDefinitionChange: any
-
-    ! Remove event handlers
-    ! Add state setters
-};
-*/
+export interface TasksData {
+    tasks: TasksMap;
+    taskListOrder: Array<Status>;
+    taskLists: { [taskListId: number]: TaskList }
+}

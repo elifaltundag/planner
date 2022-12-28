@@ -1,17 +1,18 @@
 import React from "react";
 
-import TaskView from "./TaskView";
-import { Task, Status } from "../model/dataStructures";
+import SingleTask from "./SingleTask";
+import { Status } from "../model/dataStructures";
 import { ListProps } from "../model/componentPropsInterfaces";
+
+import { Droppable } from "react-beautiful-dnd";
 
 import "../../design/components/list.scss"
 
-function List({status, taskList, tasks, setTaskList, handleDelete, handleTaskDefinitionEdit, handleTurnEditOn, handleStatusChange}: ListProps) {
+function List({status, tasksData, setTasksData}: ListProps) {
     const styles:React.CSSProperties = {
         backgroundColor: `var(--clr-bg-${status})`,
         color: `var(--clr-txt-${status})`
     }
-
 
     function generateListTitle(listStatus: Status): string {
         let title = "";
@@ -26,39 +27,49 @@ function List({status, taskList, tasks, setTaskList, handleDelete, handleTaskDef
             case 2:
                 title += "DONE";
                 break;
+            default:
+                title += "";
+                break;
         }
 
         return title
     }
 
+    const taskIdsOrder = tasksData.taskLists[status].taskIdsOrder
     
 
     return (
         <div 
-            className={`list-${status}`}
-            style={styles}
+            className = {`list-${status}`}
+            style = {styles}
         >
-            <h2 className={`list-${status}__title`}>
+            <h2 className = {`list-${status}__title`}>
                 {generateListTitle(status)}
             </h2>
 
- 
-            {tasks.map((task: Task) => {
-                return (
-                    <TaskView 
-                        task={task}
-                        taskList={taskList}
-                        setTaskList={setTaskList}
-                        handleDelete={handleDelete}
-                        handleTaskDefinitionEdit={handleTaskDefinitionEdit} 
-                        handleTurnEditOn={handleTurnEditOn}
-                        handleStatusChange={handleStatusChange}
-                    />)
-            })}    
+            <Droppable droppableId = {status.toString()}>
+                {(provided) => (
+                    <div
+                        {...provided.droppableProps}
+                        ref = {provided.innerRef}
+                    >
+                        {taskIdsOrder.map((taskId: string, index: number) => (<SingleTask 
+                            key = {taskId}
+                            task = {tasksData.tasks[taskId]} 
+                            index = {index}
+                            tasksData = {tasksData}
+                            setTasksData = {setTasksData}
+                            />))
+                            
+                        }
+                        {provided.placeholder}
+                        
+
+                    </div>
+                )}
+            </Droppable>
         </div>
-        )
-   
-        
+    )    
 }
 
 

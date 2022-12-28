@@ -1,0 +1,25 @@
+.single-task {
+    margin: 0.5em;
+    padding: 1em;
+    border-radius: 0.8em;
+    background-color: hsla(0, 0%, 5%, 0.4);
+    color: white;
+    box-shadow: 0 0 3px hsla(0, 0%, 5%, 0.7);
+    
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    /* & > * {
+        border: 2px solid orange;
+    } */
+
+    &__btn-delete {
+        padding-top: 0.2em;
+        font-size: 1.5em;
+    }
+}
+
+/* .btn__save-task-def {
+    
+} */
