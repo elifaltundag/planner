@@ -23,6 +23,6 @@ export function addNewTaskToTasksData(currentTasksData: TasksData, newTask: Task
 
 export function getTasksData(): TasksData {
     const data = localStorage.getItem("tasksData") || "";
-    console.log(JSON.parse(data))
+
     return JSON.parse(data)
 }
