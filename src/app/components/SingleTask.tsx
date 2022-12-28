@@ -1,16 +1,16 @@
-import React, { useState, useRef } from "react";
+import React/* , { useState, useRef } */ from "react";
 /* import { SingleTaskProps } from "../model/interfaces"; */
 
 import "../../design/components/single-task.scss"
 import { SingleTaskProps } from "../model/componentPropsInterfaces";
-import { Status } from "../model/dataStructures";
+/* import { Status } from "../model/dataStructures"; */
 
 import { Draggable } from "react-beautiful-dnd";
 import { MdDelete } from "react-icons/md"
 
 function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
     // Generate task Ref 
-    const taskRef = useRef<HTMLInputElement>(null)
+    /* const taskRef = useRef<HTMLInputElement>(null) */
 
     function handleDelete(taskId: string) {
         // todo
