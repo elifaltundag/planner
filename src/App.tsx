@@ -29,26 +29,7 @@ const App: React.FC = () => {
   /* -------------- */ 
   /* Default states */
   // If there is already data stored in localStorage use it, else empty object
-  const [tasksData, setTasksData] = useState<TasksData>({
-    tasks: { },
-    taskListOrder: [0, 1, 2],
-    taskLists: {
-    0: {
-        taskListStatus: 0,
-        taskIdsOrder: []
-    },
-    
-        1: {
-        taskListStatus: 1,
-        taskIdsOrder: []
-    },
-    
-    2: {
-        taskListStatus: 2,
-        taskIdsOrder: []
-    }
-    }
-  })
+  const [tasksData, setTasksData] = useState<TasksData>(getTasksData())
 
   let inputRef = useRef<HTMLInputElement>(null)
 
@@ -188,13 +169,6 @@ const App: React.FC = () => {
     localStorage.removeItem("taskList")
   }, []) */
 
-  // Update state if there is in localStorage
-  useEffect(() => {
-    const localData = getTasksData()
-    if (localData) {
-        setTasksData(localData)
-    }
-  }, [])
 
   // Update localstorage
     useEffect(() => {

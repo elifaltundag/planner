@@ -22,7 +22,32 @@ export function addNewTaskToTasksData(currentTasksData: TasksData, newTask: Task
 }
 
 export function getTasksData(): TasksData {
-    const data = localStorage.getItem("tasksData") || "";
+    const data = localStorage.getItem("tasksData") 
+    
+    if (data) {
+        return JSON.parse(data)
+    } 
+    
+    return {
+        tasks: { },
+        taskListOrder: [0, 1, 2],
+        taskLists: {
+            0: {
+                taskListStatus: 0,
+                taskIdsOrder: []
+            },
+            
+                1: {
+                taskListStatus: 1,
+                taskIdsOrder: []
+            },
+            
+            2: {
+                taskListStatus: 2,
+                taskIdsOrder: []
+            }
+        }
+    }
+    
 
-    return JSON.parse(data)
 }
