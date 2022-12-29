@@ -131,13 +131,15 @@ const App: React.FC = () => {
         }))
     }
 
+    // return
     // If the item is moved to another list: change its status
     if (source.droppableId !== destination.droppableId) {
-        /* 
+        
+        
         // Remove if from the source list 
         const STATUS_SRC = Number(source.droppableId)
         const newSourceList = { ...tasksData.taskLists[STATUS_SRC] }
-
+        
         const newSourceListTaskIdsOrder = [ ...newSourceList.taskIdsOrder ]
         newSourceListTaskIdsOrder.splice(source.index, 1)
         newSourceList.taskIdsOrder = newSourceListTaskIdsOrder
@@ -148,26 +150,40 @@ const App: React.FC = () => {
         // Put it in the destination list
         const STATUS_DST = Number(destination.droppableId)
         const newDestinationList = { ...tasksData.taskLists[STATUS_DST] }
-
+        
         const newDestinationListTaskIdsOrder = [ ...newDestinationList.taskIdsOrder ]
         newDestinationListTaskIdsOrder.splice(destination.index, 0, draggableId)
         newDestinationList.taskIdsOrder = newDestinationListTaskIdsOrder
-
         
+        
+
+
         // Lists will be different this time
         setTasksData(prevTasksData => ({
             ...prevTasksData,
+            
+            // Update task status
+            tasks: {
+                ...prevTasksData.tasks,
+                draggableId: {
+                    ...prevTasksData.tasks[draggableId],
+                    status: STATUS_DST
+                }
+            },
+
+            // Update lists task orders
+            taskLists: {
+                ...prevTasksData.taskLists,
+                [STATUS_SRC]: newSourceList,
+                [STATUS_DST]: newDestinationList
+            }
         }))
-         */
+        
         
     }
 
   }
 
-  // Delete previous taskList at start  
-  /* useEffect(() => {
-    localStorage.removeItem("taskList")
-  }, []) */
 
 
   // Update localstorage
@@ -176,6 +192,7 @@ const App: React.FC = () => {
     }, [tasksData])
 
     console.log(tasksData)
+
 
     return (
         <div className = "App">

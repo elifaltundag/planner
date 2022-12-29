@@ -1,4 +1,4 @@
-import { Task, TasksMap, TasksData } from "../model/dataStructures";
+import { Task, Status, TasksMap, TasksData } from "../model/dataStructures";
 
 export function addNewTaskToTasksData(currentTasksData: TasksData, newTask: Task): TasksData {
     // Copy current tasks data
@@ -30,20 +30,20 @@ export function getTasksData(): TasksData {
     
     return {
         tasks: { },
-        taskListOrder: [0, 1, 2],
+        taskListOrder: [Status.TODO, Status.INPROGRESS, Status.DONE],
         taskLists: {
-            0: {
-                taskListStatus: 0,
+            [Status.TODO]: {
+                taskListStatus: Status.TODO,
                 taskIdsOrder: []
             },
             
-                1: {
-                taskListStatus: 1,
+            [Status.INPROGRESS]: {
+                taskListStatus: Status.INPROGRESS,
                 taskIdsOrder: []
             },
             
-            2: {
-                taskListStatus: 2,
+            [Status.DONE]: {
+                taskListStatus: Status.DONE,
                 taskIdsOrder: []
             }
         }

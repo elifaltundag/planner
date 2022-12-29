@@ -50,6 +50,7 @@ function List({status, tasksData, setTasksData}: ListProps) {
             <Droppable droppableId = {status.toString()}>
                 {(provided) => (
                     <div
+                        className = "droppable-list"
                         {...provided.droppableProps}
                         ref = {provided.innerRef}
                     >
