@@ -10,6 +10,7 @@
     grid-template-columns: 1fr auto;
     align-items: center;
 
+
     /* & > * {
         border: 2px solid orange;
     } */
@@ -23,3 +24,7 @@
 /* .btn__save-task-def {
     
 } */
+
+[data-isDragging = true] {
+    background-color: red;
+}

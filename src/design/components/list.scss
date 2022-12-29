@@ -4,14 +4,28 @@ ul, li {
 
 .list-0, .list-1, .list-2 {
     border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1.5em;
 
     &__title {
         text-align: center;
         text-transform: uppercase;
     }
+
+    /* [data-isDraggingOver = true] {
+        background-color: darkblue;
+    } */
+
+    &:has(div[data-isDraggingOver = true]) {
+        background-color: darkblue !important;
+    }
 }
 
 .droppable-list {
-    border: 2px solid yellow;
+    flex-grow: 2;
+    padding-block: 0.5em;
 }
+
+
 

@@ -28,12 +28,9 @@
         position: absolute;
         right: 0.3em;
         padding: 0.3em 0.6em;
-        background-color: var(--clr-acc-dark);
-        color: var(--clr-txt);
         font-weight: 600;
 
         &:hover {
-            background-color: var(--clr-acc-light);
             transform-origin: center;
             transform: scale(0.95);
         }
