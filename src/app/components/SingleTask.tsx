@@ -20,6 +20,10 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
 
         */ 
     }
+
+    /* const styles = {
+        backgroundColor: `${}`
+    } */
     
 
     return (
@@ -34,6 +38,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                         ref = {provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
+                        data-isDragging = {snapshot.isDragging}
                     >   
                         <div className = "single-task__definition">
                             {task.definition}

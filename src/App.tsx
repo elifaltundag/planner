@@ -134,7 +134,9 @@ const App: React.FC = () => {
     // return
     // If the item is moved to another list: change its status
     if (source.droppableId !== destination.droppableId) {
-        
+        /* 
+        ! REFACTOR AFTER VIDEO 10
+        */ 
         
         // Remove if from the source list 
         const STATUS_SRC = Number(source.droppableId)

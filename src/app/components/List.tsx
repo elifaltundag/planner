@@ -48,11 +48,12 @@ function List({status, tasksData, setTasksData}: ListProps) {
             </h2>
 
             <Droppable droppableId = {status.toString()}>
-                {(provided) => (
+                {(provided, snapshot) => (
                     <div
                         className = "droppable-list"
                         {...provided.droppableProps}
                         ref = {provided.innerRef}
+                        data-isDraggingOver = {snapshot.isDraggingOver}
                     >
                         {taskIdsOrder.map((taskId: string, index: number) => (<SingleTask 
                             key = {taskId}
