@@ -14,17 +14,17 @@ export function getTasksData(): TasksData {
         TaskLists: {
             [Status.TODO]: {
                 TaskListStatus: Status.TODO,
-                taskIdsOrder: []
+                TaskIdsOrder: []
             },
             
             [Status.INPROGRESS]: {
                 TaskListStatus: Status.INPROGRESS,
-                taskIdsOrder: []
+                TaskIdsOrder: []
             },
             
             [Status.DONE]: {
                 TaskListStatus: Status.DONE,
-                taskIdsOrder: []
+                TaskIdsOrder: []
             }
         }
     }
@@ -44,7 +44,7 @@ export function addNewTask(updateTasksData: React.Dispatch<React.SetStateAction<
             ...prevTasksData.TaskLists,
             0 : {
                 ...prevTasksData.TaskLists[0],
-                taskIdsOrder: prevTasksData.TaskLists[0].taskIdsOrder.concat([newTask.id])
+                TaskIdsOrder: prevTasksData.TaskLists[0].TaskIdsOrder.concat([newTask.id])
             }
         }
     }))
@@ -63,4 +63,22 @@ export function updateTaskDefinition(updateTasksData: React.Dispatch<React.SetSt
             }
         }
     }))
+}
+
+
+export function deleteTask(currentTasksData: TasksData, updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>, taskId: string) {
+    let updatedTasksData = {...currentTasksData}
+
+    // Get task's index in its current list
+    const taskStatus = currentTasksData.Tasks[taskId].status;
+    const taskIndex = currentTasksData.TaskLists[taskStatus].TaskIdsOrder.indexOf(taskId) 
+
+
+    // Delete task from Tasks (map)
+    delete updatedTasksData.Tasks[taskId]
+
+    // Delete taskId from TaskLists.order
+    updatedTasksData.TaskLists[taskStatus].TaskIdsOrder.splice(taskIndex, 1)
+
+    updateTasksData(updatedTasksData)
 }

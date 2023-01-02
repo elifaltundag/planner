@@ -51,7 +51,7 @@ const App: React.FC = () => {
         const STATUS = Number(source.droppableId)
         const newList = { ...tasksData.TaskLists[STATUS] }
         
-        const newListTaskIdsOrder = [ ...newList.taskIdsOrder ]
+        const newListTaskIdsOrder = [ ...newList.TaskIdsOrder ]
 
         // 1. Remove the task from its source index
         newListTaskIdsOrder.splice(source.index, 1)
@@ -60,7 +60,7 @@ const App: React.FC = () => {
         newListTaskIdsOrder.splice(destination.index, 0, draggableId)
 
         // Change the order in the new list
-        newList.taskIdsOrder = newListTaskIdsOrder
+        newList.TaskIdsOrder = newListTaskIdsOrder
         
 
         setTasksData(prevTasksData => ({
@@ -82,9 +82,9 @@ const App: React.FC = () => {
         const STATUS_SRC = Number(source.droppableId)
         const newSourceList = { ...tasksData.TaskLists[STATUS_SRC] }
         
-        const newSourceListTaskIdsOrder = [ ...newSourceList.taskIdsOrder ]
+        const newSourceListTaskIdsOrder = [ ...newSourceList.TaskIdsOrder ]
         newSourceListTaskIdsOrder.splice(source.index, 1)
-        newSourceList.taskIdsOrder = newSourceListTaskIdsOrder
+        newSourceList.TaskIdsOrder = newSourceListTaskIdsOrder
         
         
         
@@ -93,9 +93,9 @@ const App: React.FC = () => {
         const STATUS_DST = Number(destination.droppableId)
         const newDestinationList = { ...tasksData.TaskLists[STATUS_DST] }
         
-        const newDestinationListTaskIdsOrder = [ ...newDestinationList.taskIdsOrder ]
+        const newDestinationListTaskIdsOrder = [ ...newDestinationList.TaskIdsOrder ]
         newDestinationListTaskIdsOrder.splice(destination.index, 0, draggableId)
-        newDestinationList.taskIdsOrder = newDestinationListTaskIdsOrder
+        newDestinationList.TaskIdsOrder = newDestinationListTaskIdsOrder
         
         
 

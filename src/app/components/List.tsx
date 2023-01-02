@@ -35,7 +35,7 @@ function List({status, tasksData, setTasksData}: ListProps) {
         return title
     }
 
-    const taskIdsOrder = tasksData.TaskLists[status].taskIdsOrder
+    const TaskIdsOrder = tasksData.TaskLists[status].TaskIdsOrder
     
 
     return (
@@ -55,7 +55,7 @@ function List({status, tasksData, setTasksData}: ListProps) {
                         ref = {provided.innerRef}
                         data-isDraggingOver = {snapshot.isDraggingOver}
                     >
-                        {taskIdsOrder.map((taskId: string, index: number) => (<SingleTask 
+                        {TaskIdsOrder.map((taskId: string, index: number) => (<SingleTask 
                             key = {taskId}
                             task = {tasksData.Tasks[taskId]} 
                             index = {index}

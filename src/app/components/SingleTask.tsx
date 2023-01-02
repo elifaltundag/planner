@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import "../../design/components/single-task.scss"
 /* import { Status } from "../model/dataStructures"; */
 
-import { updateTaskDefinition } from "../functions/tasksDataFunctions";
+import { updateTaskDefinition, deleteTask } from "../functions/tasksDataFunctions";
 
 import { SingleTaskProps } from "../model/componentPropsInterfaces";
 import { Draggable } from "react-beautiful-dnd";
@@ -15,9 +15,9 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
     // Generate task Ref 
     const taskRef = useRef<HTMLInputElement>(null)
 
-    function handleDelete(taskId: string) {
+    /* function handleDelete(taskId: string) {
         // todo
-    }
+    } */
 
     const inputStyles: React.CSSProperties = {
         backgroundColor: "yellow"
@@ -57,7 +57,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
 
                         <button className = "btn__delete-task"
                             type = "button"
-                            onClick = {() => handleDelete(task.id)}
+                            onClick = {() => deleteTask(tasksData, setTasksData, task.id)}
                         >
                             <MdDelete />
                         </button>

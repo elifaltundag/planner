@@ -19,7 +19,7 @@ export interface TasksMap {
 
 export interface TaskList {
     TaskListStatus: Status;
-    taskIdsOrder: Array<string>;
+    TaskIdsOrder: Array<string>;
 }
 
 
