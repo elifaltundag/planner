@@ -13,7 +13,7 @@ export interface ListProps {
     tasksData: TasksData;
     setTasksData: React.Dispatch<React.SetStateAction<TasksData>>;
     
-    taskList?: TaskList;
+    TaskList?: TaskList;
     tasks?: Array<Task>;
     setTaskList?: React.Dispatch<React.SetStateAction<TaskList>>;
     handleDelete?: any;

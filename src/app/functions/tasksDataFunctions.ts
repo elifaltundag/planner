@@ -3,18 +3,18 @@ import { Task, Status, TasksMap, TasksData } from "../model/dataStructures";
 export function addNewTaskToTasksData(currentTasksData: TasksData, newTask: Task): TasksData {
     // Copy current tasks data
     let tasksUpdated: TasksMap = {...currentTasksData.tasks}
-    const toDoListOrderUpdated = [...currentTasksData.taskLists[0].taskIdsOrder, newTask.dateAdded];
+    const toDoListOrderUpdated = [...currentTasksData.TaskLists[0].taskIdsOrder, newTask.id];
 
     // Add new task to updated tasks 
-    tasksUpdated[newTask.dateAdded] = newTask
+    tasksUpdated[newTask.id] = newTask
 
     return {
         ...currentTasksData,
         tasks: tasksUpdated,
-        taskLists: {
-            ...currentTasksData.taskLists,
+        TaskLists: {
+            ...currentTasksData.TaskLists,
             0: {
-                ...currentTasksData.taskLists[0],
+                ...currentTasksData.TaskLists[0],
                 taskIdsOrder: toDoListOrderUpdated
             }
         }
@@ -30,24 +30,26 @@ export function getTasksData(): TasksData {
     
     return {
         tasks: { },
-        taskListOrder: [Status.TODO, Status.INPROGRESS, Status.DONE],
-        taskLists: {
+        TaskListOrder: [Status.TODO, Status.INPROGRESS, Status.DONE],
+        TaskLists: {
             [Status.TODO]: {
-                taskListStatus: Status.TODO,
+                TaskListStatus: Status.TODO,
                 taskIdsOrder: []
             },
             
             [Status.INPROGRESS]: {
-                taskListStatus: Status.INPROGRESS,
+                TaskListStatus: Status.INPROGRESS,
                 taskIdsOrder: []
             },
             
             [Status.DONE]: {
-                taskListStatus: Status.DONE,
+                TaskListStatus: Status.DONE,
                 taskIdsOrder: []
             }
         }
     }
-    
+}
 
+export function updateTaskDefinition(currentTasksData: TasksData, updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>, taskId: string, newDefinition: string) {
+    // Implement function in SingleTask.tsx
 }
