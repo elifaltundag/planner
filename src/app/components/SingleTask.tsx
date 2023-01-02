@@ -3,13 +3,16 @@ import React, { useState, useRef } from "react";
 import "../../design/components/single-task.scss"
 /* import { Status } from "../model/dataStructures"; */
 
-import { updateTaskDefinition, deleteTask } from "../functions/tasksDataFunctions";
+import { updateTaskDefinition} from "../functions/tasksDataFunctions";
 
 import { SingleTaskProps } from "../model/componentPropsInterfaces";
 import { Draggable } from "react-beautiful-dnd";
 import { MdDelete, MdSave } from "react-icons/md"
 
+import DeletePopUp from "./DeletePopUp";
+
 function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
+    const [deleteIsClicked, setDeleteIsClicked] = useState<boolean>(false)
     const [taskDefinition, setTaskDefinition] = useState<string>(task.definition)
     
     // Generate task Ref 
@@ -57,10 +60,16 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
 
                         <button className = "btn__delete-task"
                             type = "button"
-                            onClick = {() => deleteTask(tasksData, setTasksData, task.id)}
+                            onClick = {() => setDeleteIsClicked(true) /* deleteTask(tasksData, setTasksData, task.id) */}
                         >
                             <MdDelete />
                         </button>
+                        {deleteIsClicked && <DeletePopUp 
+                            tasksData = {tasksData}
+                            setTasksData = {setTasksData}
+                            taskId = {task.id}
+                            setDeleteIsClicked = {setDeleteIsClicked}
+                        />}
                     </form>
                 )
             }

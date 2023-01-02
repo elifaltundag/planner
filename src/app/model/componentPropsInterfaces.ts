@@ -28,3 +28,10 @@ export interface SingleTaskProps {
     tasksData: TasksData;
     setTasksData: React.Dispatch<React.SetStateAction<TasksData>>;
 }
+
+export interface DeletePopUpProps {
+    tasksData: TasksData;
+    setTasksData: React.Dispatch<React.SetStateAction<TasksData>>;
+    taskId: string;
+    setDeleteIsClicked: React.Dispatch<React.SetStateAction<boolean>>;
+}
