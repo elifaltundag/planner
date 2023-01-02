@@ -1,9 +1,11 @@
 import React, { useState, useRef } from "react";
 
 import "../../design/components/single-task.scss"
-import { SingleTaskProps } from "../model/componentPropsInterfaces";
 /* import { Status } from "../model/dataStructures"; */
 
+import { updateTaskDefinition } from "../functions/tasksDataFunctions";
+
+import { SingleTaskProps } from "../model/componentPropsInterfaces";
 import { Draggable } from "react-beautiful-dnd";
 import { MdDelete, MdSave } from "react-icons/md"
 
@@ -15,21 +17,6 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
 
     function handleDelete(taskId: string) {
         // todo
-    }
-
-    function handleTaskDefinitionSubmit(taskId: string) {
-        // Update task definition
-        setTasksData(prevTasksData => ({
-            ...prevTasksData,
-            tasks: {
-                ...prevTasksData.tasks,
-                [taskId]: {
-                    ...prevTasksData.tasks[taskId],
-                    definition: taskDefinition
-                } 
-            }
-        }))
-
     }
 
     const inputStyles: React.CSSProperties = {
@@ -50,7 +37,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         data-isDragging = {snapshot.isDragging}
-                        onSubmit = {() => handleTaskDefinitionSubmit(task.id)}
+                        onSubmit = {() => updateTaskDefinition(setTasksData, task.id, taskDefinition)}
                     >   
                         <div className = "single-task__definition">
                             <input 

@@ -24,7 +24,7 @@ export interface TaskList {
 
 
 export interface TasksData {
-    tasks: TasksMap;
+    Tasks: TasksMap;
     TaskListOrder: Array<Status>;
     TaskLists: { [TaskListId: number]: TaskList }
 }

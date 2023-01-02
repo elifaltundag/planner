@@ -33,65 +33,6 @@ const App: React.FC = () => {
 
   let inputRef = useRef<HTMLInputElement>(null)
 
-  
-  /* FUNCTIONS */
-  /* function handleDelete(id: number) {
-    // Copy task list
-    let newTaskList = {...TaskList}
-    
-    // Delete the unwanted task
-    delete newTaskList[id]
-
-    // Update task list
-    setTaskList(newTaskList)
-  } */
-
- /*  function handleTaskDefinitionEdit(id: number, taskRef: React.RefObject<HTMLInputElement>) {
-    // Prevent the form to reset the page on submission 
-    // e.preventDefault(); 
-
-    // Copy task list
-    let newTaskList = {...TaskList}
-    
-    // Change tasks definition in new list (if there is in an input element)
-    if (taskRef.current) {
-      newTaskList[id].definition = taskRef.current.value.trim()
-    }
-    
-    // Turn edit mode off
-    newTaskList[id].isEditOn = false
-
-    // Update task list
-    setTaskList(newTaskList)
-  } */
-
-  /* function handleTurnEditOn(id: number, taskRef: React.RefObject<HTMLInputElement>) {
-    // Copy task list
-    let newTaskList = {...TaskList}
-    
-    // Turn edit mode on for that task 
-    newTaskList[id].isEditOn = true
-    
-    // Update task list 
-    setTaskList(newTaskList)
-
-    // Focus on input 
-    setTimeout(() => {
-      taskRef.current?.focus()
-    }, 100) 
-  } */
-
-  /* function handleStatusChange(e: any, id: number): void {
-    let newTaskList = {...TaskList}
-    newTaskList[id] = {
-      ...newTaskList[id], 
-      status: parseInt(e.currentTarget.value)
-    }
-
-    setTaskList(newTaskList)
-  } */
-
-
   // DRAG & DROP
     function handleDragEnd(result: DropResult): void {
     /* 
@@ -164,10 +105,10 @@ const App: React.FC = () => {
             ...prevTasksData,
             
             // Update task status
-            tasks: {
-                ...prevTasksData.tasks,
+            Tasks: {
+                ...prevTasksData.Tasks,
                 [draggableId]: {
-                    ...prevTasksData.tasks[draggableId],
+                    ...prevTasksData.Tasks[draggableId],
                     status: STATUS_DST
                 }
             },

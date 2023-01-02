@@ -57,7 +57,7 @@ function List({status, tasksData, setTasksData}: ListProps) {
                     >
                         {taskIdsOrder.map((taskId: string, index: number) => (<SingleTask 
                             key = {taskId}
-                            task = {tasksData.tasks[taskId]} 
+                            task = {tasksData.Tasks[taskId]} 
                             index = {index}
                             tasksData = {tasksData}
                             setTasksData = {setTasksData}

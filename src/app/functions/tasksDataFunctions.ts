@@ -1,25 +1,5 @@
-import { Task, Status, TasksMap, TasksData } from "../model/dataStructures";
+import { Task, Status, TasksData } from "../model/dataStructures";
 
-export function addNewTaskToTasksData(currentTasksData: TasksData, newTask: Task): TasksData {
-    // Copy current tasks data
-    let tasksUpdated: TasksMap = {...currentTasksData.tasks}
-    const toDoListOrderUpdated = [...currentTasksData.TaskLists[0].taskIdsOrder, newTask.id];
-
-    // Add new task to updated tasks 
-    tasksUpdated[newTask.id] = newTask
-
-    return {
-        ...currentTasksData,
-        tasks: tasksUpdated,
-        TaskLists: {
-            ...currentTasksData.TaskLists,
-            0: {
-                ...currentTasksData.TaskLists[0],
-                taskIdsOrder: toDoListOrderUpdated
-            }
-        }
-    }
-}
 
 export function getTasksData(): TasksData {
     const data = localStorage.getItem("tasksData") 
@@ -29,7 +9,7 @@ export function getTasksData(): TasksData {
     } 
     
     return {
-        tasks: { },
+        Tasks: { },
         TaskListOrder: [Status.TODO, Status.INPROGRESS, Status.DONE],
         TaskLists: {
             [Status.TODO]: {
@@ -50,6 +30,37 @@ export function getTasksData(): TasksData {
     }
 }
 
-export function updateTaskDefinition(currentTasksData: TasksData, updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>, taskId: string, newDefinition: string) {
+
+export function addNewTask(updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>, newTask: Task)/* : TasksData */ {
+    updateTasksData(prevTasksData => ({
+        ...prevTasksData,
+
+        Tasks: {
+            ...prevTasksData.Tasks, 
+            [newTask.id] : newTask
+        },
+
+        TaskLists: {
+            ...prevTasksData.TaskLists,
+            0 : {
+                ...prevTasksData.TaskLists[0],
+                taskIdsOrder: prevTasksData.TaskLists[0].taskIdsOrder.concat([newTask.id])
+            }
+        }
+    }))
+}
+
+
+export function updateTaskDefinition(updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>, taskId: string, newDefinition: string) {
     // Implement function in SingleTask.tsx
+    updateTasksData(prevTasksData => ({
+        ...prevTasksData,
+        Tasks: {
+            ...prevTasksData.Tasks,
+            [taskId]: {
+                ...prevTasksData.Tasks[taskId],
+                definition: newDefinition
+            }
+        }
+    }))
 }

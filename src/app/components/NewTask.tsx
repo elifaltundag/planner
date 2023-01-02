@@ -8,7 +8,7 @@ import { Status, Task } from "../model/dataStructures";
 import { NewTaskProps } from "../model/componentPropsInterfaces";
 
 // Functions
-import { addNewTaskToTasksData } from "../functions/tasksDataFunctions";
+import { addNewTask } from "../functions/tasksDataFunctions";
 
 
 
@@ -28,33 +28,30 @@ function NewTask({inputRef, tasksData, setTasksData}: NewTaskProps) {
         const newTask = new Task(newTaskDef.trim(), Status.TODO, Date.now().toString())
         
         // Add the new task to tasksData
-        setTasksData(addNewTaskToTasksData(tasksData, newTask))
+        addNewTask(setTasksData, newTask)
 
         // Reset input area
         setNewTaskDef("")
 
-
         inputRef.current?.focus()
-
-        console.log("it should be doing something")
     }
 
     return (
         <form 
-            className="new-task" 
-            onSubmit={(e) => handleNewTaskSubmit(e)} 
+            className = "new-task" 
+            onSubmit = {(e) => handleNewTaskSubmit(e)} 
         >
             <input 
-                ref={inputRef}
-                type="text" 
-                value={newTaskDef}
-                placeholder="Enter a task" 
-                className="new-task__input"
-                onChange={(e) => handleTaskDefinitionChange(e)}
+                ref = {inputRef} 
+                type = "text" 
+                value = {newTaskDef}            
+                placeholder = "Enter a task" 
+                className = "new-task__input"
+                onChange = {(e) => handleTaskDefinitionChange(e)}
             />
             <button
-                className="new-task__btn"
-                type="submit"
+                className = "new-task__btn"
+                type = "submit"
             >
                 Add
             </button>
