@@ -1,34 +1,45 @@
-import React/* , { useState, useRef } */ from "react";
-/* import { SingleTaskProps } from "../model/interfaces"; */
+import React, { useState, useRef } from "react";
 
 import "../../design/components/single-task.scss"
 import { SingleTaskProps } from "../model/componentPropsInterfaces";
 /* import { Status } from "../model/dataStructures"; */
 
 import { Draggable } from "react-beautiful-dnd";
-import { MdDelete } from "react-icons/md"
+import { MdDelete, MdSave } from "react-icons/md"
 
 function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
+    const [taskDefinition, setTaskDefinition] = useState<string>(task.definition)
+    
     // Generate task Ref 
-    /* const taskRef = useRef<HTMLInputElement>(null) */
+    const taskRef = useRef<HTMLInputElement>(null)
 
     function handleDelete(taskId: string) {
         // todo
-        
-        /*
-        Bunun çok işi var, sen şimdilik yeni yerine götüremeye bak
-
-        */ 
     }
 
-    /* const styles = {
-        backgroundColor: `${}`
-    } */
-    
+    function handleTaskDefinitionSubmit(taskId: string) {
+        // Update task definition
+        setTasksData(prevTasksData => ({
+            ...prevTasksData,
+            tasks: {
+                ...prevTasksData.tasks,
+                [taskId]: {
+                    ...prevTasksData.tasks[taskId],
+                    definition: taskDefinition
+                } 
+            }
+        }))
+
+    }
+
+    const inputStyles: React.CSSProperties = {
+        backgroundColor: "yellow"
+    }
+
 
     return (
         <Draggable 
-            draggableId = {task.dateAdded} 
+            draggableId = {task.id} 
             index = {index} 
         >
             {
@@ -39,37 +50,30 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         data-isDragging = {snapshot.isDragging}
+                        onSubmit = {() => handleTaskDefinitionSubmit(task.id)}
                     >   
                         <div className = "single-task__definition">
-                            {task.definition}
-                            {/* {task.isEditOn 
-                                ? 
-                                (<>
-                                        <input 
-                                            ref = {taskRef}
-                                            type = "text"
-                                            defaultValue={task.definition}
-                                        />
-                                        <button 
-                                            className="btn__save-task-def"
-                                            onClick={() => handleTaskDefinitionEdit(task.dateAdded, taskRef)}
-                                        >
-                                            Save
-                                        </button>
-                                    </>) 
-                                
-                                : 
-                                (<p onClick={() => handleTurnEditOn(task.dateAdded, taskRef)}>
-                                    {task.definition}
-                                </p>)
-                            } */}
+                            <input 
+                                ref = {taskRef}
+                                type = "text"
+                                value = {taskDefinition}
+                                onChange = {() => setTaskDefinition(taskRef.current?.value || "")}
+                                style = {inputStyles}
+                            />
+                            <button 
+                                className="btn__save-task-def"
+                                type = "submit"
+                            >
+                                <MdSave />
+                            </button>
+                        </div>
 
-                        </div>
-                        
-                        <div className = "single-task__btn-delete"
-                            onClick = {() => handleDelete(task.dateAdded)}>
+                        <button className = "btn__delete-task"
+                            type = "button"
+                            onClick = {() => handleDelete(task.id)}
+                        >
                             <MdDelete />
-                        </div>
+                        </button>
                     </form>
                 )
             }

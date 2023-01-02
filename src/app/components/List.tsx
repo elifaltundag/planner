@@ -35,7 +35,7 @@ function List({status, tasksData, setTasksData}: ListProps) {
         return title
     }
 
-    const taskIdsOrder = tasksData.taskLists[status].taskIdsOrder
+    const taskIdsOrder = tasksData.TaskLists[status].taskIdsOrder
     
 
     return (

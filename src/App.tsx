@@ -37,7 +37,7 @@ const App: React.FC = () => {
   /* FUNCTIONS */
   /* function handleDelete(id: number) {
     // Copy task list
-    let newTaskList = {...taskList}
+    let newTaskList = {...TaskList}
     
     // Delete the unwanted task
     delete newTaskList[id]
@@ -51,7 +51,7 @@ const App: React.FC = () => {
     // e.preventDefault(); 
 
     // Copy task list
-    let newTaskList = {...taskList}
+    let newTaskList = {...TaskList}
     
     // Change tasks definition in new list (if there is in an input element)
     if (taskRef.current) {
@@ -67,7 +67,7 @@ const App: React.FC = () => {
 
   /* function handleTurnEditOn(id: number, taskRef: React.RefObject<HTMLInputElement>) {
     // Copy task list
-    let newTaskList = {...taskList}
+    let newTaskList = {...TaskList}
     
     // Turn edit mode on for that task 
     newTaskList[id].isEditOn = true
@@ -82,7 +82,7 @@ const App: React.FC = () => {
   } */
 
   /* function handleStatusChange(e: any, id: number): void {
-    let newTaskList = {...taskList}
+    let newTaskList = {...TaskList}
     newTaskList[id] = {
       ...newTaskList[id], 
       status: parseInt(e.currentTarget.value)
@@ -108,7 +108,7 @@ const App: React.FC = () => {
     // If the task is moved in the same list (only horizontally)
     if (source.droppableId === destination.droppableId && source.index !== destination.index) { 
         const STATUS = Number(source.droppableId)
-        const newList = { ...tasksData.taskLists[STATUS] }
+        const newList = { ...tasksData.TaskLists[STATUS] }
         
         const newListTaskIdsOrder = [ ...newList.taskIdsOrder ]
 
@@ -124,14 +124,13 @@ const App: React.FC = () => {
 
         setTasksData(prevTasksData => ({
             ...prevTasksData,
-            taskLists: {
-                ...prevTasksData.taskLists,
+            TaskLists: {
+                ...prevTasksData.TaskLists,
                 [STATUS]: newList
             }
         }))
     }
 
-    // return
     // If the item is moved to another list: change its status
     if (source.droppableId !== destination.droppableId) {
         /* 
@@ -140,7 +139,7 @@ const App: React.FC = () => {
         
         // Remove if from the source list 
         const STATUS_SRC = Number(source.droppableId)
-        const newSourceList = { ...tasksData.taskLists[STATUS_SRC] }
+        const newSourceList = { ...tasksData.TaskLists[STATUS_SRC] }
         
         const newSourceListTaskIdsOrder = [ ...newSourceList.taskIdsOrder ]
         newSourceListTaskIdsOrder.splice(source.index, 1)
@@ -151,7 +150,7 @@ const App: React.FC = () => {
         
         // Put it in the destination list
         const STATUS_DST = Number(destination.droppableId)
-        const newDestinationList = { ...tasksData.taskLists[STATUS_DST] }
+        const newDestinationList = { ...tasksData.TaskLists[STATUS_DST] }
         
         const newDestinationListTaskIdsOrder = [ ...newDestinationList.taskIdsOrder ]
         newDestinationListTaskIdsOrder.splice(destination.index, 0, draggableId)
@@ -167,15 +166,15 @@ const App: React.FC = () => {
             // Update task status
             tasks: {
                 ...prevTasksData.tasks,
-                draggableId: {
+                [draggableId]: {
                     ...prevTasksData.tasks[draggableId],
                     status: STATUS_DST
                 }
             },
 
             // Update lists task orders
-            taskLists: {
-                ...prevTasksData.taskLists,
+            TaskLists: {
+                ...prevTasksData.TaskLists,
                 [STATUS_SRC]: newSourceList,
                 [STATUS_DST]: newDestinationList
             }
@@ -210,8 +209,8 @@ const App: React.FC = () => {
                 
                 <DragDropContext onDragEnd = {handleDragEnd}>
                     {
-                        tasksData.taskListOrder.map((taskListId: number) => (<List 
-                            status = {tasksData.taskLists[taskListId].taskListStatus} 
+                        tasksData.TaskListOrder.map((TaskListId: number) => (<List 
+                            status = {tasksData.TaskLists[TaskListId].TaskListStatus} 
                             tasksData = {tasksData}
                             setTasksData = {setTasksData}
                         />)
