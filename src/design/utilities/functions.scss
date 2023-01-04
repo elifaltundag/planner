@@ -1,0 +1,106 @@
+@use "sass:math";
+@use "sass:map";
+
+/* Converts pixel to rem || em */
+@function convert-pixel($pixel-value, $desired-unit) {
+     @if $desired-unit == "rem" or $desired-unit == "em" {
+        @if math.is-unitless($pixel-value) {
+            @return math.div($pixel-value, 16) + $desired-unit;
+        }
+
+        @else {
+            @error("Pixel value has unit. Don't provide any units for the value you wish to convert.");
+        }
+    }
+
+    @else {
+        @error("The function convert-pixel() converts pixel values to rem and em only, no other units.");
+    }
+}
+
+
+
+
+
+/* Generate upper and lower bounds map in a single function */
+/* @function generate-bp-bounds($bps, $bps-lower) {
+    @each $bp, $value in $bps {
+        $bps-lower: map-merge($map1: $bps-lower, $map2: ($bp: $value))
+    }
+
+    @return $bps-lower
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Generates media queries' lower bounds map */
+/* @function get-mq-lower-bounds($widths) {
+    $lower-bounds-map: ();
+
+    @each $breakpoint-tag, $breakpoint in $widths {
+        @debug("hell yeah");
+    }
+} */
+
+/* @error("this works"); */ /* get-mq-lower-bounds($breakpoints-pixel-map); */
+/* @error(get-mq-lower-bounds($breakpoints-pixel-map)); */
+/* Generates media queries' upper bounds map */
+
+

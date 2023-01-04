@@ -9,10 +9,10 @@ import { Droppable } from "react-beautiful-dnd";
 import "../../design/components/list.scss"
 
 function List({status, tasksData, setTasksData}: ListProps) {
-    const styles:React.CSSProperties = {
+    /* const styles:React.CSSProperties = {
         backgroundColor: `var(--clr-bg-${status})`,
         color: `var(--clr-txt-${status})`
-    }
+    } */
 
     function generateListTitle(listStatus: Status): string {
         let title = "";
@@ -41,7 +41,7 @@ function List({status, tasksData, setTasksData}: ListProps) {
     return (
         <div 
             className = {`list-${status}`}
-            style = {styles}
+            /* style = {styles} */
         >
             <h2 className = {`list-${status}__title`}>
                 {generateListTitle(status)}

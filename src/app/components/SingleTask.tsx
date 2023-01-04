@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 
+
 import "../../design/components/single-task.scss"
 /* import { Status } from "../model/dataStructures"; */
 
@@ -9,6 +10,7 @@ import { SingleTaskProps } from "../model/componentPropsInterfaces";
 import { Draggable } from "react-beautiful-dnd";
 import { MdDelete, MdSave } from "react-icons/md"
 
+import TextareaAutosize  from "react-textarea-autosize";
 import DeletePopUp from "./DeletePopUp";
 
 function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
@@ -16,14 +18,14 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
     const [taskDefinition, setTaskDefinition] = useState<string>(task.definition)
     
     // Generate task Ref 
-    const taskRef = useRef<HTMLInputElement>(null)
+    const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
     /* function handleDelete(taskId: string) {
         // todo
     } */
 
     const inputStyles: React.CSSProperties = {
-        backgroundColor: "yellow"
+        /* backgroundColor: "yellow" */
     }
 
 
@@ -43,15 +45,14 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                         onSubmit = {() => updateTaskDefinition(setTasksData, task.id, taskDefinition)}
                     >   
                         <div className = "single-task__definition">
-                            <input 
-                                ref = {taskRef}
-                                type = "text"
+                            <TextareaAutosize className = "single-task__definition__textarea"
+                                ref = {textAreaRef}
                                 value = {taskDefinition}
-                                onChange = {() => setTaskDefinition(taskRef.current?.value || "")}
-                                style = {inputStyles}
+                                onChange = {() => setTaskDefinition(textAreaRef.current?.value || "")}
+                                /* style = {inputStyles} */
                             />
                             <button 
-                                className="btn__save-task-def"
+                                className = "single-task__definition__btn"
                                 type = "submit"
                             >
                                 <MdSave />

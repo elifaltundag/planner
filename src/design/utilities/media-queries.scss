@@ -1,0 +1,48 @@
+@use "sass:string";
+@use "sass:map";
+@use "functions" as f;
+
+$breakpoints-pixels: (
+    "xs-sm" : 576,
+    "sm-md" : 768,
+    "md-lr" : 992,
+    "lr-xl" : 1200,
+    "xl-xx" : 1400
+);
+
+
+/*
+https://brokul.dev/detecting-the-default-browser-font-size-in-javascript
+*/
+
+$breakpoints-lower-bounds: (
+    "small"  : f.convert-pixel(576, em),
+    "medium" : f.convert-pixel(768, em),
+    "large"  : f.convert-pixel(992, em),
+    "xlarge" : f.convert-pixel(1200, em),
+    "xxlarge": f.convert-pixel(1400, em)
+);
+
+$breakpoints-upper-bounds: (
+    "xsmall" : f.convert-pixel(575.98, em),
+    "small"  : f.convert-pixel(767.98, em),
+    "medium" : f.convert-pixel(991.98, em),
+    "large"  : f.convert-pixel(1199.98, em),
+    "xlarge" : f.convert-pixel(1399.98, em)
+);
+
+
+/* Enter $size in pixel, without unit */
+@mixin media-query($min-or-max, $size) {
+    @if $min-or-max == "min-width" {
+        @media (min-width: map-get($breakpoints-lower-bounds, $size)) {
+            @content;
+        }    
+    } 
+    
+    @else if $min-or-max == "max-width" {
+        @media (max-width: map-get($breakpoints-upper-bounds, $size)) {
+            @content;
+        }
+    } 
+}

@@ -2,7 +2,7 @@ import { Status, Task, TaskList, TasksData } from "./dataStructures";
 
 /* REACT COMPONENTS' PROPS */ 
 export interface NewTaskProps {
-    inputRef: React.RefObject<HTMLInputElement>;
+    newTaskInputRef: React.RefObject<HTMLInputElement>;
     tasksData: TasksData;
     setTasksData: React.Dispatch<React.SetStateAction<TasksData>>;
 };

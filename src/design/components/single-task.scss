@@ -1,9 +1,10 @@
+/* FORM */
 .single-task {
     margin: 0.5em;
     padding: 1em;
     border-radius: 0.8em;
-    background-color: hsla(0, 0%, 5%, 0.4);
-    color: white;
+    /* background-color: hsla(0, 0%, 5%, 0.4);
+    color: white; */
     box-shadow: 0 0 3px hsla(0, 0%, 5%, 0.7);
     
     display: grid;
@@ -11,20 +12,22 @@
     align-items: center;
 
 
-    /* & > * {
-        border: 2px solid orange;
-    } */
+    /* DIV: INPUT & SAVE BTN */ 
+    &__definition {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-    &__btn-delete {
-        padding-top: 0.2em;
-        font-size: 1.5em;
+
+        &__textarea {
+            flex-grow: 2;
+            resize: none;
+            font-family: inherit;
+        }
     }
 }
 
-/* .btn__save-task-def {
-    
-} */
 
 [data-isDragging = true] {
-    background-color: red;
+    background-color: rgb(190, 59, 241);
 }

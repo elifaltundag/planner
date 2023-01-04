@@ -7,6 +7,7 @@ import { DragDropContext, DropResult} from "react-beautiful-dnd";
 // Design - SCSS
 import "./design/globals/app-boilerplate.scss";
 import "./design/globals/layout.scss";
+import "./design/utilities/media-queries.scss"
 
 // Types, interfaces, classes and enums
 import { TasksData } from './app/model/dataStructures';
@@ -17,21 +18,22 @@ import Header from './app/components/Header';
 import NewTask from './app/components/NewTask';
 import List from './app/components/List';
 
+
 // Functions
 import { getTasksData } from './app/functions/tasksDataFunctions';
 
 
 
+
+
 const App: React.FC = () => {
-  
-  /* ------------------------------------------------------------------- */ 
-  /* -------------- */ 
-  /* -------------- */ 
   /* Default states */
   // If there is already data stored in localStorage use it, else empty object
   const [tasksData, setTasksData] = useState<TasksData>(getTasksData())
 
-  let inputRef = useRef<HTMLInputElement>(null)
+
+
+  let newTaskInputRef = useRef<HTMLInputElement>(null)
 
   // DRAG & DROP
     function handleDragEnd(result: DropResult): void {
@@ -127,23 +129,19 @@ const App: React.FC = () => {
   }
 
 
-
   // Update localstorage
     useEffect(() => {
         localStorage.setItem("tasksData", JSON.stringify(tasksData))
     }, [tasksData])
-
-    console.log(tasksData)
 
 
     return (
         <div className = "App">
             <Header />
         
-            <main className = "main-layout">
-            
+            <main className = "main-layout">                
                 <NewTask
-                    inputRef = {inputRef}
+                    newTaskInputRef = {newTaskInputRef}
                     tasksData = {tasksData}
                     setTasksData = {setTasksData}
                 />
@@ -158,6 +156,7 @@ const App: React.FC = () => {
                         )
                     }
                 </DragDropContext>
+
             </main>
         </div>
     );

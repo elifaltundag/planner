@@ -1,15 +1,29 @@
 @use "../utilities/colors.scss" as *;
+@use "../utilities/media-queries.scss" as *;
 
 .header {
     text-align: center;
+    margin-bottom: 1em;
+
+    @include media-query("min-width", "medium") {
+        margin-bottom: 4em;
+    }
+
+
+    * {
+        margin: 0 auto;
+        width: max-content;
+        /* border: 2px solid greenyellow; */
+    }
     
     .header__title {
         font-size: 2rem;
+        margin-bottom: 0.2em;
     }
     
     .header__info {
         font-weight: 600;
         font-size: 1.2rem;
-        color: var(--clr-acc-light);
+        /* color: var(--clr-acc-light); */
     }
 }

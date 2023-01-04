@@ -12,7 +12,7 @@ import { addNewTask } from "../functions/tasksDataFunctions";
 
 
 
-function NewTask({inputRef, tasksData, setTasksData}: NewTaskProps) {
+function NewTask({newTaskInputRef, tasksData, setTasksData}: NewTaskProps) {
     const [newTaskDef, setNewTaskDef] = useState<string>(""); 
 
 
@@ -33,7 +33,7 @@ function NewTask({inputRef, tasksData, setTasksData}: NewTaskProps) {
         // Reset input area
         setNewTaskDef("")
 
-        inputRef.current?.focus()
+        newTaskInputRef.current?.focus()
     }
 
     return (
@@ -42,8 +42,7 @@ function NewTask({inputRef, tasksData, setTasksData}: NewTaskProps) {
             onSubmit = {(e) => handleNewTaskSubmit(e)} 
         >
             <input 
-                ref = {inputRef} 
-                type = "text" 
+                ref = {newTaskInputRef}
                 value = {newTaskDef}            
                 placeholder = "Enter a task" 
                 className = "new-task__input"

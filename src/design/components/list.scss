@@ -11,6 +11,7 @@ ul, li {
     &__title {
         text-align: center;
         text-transform: uppercase;
+        margin: 0;
     }
 
     /* [data-isDraggingOver = true] {
@@ -18,7 +19,7 @@ ul, li {
     } */
 
     &:has(div[data-isDraggingOver = true]) {
-        background-color: darkblue !important;
+        background-color: rgb(248, 76, 63) !important;
     }
 }
 
