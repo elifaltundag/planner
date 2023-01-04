@@ -20,14 +20,6 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
     // Generate task Ref 
     const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
-    /* function handleDelete(taskId: string) {
-        // todo
-    } */
-
-    const inputStyles: React.CSSProperties = {
-        /* backgroundColor: "yellow" */
-    }
-
 
     return (
         <Draggable 
