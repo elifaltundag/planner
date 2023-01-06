@@ -1,0 +1,12 @@
+@use "whitespaces" as *;
+@use "media-queries" as *;
+
+@mixin grid-layout-desktop {    
+    @include media-query("min-width", "medium") {
+        display: grid;
+        grid-template-columns: $cols--desktop;
+        row-gap: $row-gap--desktop;
+        column-gap: $col-gap--desktop;
+        align-items: start;
+    }
+}

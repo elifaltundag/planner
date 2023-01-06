@@ -1,0 +1,46 @@
+@use "../utilities" as *;
+
+.main-layout {
+    width: min(1400px, 96%);
+    margin: 0 auto;
+
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+        "title colors"
+        "lists lists";
+    row-gap: $row-gap--mobile;
+    padding-top: 1em;
+    padding-bottom: 5em;
+    
+
+    .header {
+        grid-area: title;
+        justify-self: start;
+    }
+
+    .color-mode-toggler {
+        grid-area: colors;
+        justify-self: end;
+    }
+
+    .lists-layout {
+        grid-area: lists;
+    }
+
+    @include grid-layout-desktop;
+    @include media-query("min-width", "medium") {
+        padding-block: 2em;
+        grid-template-rows: repeat(2, auto);
+        grid-template-areas: 
+            "title new-task new-task new-task new-task colors"
+            "lists lists lists lists lists lists"
+        ;
+
+        .new-task__container {
+            grid-area: new-task;
+        }
+    }
+}

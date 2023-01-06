@@ -10,9 +10,11 @@ import { NewTaskProps } from "../model/componentPropsInterfaces";
 // Functions
 import { addNewTask } from "../functions/tasksDataFunctions";
 
+import { MdOutlineAddCircle } from "react-icons/md";
 
 
-function NewTask({newTaskInputRef, tasksData, setTasksData}: NewTaskProps) {
+
+function NewTask({newTaskInputRef, setTasksData}: NewTaskProps) {
     const [newTaskDef, setNewTaskDef] = useState<string>(""); 
 
 
@@ -37,25 +39,26 @@ function NewTask({newTaskInputRef, tasksData, setTasksData}: NewTaskProps) {
     }
 
     return (
-        <form 
-            className = "new-task" 
-            onSubmit = {(e) => handleNewTaskSubmit(e)} 
-        >
-            <input 
-                ref = {newTaskInputRef}
-                value = {newTaskDef}            
-                placeholder = "Enter a task" 
-                className = "new-task__input"
-                onChange = {(e) => handleTaskDefinitionChange(e)}
-            />
-            <button
-                className = "new-task__btn"
-                type = "submit"
+        <div className = "new-task__container">
+            <form 
+                className = "new-task" 
+                onSubmit = {(e) => handleNewTaskSubmit(e)} 
             >
-                Add
-            </button>
-        </form>
-       
+                <input 
+                    ref = {newTaskInputRef}
+                    value = {newTaskDef}            
+                    placeholder = "Enter a task" 
+                    className = "new-task__input"
+                    onChange = {(e) => handleTaskDefinitionChange(e)}
+                />
+                <button
+                    className = "new-task__btn"
+                    type = "submit"
+                >
+                    <MdOutlineAddCircle />
+                </button>
+            </form>
+        </div>
     )
 }
 

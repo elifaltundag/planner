@@ -1,4 +1,5 @@
-@use "../utilities/colors.scss" as *;
+@use "../utilities" as *;
+@use "reset-defaults" as *; 
 
 html {
     box-sizing: border-box;
@@ -12,7 +13,6 @@ html {
 body {
     min-height: 100vh;
     margin: 0;
-    padding: 1em;
 
     /* background-color: var(--clr-bg);
     color: var(--clr-txt); */
@@ -20,7 +20,7 @@ body {
     line-height: 1.4;
 }
 
-.App {
-    width: min(1200px, 95%);
+/* .App {
+    width: min(1400px, 100%);
     margin: 0 auto;
-}
+} */

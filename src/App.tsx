@@ -6,7 +6,8 @@ import { DragDropContext, DropResult} from "react-beautiful-dnd";
 
 // Design - SCSS
 import "./design/globals/app-boilerplate.scss";
-import "./design/globals/layout.scss";
+import "./design/globals/lists-layout.scss";
+import "./design/globals/main-layout.scss";
 import "./design/utilities/media-queries.scss"
 
 // Types, interfaces, classes and enums
@@ -17,11 +18,11 @@ import { TasksData } from './app/model/dataStructures';
 import Header from './app/components/Header';
 import NewTask from './app/components/NewTask';
 import List from './app/components/List';
+import ColorModeToggler from './app/components/ColorModeToggler';
 
 
 // Functions
 import { getTasksData } from './app/functions/tasksDataFunctions';
-
 
 
 
@@ -136,16 +137,17 @@ const App: React.FC = () => {
 
 
     return (
-        <div className = "App">
+        <div className = "App main-layout">
             <Header />
+            <ColorModeToggler />
+
+            <NewTask 
+                newTaskInputRef = {newTaskInputRef}
+                setTasksData = {setTasksData}
+            />
+
         
-            <main className = "main-layout">                
-                <NewTask
-                    newTaskInputRef = {newTaskInputRef}
-                    tasksData = {tasksData}
-                    setTasksData = {setTasksData}
-                />
-                
+            <main className = "lists-layout">                                
                 <DragDropContext onDragEnd = {handleDragEnd}>
                     {
                         tasksData.TaskListOrder.map((TaskListId: number) => (<List 
@@ -156,7 +158,6 @@ const App: React.FC = () => {
                         )
                     }
                 </DragDropContext>
-
             </main>
         </div>
     );

@@ -1,6 +1,6 @@
 /* FORM */
 .single-task {
-    margin: 0.5em;
+    margin-block: 0.5em;
     padding: 1em;
     border-radius: 0.8em;
     /* background-color: hsla(0, 0%, 5%, 0.4);
@@ -8,23 +8,29 @@
     box-shadow: 0 0 3px hsla(0, 0%, 5%, 0.7);
     
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 90% repeat(2, 5%);
+    grid-template-areas: "task-def save delete";
     align-items: center;
 
-
-    /* DIV: INPUT & SAVE BTN */ 
-    &__definition {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-
-        &__textarea {
-            flex-grow: 2;
-            resize: none;
-            font-family: inherit;
-        }
+    &__textarea {
+        grid-area: task-def;
+        resize: none;
+        font-family: inherit;
+        font-size: 1em;
+        line-height: 1.4;
+        border: none;
     }
+
+    &__btn--save {
+        grid-area: save;
+
+    }
+
+    &__btn--delete {
+        grid-area: delete;
+
+    }
+    
 }
 
 

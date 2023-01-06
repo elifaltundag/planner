@@ -1,0 +1,28 @@
+@use "../utilities" as *;
+
+.lists-layout {
+    row-gap: $row-gap--mobile;
+    
+    @include grid-layout-desktop; 
+    @include media-query("min-width", "medium") {
+        grid-template-areas: 
+            "to-do-list to-do-list in-progress-list in-progress-list done-list done-list";
+    }
+}
+
+
+.list-0 {
+    grid-area: to-do-list;
+
+    /* @include media-query("min-width", "medium") {
+    
+    } */
+}
+
+.list-1 {
+    grid-area: in-progress-list;
+}
+
+.list-2 {
+    grid-area: done-list;
+}

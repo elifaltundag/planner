@@ -1,0 +1,15 @@
+// GRID 
+$row-gap--mobile: 1.4em;
+
+$cols--desktop: repeat(6, 1fr);
+$col-gap--desktop: 1em;
+$row-gap--desktop: 4em;
+
+
+
+// NEW TASK INPUT
+$ws--input--block: 0.4em;
+$ws--input--inline: 2 * $ws--input--block;
+
+$ws--btn--block: $ws--input--block / 2;
+$ws--btn--inline: 4 * $ws--btn--block;

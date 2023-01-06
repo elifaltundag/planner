@@ -1,4 +1,23 @@
-@use "../utilities/colors.scss" as *;
+@use "../utilities" as *;
+@use "sass:math";
+
+.new-task__container {
+    width: min(96%, 600px);
+    position: fixed;
+    bottom: 1em;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    @include media-query("min-width", "medium") {
+        position: relative;
+        bottom: unset;
+        left: unset;
+        transform: unset;    
+        width: min(96%, 800px);
+        align-self: end;
+        justify-self: center;
+    }
+}
 
 .new-task {
     text-align: center;
@@ -7,7 +26,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: min(100%, 600px);
     margin: 0 auto;
     
     * {
@@ -20,14 +38,14 @@
     &__input {
         width: 100%;
         line-height: 1;
-        padding: 0.6em 1.2em;
+        padding: $ws--input--block $ws--input--inline;
 
     }
 
     &__btn {
         position: absolute;
-        right: 0.3em;
-        padding: 0.3em 0.6em;
+        right: 0;
+        font-size: 1.8em;
         font-weight: 600;
 
         &:hover {
@@ -35,4 +53,7 @@
             transform: scale(0.95);
         }
     }
+
+
+
 }
