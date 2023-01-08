@@ -34,15 +34,14 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
     function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
         e.preventDefault();
         updateTaskDefinition(setTasksData, task.id, taskDefinition);
-        console.log(textAreaRef.current)
-
+        setIsEditModeOn(false)
     }
 
 
     function handleHitReturn(e: React.KeyboardEvent, formRef:  React.RefObject<HTMLFormElement>) {
         if (e.code === "Enter" && !e.shiftKey) {
             e.preventDefault();
-            formRef.current?.submit();
+            formRef.current?.requestSubmit();
         }
     }
 
