@@ -7,6 +7,6 @@
         grid-template-columns: $cols--desktop;
         row-gap: $row-gap--desktop;
         column-gap: $col-gap--desktop;
-        align-items: start;
+        align-items: stretch;
     }
 }

@@ -4,6 +4,12 @@
     line-height: 1;
     
     &__title {
-        margin-top: 0;
+        font-size: $fs-header__title;
+        margin: 0;
+    }
+
+    &__info {
+        font-size: $fs-header__info;
+        margin-bottom: 0;
     }
 }

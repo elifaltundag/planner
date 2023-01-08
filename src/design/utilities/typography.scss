@@ -1,0 +1,17 @@
+/* 
+H1: Daily Kanban
+p (header__info): track your day
+
+input: new task
+btn: "Add"
+
+H2: Task-list title
+input: task definition input box
+*/
+
+// FONT SIZES
+$fs-header__title: clamp(1.25rem, 1rem + 2vw, 3rem);
+$fs-header__info: clamp(1rem, 0.5rem + 1vw, 1.3rem);
+$fs-new-task: clamp(1.1rem, 0.6rem + 1.2vw, 1.3rem);
+$fs-list-title: clamp(1.2rem, 0.8rem + 1vw, 2rem);
+$fs-task: clamp(0.8rem, 0.6rem + 0.5vw, 1.1rem);

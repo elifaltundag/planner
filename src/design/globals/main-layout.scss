@@ -33,9 +33,10 @@
     @include grid-layout-desktop;
     @include media-query("min-width", "medium") {
         padding-block: 2em;
-        grid-template-rows: repeat(2, auto);
+        grid-template-rows: repeat(3, auto);
         grid-template-areas: 
-            "title new-task new-task new-task new-task colors"
+            "title title . . . colors"
+            ". new-task new-task new-task new-task ."
             "lists lists lists lists lists lists"
         ;
 
