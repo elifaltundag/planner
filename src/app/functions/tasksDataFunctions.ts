@@ -59,7 +59,7 @@ export function updateTaskDefinition(updateTasksData: React.Dispatch<React.SetSt
             ...prevTasksData.Tasks,
             [taskId]: {
                 ...prevTasksData.Tasks[taskId],
-                definition: newDefinition
+                definition: newDefinition.trim()
             }
         }
     }))
