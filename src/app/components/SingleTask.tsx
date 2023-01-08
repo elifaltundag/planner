@@ -8,7 +8,7 @@ import { updateTaskDefinition} from "../functions/tasksDataFunctions";
 
 import { SingleTaskProps } from "../model/componentPropsInterfaces";
 import { Draggable } from "react-beautiful-dnd";
-import { MdDelete, MdCheckCircle } from "react-icons/md"
+import { MdDelete, MdCheckCircle, MdEdit } from "react-icons/md"
 
 import TextareaAutosize  from "react-textarea-autosize";
 import DeletePopUp from "./DeletePopUp";
@@ -87,12 +87,23 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                             />
 
 
-                            {isEditModeOn && (
+                            {isEditModeOn ? (
                                 <button 
                                     className = "single-task__btn--save"
                                     type = "submit"
                                 >
                                     <MdCheckCircle />
+                                </button>
+                            ) : (
+                                <button 
+                                    className = "single-task__btn--save"
+                                    type = "button"
+                                    onClick = {(e) => {
+                                        e.preventDefault()
+                                        setIsEditModeOn(true)
+                                    }}
+                                >
+                                    <MdEdit />
                                 </button>
                             )}
                             
