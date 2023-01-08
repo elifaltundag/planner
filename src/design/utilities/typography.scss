@@ -1,13 +1,11 @@
-/* 
-H1: Daily Kanban
-p (header__info): track your day
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-input: new task
-btn: "Add"
 
-H2: Task-list title
-input: task definition input box
-*/
+// FONT FAMILIES
+$ff-condensed: "Sofia Sans Semi Condensed", Calibri, 'Trebuchet MS', sans-serif;
+$ff-expanded: "Prompt", 'Arial Narrow Bold', sans-serif; 
+
 
 // FONT SIZES
 $fs-header__title: clamp(1.25rem, 1rem + 2vw, 3rem);

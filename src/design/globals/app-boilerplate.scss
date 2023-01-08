@@ -16,11 +16,7 @@ body {
 
     /* background-color: var(--clr-bg);
     color: var(--clr-txt); */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: $ff-condensed;
     line-height: 1.4;
 }
 
-/* .App {
-    width: min(1400px, 100%);
-    margin: 0 auto;
-} */

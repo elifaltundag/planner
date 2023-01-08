@@ -3,6 +3,7 @@
 /* FORM */
 .single-task__container {
     font-size: $fs-task;
+    /* font-family: $ff-condensed; */
     padding: 1.5em 1em;
     border-radius: 0.8em;
     box-shadow: 0 0 3px hsla(0, 0%, 5%, 0.7);
@@ -14,11 +15,11 @@
     grid-template-columns: 1fr repeat(2, auto);
     grid-template-areas: "task-def save delete";
     align-items: center;
+    
 
     &__btn--save, &__btn--delete {
         padding: 0.3em;
         font-size: 1.15em;
-        border: 1px solid red;
     }
 
     &__textarea {
@@ -26,9 +27,8 @@
         resize: none;
         font-family: inherit;
         font-size: inherit;
-        line-height: 1.3;
-        border: none;
-        border: 1px solid red;
+        line-height: 1.4;
+        margin: 0;
     }
 
     &__btn--save {
