@@ -33,8 +33,8 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
         e.preventDefault();
-        updateTaskDefinition(setTasksData, task.id, taskDefinition);
         setIsEditModeOn(false)
+        updateTaskDefinition(setTasksData, task.id, taskDefinition);
     }
 
 
@@ -42,6 +42,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
         if (e.code === "Enter" && !e.shiftKey) {
             e.preventDefault();
             formRef.current?.requestSubmit();
+
         }
     }
 
@@ -86,23 +87,21 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                             />
 
 
-                            {isEditModeOn ? (
+                            {isEditModeOn && (
                                 <button 
                                     className = "single-task__btn--save"
                                     type = "submit"
-                                    onClick = {() => setIsEditModeOn(false)}
                                 >
                                     <MdCheckCircle />
                                 </button>
-                            ) : (
+                            ) /* : (
                                 <button
                                     className = "single-task__btn--save"
                                     type = "button"
-                                    onClick = {() => setIsEditModeOn(true)}
                                 >
                                     <MdEdit />
                                 </button>
-                            )}
+                            ) */}
                             
                             
 
