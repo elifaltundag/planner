@@ -92,7 +92,6 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                     className = "single-task__btn--save"
                                     type = "submit"
                                 >
-                                    <span className = "screen-reader-only">Save</span>
                                     <MdCheckCircle />
                                 </button>
                             ) : (
@@ -104,7 +103,6 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                         setIsEditModeOn(true)
                                     }}
                                 >
-                                    <span className = "screen-reader-only">Edit</span>
                                     <MdEdit />
                                 </button>
                             )}
