@@ -42,7 +42,6 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
         if (e.code === "Enter" && !e.shiftKey) {
             e.preventDefault();
             formRef.current?.requestSubmit();
-
         }
     }
 
@@ -78,13 +77,21 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                             ref = {formRef}
                             onSubmit = {(e) => handleSubmit(e)}
                         >   
-                            
-                            <TextareaAutosize className = "single-task__textarea"
+
+                            {isEditModeOn ? (
+                                <TextareaAutosize className = "single-task__textarea"
                                 ref = {textAreaRef}
                                 value = {taskDefinition}
                                 onChange = {(e) => handleTaskDefinitionChange(e)}
                                 onKeyDown = {(e) => handleHitReturn(e, formRef)}
                             />
+                            ) : (
+                                <p className = "single-task__textarea">
+                                    {taskDefinition}
+                                </p>
+                            )}
+                            
+                            
 
 
                             {isEditModeOn ? (
