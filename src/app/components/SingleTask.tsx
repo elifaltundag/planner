@@ -35,7 +35,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
         e.preventDefault();
         updateTaskDefinition(setTasksData, task.id, taskDefinition);
         console.log(textAreaRef.current)
-        
+
     }
 
 
@@ -46,11 +46,17 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
         }
     }
 
-
+    function handleFocus() {
+        const taskDefinitionLength = textAreaRef.current?.value.length;
+        textAreaRef.current?.focus()
+        if (taskDefinitionLength) {
+            textAreaRef.current?.setSelectionRange(taskDefinitionLength, taskDefinitionLength)
+        }
+    }
 
 
     useEffect(() => {
-        isEditModeOn ? textAreaRef.current?.focus() : textAreaRef.current?.blur()
+        isEditModeOn ? handleFocus() : textAreaRef.current?.blur()
     }, [isEditModeOn])
 
 
