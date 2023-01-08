@@ -34,3 +34,8 @@ export interface DeletePopUpProps {
     taskId: string;
     setDeleteIsClicked: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export interface ColorModeTogglerProps {
+    isDarkModeOn: boolean;
+    setIsDarkModeOn:  React.Dispatch<React.SetStateAction<boolean>>;
+}

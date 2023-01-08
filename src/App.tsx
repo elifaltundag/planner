@@ -31,8 +31,7 @@ const App: React.FC = () => {
   /* Default states */
   // If there is already data stored in localStorage use it, else empty object
   const [tasksData, setTasksData] = useState<TasksData>(getTasksData())
-
-
+  const [isDarkModeOn, setIsDarkModeOn] = useState<boolean>(true)
 
   let newTaskInputRef = useRef<HTMLInputElement>(null)
 
@@ -137,9 +136,15 @@ const App: React.FC = () => {
 
 
     return (
-        <div className = "App main-layout">
+        <div className = "App main-layout" 
+            data-isDarkModeOn = {isDarkModeOn}
+        >
+            
             <Header />
-            <ColorModeToggler />
+            <ColorModeToggler 
+                isDarkModeOn = {isDarkModeOn}
+                setIsDarkModeOn = {setIsDarkModeOn}
+            />
 
             <NewTask 
                 newTaskInputRef = {newTaskInputRef}
