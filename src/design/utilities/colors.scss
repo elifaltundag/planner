@@ -1,13 +1,28 @@
-// COLORS
-$hue-main: 295;
-$hue-accent: 30;
-
 :root {
-    --clr-bg-dark: hsl(295, 60%, 15%);
-    --clr-txt-dark: hsl(0, 0%, 92%);
+    // COLOR VARIABLES
+    --hue-main: 295;
+    --hue-accent--task: 35;
+    --hue-accent--list: 170;
 
-    --clr-bg-light: hsl(295, 40%, 70%);
-    --clr-txt-light: hsl(0, 0%, 10%);
+    --pct-0: 0%;
+    --pct-10: 10%;
+    --pct-20: 20%;
+    --pct-30: 30%;
+    --pct-40: 40%;
+    --pct-50: 50%;
+    --pct-60: 60%;
+    --pct-70: 70%;
+    --pct-80: 80%;
+    --pct-90: 90%;
+
+
+
+    // COLORS
+    --clr-bg-dark: hsl(var(--hue-main), var(--pct-20), var(--pct-10));
+    --clr-txt-dark: hsl(0, var(--pct-0), var(--pct-90));
+
+    --clr-bg-light: hsl(var(--hue-main),var(--pct-20), var(--pct-90));
+    --clr-txt-light: hsl(0, var(--pct-0), var(--pct-10));
 }
 
 

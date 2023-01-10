@@ -25,7 +25,7 @@ ul, li {
     } */
     
     &:has(div[data-isDraggingOver = true]) {
-        background-color: rgb(248, 76, 63) !important;
+        background-color: hsl(4, 93%, 61%) !important;
     }
 }
 

@@ -37,11 +37,11 @@
 
     &__btn--delete {
         grid-area: delete;
-        padding-right: 0;
+        margin-right: -0.6em;
     }
 }
 
 
 [data-isDragging = true] {
-    background-color: rgb(190, 59, 241);
+    background-color: rgb(190, 59, 241) !important;
 }
