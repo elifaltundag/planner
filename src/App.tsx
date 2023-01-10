@@ -1,5 +1,5 @@
 // React  
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 
 // Beautiful drag and drop
 import { DragDropContext, DropResult} from "react-beautiful-dnd";
@@ -25,14 +25,23 @@ import ColorModeToggler from './app/components/ColorModeToggler';
 import { getTasksData } from './app/functions/tasksDataFunctions';
 
 
-import ColorThemeContextProvider from './app/colorThemeContext/ColorThemeContext';
+import { ColorThemeContext } from './app/colorThemeContext/ColorThemeContext';
 
 
 
 const App: React.FC = () => {
   const [tasksData, setTasksData] = useState<TasksData>(getTasksData())
   let newTaskInputRef = useRef<HTMLInputElement>(null)
-
+  
+  // Color mode and styles
+  const { colorTheme } = useContext(ColorThemeContext)
+  
+  const styles: React.CSSProperties = {
+        backgroundColor: `var(--clr-bg-${colorTheme})`,
+        color: `var(--clr-txt-${colorTheme})`
+  }
+  
+  
   // DRAG & DROP
     function handleDragEnd(result: DropResult): void {
     /* 
@@ -132,9 +141,14 @@ const App: React.FC = () => {
         localStorage.setItem("tasksData", JSON.stringify(tasksData))
     }, [tasksData])
 
+    console.log(colorTheme)
+
+
 
     return (
-        <ColorThemeContextProvider>
+        <div className = "app-container"
+            style = {styles}
+        >
             <div className = "main-layout">
                 
                 <Header />
@@ -159,7 +173,8 @@ const App: React.FC = () => {
                     </DragDropContext>
                 </main>
             </div>
-        </ColorThemeContextProvider>
+        </div>
+        
     );
 }
 

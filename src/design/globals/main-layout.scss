@@ -9,7 +9,7 @@
     grid-template-columns: repeat(2, auto);
     grid-template-rows: repeat(2, auto);
     grid-template-areas:
-        "title colors"
+        "title toggler"
         "lists lists";
     row-gap: $row-gap--mobile;
     padding-top: 1em;
@@ -22,7 +22,7 @@
     }
 
     .color-mode-toggler {
-        grid-area: colors;
+        grid-area: toggler;
         justify-self: end;
     }
 
@@ -35,7 +35,7 @@
         padding-block: 2em;
         grid-template-rows: repeat(3, auto);
         grid-template-areas: 
-            "title title . . . colors"
+            "title title . . . toggler"
             ". new-task new-task new-task new-task ."
             "lists lists lists lists lists lists"
         ;

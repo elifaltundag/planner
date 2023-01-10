@@ -9,16 +9,13 @@ import "../../design/components/color-mode-toggler.scss";
 
 export default function ColorModeToggler() {
     const {colorTheme, toggleColorTheme} = useContext(ColorThemeContext)    
+    console.log(colorTheme)
 
-    const styles: React.CSSProperties = {
-        backgroundColor: `var(--clr-bg-${colorTheme})`,
-        color: `var(--clr-txt-${colorTheme})`
-    }
     
     return (
         <button  className = "color-mode-toggler"
             onClick = {toggleColorTheme}
-            style = {styles}>
+        >
             Toggle Color Theme
         </button>
     )

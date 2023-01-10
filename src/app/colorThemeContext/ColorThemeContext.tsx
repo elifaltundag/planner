@@ -20,10 +20,7 @@ export default function ColorThemeContextProvider({children}: ColorThemeContextP
     const [colorTheme, setColorTheme] = useState<ColorThemes>(ColorThemes.DARK);
 
     function toggleColorTheme() {
-        setColorTheme(prevColorTheme => {
-            console.log(prevColorTheme)
-            return prevColorTheme === ColorThemes.DARK ? ColorThemes.LIGHT : ColorThemes.DARK
-        })
+        setColorTheme(prevColorTheme => prevColorTheme === ColorThemes.DARK ? ColorThemes.LIGHT : ColorThemes.DARK)
     }
 
     return (

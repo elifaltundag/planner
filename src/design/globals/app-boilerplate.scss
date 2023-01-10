@@ -11,12 +11,13 @@ html {
 }
 
 body {
-    min-height: 100vh;
     margin: 0;
-
-    /* background-color: var(--clr-bg);
-    color: var(--clr-txt); */
+    overflow-x: hidden;
     font-family: $ff-condensed;
     line-height: 1.4;
 }
 
+.app-container {
+    min-height: 100vh;
+    min-width: 100vw;
+}
