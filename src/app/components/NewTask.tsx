@@ -30,7 +30,10 @@ function NewTask({newTaskInputRef, setTasksData}: NewTaskProps) {
         const newTask = new Task(newTaskDef.trim(), Status.TODO, Date.now().toString())
         
         // Add the new task to tasksData
-        addNewTask(setTasksData, newTask)
+        if (newTask.definition.length > 0) {
+            addNewTask(setTasksData, newTask)
+        }
+
 
         // Reset input area
         setNewTaskDef("")
