@@ -35,7 +35,6 @@ export interface DeletePopUpProps {
     setDeleteIsClicked: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export interface ColorModeTogglerProps {
-    isDarkModeOn: boolean;
-    setIsDarkModeOn:  React.Dispatch<React.SetStateAction<boolean>>;
+export interface ColorThemeContextProviderProps {
+    children: React.ReactNode
 }

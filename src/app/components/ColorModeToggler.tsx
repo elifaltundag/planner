@@ -1,15 +1,22 @@
-import React from "react";
+import React, {useContext} from "react";
 
-import { MdLightMode, MdDarkMode } from "react-icons/md";
+/* import { MdLightMode, MdDarkMode } from "react-icons/md"; */
 
-import { ColorModeTogglerProps } from "../model/componentPropsInterfaces";
+import { ColorThemeContext } from "../colorThemeContext/ColorThemeContext";
+
+
 import "../../design/components/color-mode-toggler.scss";
 
-export default function ColorModeToggler({ isDarkModeOn, setIsDarkModeOn }: ColorModeTogglerProps) {
+export default function ColorModeToggler() {
+    const {colorTheme, toggleColorTheme} = useContext(ColorThemeContext)    
+    console.log(colorTheme)
+    
     return (
         <div className = "color-mode-toggler">
-            <MdDarkMode />
-            <MdLightMode />
+            <button onClick={toggleColorTheme}>
+                Toggle Color Theme
+            </button>
         </div>
+        
     )
 }

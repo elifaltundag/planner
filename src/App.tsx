@@ -25,13 +25,14 @@ import ColorModeToggler from './app/components/ColorModeToggler';
 import { getTasksData } from './app/functions/tasksDataFunctions';
 
 
+import ColorThemeContextProvider from './app/colorThemeContext/ColorThemeContext';
+
 
 
 const App: React.FC = () => {
   /* Default states */
   // If there is already data stored in localStorage use it, else empty object
   const [tasksData, setTasksData] = useState<TasksData>(getTasksData())
-  const [isDarkModeOn, setIsDarkModeOn] = useState<boolean>(true)
 
   let newTaskInputRef = useRef<HTMLInputElement>(null)
 
@@ -136,35 +137,32 @@ const App: React.FC = () => {
 
 
     return (
-        <div className = "App main-layout" 
-            data-isDarkModeOn = {isDarkModeOn}
-        >
+        <ColorThemeContextProvider>
+            <div className = "main-layout">
+                
+                <Header />
+                <ColorModeToggler />
+
+                <NewTask 
+                    newTaskInputRef = {newTaskInputRef}
+                    setTasksData = {setTasksData}
+                />
+
             
-            <Header />
-            <ColorModeToggler 
-                isDarkModeOn = {isDarkModeOn}
-                setIsDarkModeOn = {setIsDarkModeOn}
-            />
-
-            <NewTask 
-                newTaskInputRef = {newTaskInputRef}
-                setTasksData = {setTasksData}
-            />
-
-        
-            <main className = "lists-layout">                                
-                <DragDropContext onDragEnd = {handleDragEnd}>
-                    {
-                        tasksData.TaskListOrder.map((TaskListId: number) => (<List 
-                            status = {tasksData.TaskLists[TaskListId].TaskListStatus} 
-                            tasksData = {tasksData}
-                            setTasksData = {setTasksData}
-                        />)
-                        )
-                    }
-                </DragDropContext>
-            </main>
-        </div>
+                <main className = "lists-layout">                                
+                    <DragDropContext onDragEnd = {handleDragEnd}>
+                        {
+                            tasksData.TaskListOrder.map((TaskListId: number) => (<List 
+                                status = {tasksData.TaskLists[TaskListId].TaskListStatus} 
+                                tasksData = {tasksData}
+                                setTasksData = {setTasksData}
+                            />)
+                            )
+                        }
+                    </DragDropContext>
+                </main>
+            </div>
+        </ColorThemeContextProvider>
     );
 }
 
