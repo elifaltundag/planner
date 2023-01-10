@@ -2,21 +2,24 @@ import React, {useContext} from "react";
 
 /* import { MdLightMode, MdDarkMode } from "react-icons/md"; */
 
-import { ColorThemeContext } from "../colorThemeContext/ColorThemeContext";
+import { ColorThemeContext/* , ColorThemes */ } from "../colorThemeContext/ColorThemeContext";
 
 
 import "../../design/components/color-mode-toggler.scss";
 
 export default function ColorModeToggler() {
     const {colorTheme, toggleColorTheme} = useContext(ColorThemeContext)    
-    console.log(colorTheme)
+
+    const styles: React.CSSProperties = {
+        backgroundColor: `var(--clr-bg-${colorTheme})`,
+        color: `var(--clr-txt-${colorTheme})`
+    }
     
     return (
-        <div className = "color-mode-toggler">
-            <button onClick={toggleColorTheme}>
-                Toggle Color Theme
-            </button>
-        </div>
-        
+        <button  className = "color-mode-toggler"
+            onClick = {toggleColorTheme}
+            style = {styles}>
+            Toggle Color Theme
+        </button>
     )
 }

@@ -30,10 +30,7 @@ import ColorThemeContextProvider from './app/colorThemeContext/ColorThemeContext
 
 
 const App: React.FC = () => {
-  /* Default states */
-  // If there is already data stored in localStorage use it, else empty object
   const [tasksData, setTasksData] = useState<TasksData>(getTasksData())
-
   let newTaskInputRef = useRef<HTMLInputElement>(null)
 
   // DRAG & DROP
