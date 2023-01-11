@@ -1,6 +1,6 @@
 import React, { useState, createContext } from "react";
 
-import { ColorThemeContextProviderProps } from "../model/componentsPropsModel";
+import { ColorThemeContextProviderProps } from "../model/componentsProps";
 import { ColorTheme } from "../model/enums";
 import { getPreferredColorTheme } from "../functions/accessLocalStorage";
 

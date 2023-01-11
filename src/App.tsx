@@ -11,7 +11,7 @@ import "./design/globals/main-layout.scss";
 import "./design/utilities/media-queries.scss"
 
 // Types, interfaces, classes and enums
-import { TasksData } from './app/model/tasksDataModel';
+import { TasksData } from './app/model/tasksData';
 
 
 // Components

@@ -7,7 +7,7 @@ import "../../design/components/header.scss";
 export default function Header() {
     return (
         <header className = "header">
-            <h1 className = "header__title">Kanban Board</h1>
+            <h1 className = "header__title">Planner</h1>
             <p className = "header__info">Track your day</p>
         </header>
     )

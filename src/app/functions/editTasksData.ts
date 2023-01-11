@@ -1,4 +1,4 @@
-import { Task, TasksData } from "../model/tasksDataModel";
+import { Task, TasksData } from "../model/tasksData";
 
 export function addNewTask(updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>, newTask: Task)/* : TasksData */ {
     updateTasksData(prevTasksData => ({

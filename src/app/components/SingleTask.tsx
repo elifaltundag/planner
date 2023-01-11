@@ -6,7 +6,7 @@ import "../../design/components/single-task.scss"
 
 import { updateTaskDefinition} from "../functions/editTasksData";
 
-import { SingleTaskProps } from "../model/componentsPropsModel";
+import { SingleTaskProps } from "../model/componentsProps";
 import { Draggable } from "react-beautiful-dnd";
 import { MdDelete, MdCheckCircle, MdEdit } from "react-icons/md"
 

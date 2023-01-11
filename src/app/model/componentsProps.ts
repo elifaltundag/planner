@@ -1,4 +1,4 @@
-import { Task, TaskList, TasksData } from "./tasksDataModel";
+import { Task, TaskList, TasksData } from "./tasksData";
 import { Status } from "./enums";
 
 /* REACT COMPONENTS' PROPS */ 

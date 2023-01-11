@@ -1,4 +1,4 @@
-import { TasksData } from "../model/tasksDataModel";
+import { TasksData } from "../model/tasksData";
 import { Status, ColorTheme } from "../model/enums";
 
 

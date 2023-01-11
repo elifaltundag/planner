@@ -2,7 +2,7 @@ import React from "react";
 
 import SingleTask from "./SingleTask";
 import { Status } from "../model/enums";
-import { ListProps } from "../model/componentsPropsModel";
+import { ListProps } from "../model/componentsProps";
 
 import { Droppable } from "react-beautiful-dnd";
 
