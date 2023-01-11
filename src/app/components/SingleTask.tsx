@@ -4,9 +4,9 @@ import React, { useState, useRef, useEffect } from "react";
 import "../../design/components/single-task.scss"
 /* import { Status } from "../model/dataStructures"; */
 
-import { updateTaskDefinition} from "../functions/tasksDataFunctions";
+import { updateTaskDefinition} from "../functions/editTasksData";
 
-import { SingleTaskProps } from "../model/componentPropsInterfaces";
+import { SingleTaskProps } from "../model/componentsPropsModel";
 import { Draggable } from "react-beautiful-dnd";
 import { MdDelete, MdCheckCircle, MdEdit } from "react-icons/md"
 

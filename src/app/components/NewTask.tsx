@@ -4,11 +4,12 @@ import React, { useState } from "react";
 import "../../design/components/new-task.scss";
 
 // Types, interfaces, classes and enums
-import { Status, Task } from "../model/dataStructures";
-import { NewTaskProps } from "../model/componentPropsInterfaces";
+import { Task } from "../model/tasksDataModel";
+import { Status } from "../model/enums";
+import { NewTaskProps } from "../model/componentsPropsModel";
 
 // Functions
-import { addNewTask } from "../functions/tasksDataFunctions";
+import { addNewTask } from "../functions/editTasksData";
 
 import { MdOutlineAddCircle } from "react-icons/md";
 

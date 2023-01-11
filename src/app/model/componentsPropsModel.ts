@@ -1,4 +1,5 @@
-import { Status, Task, TaskList, TasksData } from "./dataStructures";
+import { Task, TaskList, TasksData } from "./tasksDataModel";
+import { Status } from "./enums";
 
 /* REACT COMPONENTS' PROPS */ 
 export interface NewTaskProps {

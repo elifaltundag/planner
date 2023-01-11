@@ -2,9 +2,9 @@ import React from "react";
 
 import "../../design/components/delete-pop-up.scss";
 
-import { DeletePopUpProps } from "../model/componentPropsInterfaces";
+import { DeletePopUpProps } from "../model/componentsPropsModel";
 
-import { deleteTask } from "../functions/tasksDataFunctions";
+import { deleteTask } from "../functions/editTasksData";
 
 
 

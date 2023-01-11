@@ -1,8 +1,4 @@
-export const enum Status {
-    TODO,
-    INPROGRESS,
-    DONE
-}
+import { Status } from "./enums";
 
 export class Task {
     constructor(

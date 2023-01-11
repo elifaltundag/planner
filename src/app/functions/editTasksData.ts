@@ -1,35 +1,4 @@
-import { Task, Status, TasksData } from "../model/dataStructures";
-
-
-export function getTasksData(): TasksData {
-    const data = localStorage.getItem("tasksData") 
-    
-    if (data) {
-        return JSON.parse(data)
-    } 
-    
-    return {
-        Tasks: { },
-        TaskListOrder: [Status.TODO, Status.INPROGRESS, Status.DONE],
-        TaskLists: {
-            [Status.TODO]: {
-                TaskListStatus: Status.TODO,
-                TaskIdsOrder: []
-            },
-            
-            [Status.INPROGRESS]: {
-                TaskListStatus: Status.INPROGRESS,
-                TaskIdsOrder: []
-            },
-            
-            [Status.DONE]: {
-                TaskListStatus: Status.DONE,
-                TaskIdsOrder: []
-            }
-        }
-    }
-}
-
+import { Task, TasksData } from "../model/tasksDataModel";
 
 export function addNewTask(updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>, newTask: Task)/* : TasksData */ {
     updateTasksData(prevTasksData => ({

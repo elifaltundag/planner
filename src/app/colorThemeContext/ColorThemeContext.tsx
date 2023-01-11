@@ -1,26 +1,23 @@
 import React, { useState, createContext } from "react";
 
-import { ColorThemeContextProviderProps } from "../model/componentPropsInterfaces";
-
-export enum ColorThemes {
-    DARK = "dark",
-    LIGHT = "light"
-}
+import { ColorThemeContextProviderProps } from "../model/componentsPropsModel";
+import { ColorTheme } from "../model/enums";
+import { getPreferredColorTheme } from "../functions/accessLocalStorage";
 
 export interface ColorThemeSettings {
-    colorTheme: ColorThemes
+    colorTheme: ColorTheme
     toggleColorTheme?: () => void
 }
 
 export const ColorThemeContext = createContext<ColorThemeSettings>({
-    colorTheme: ColorThemes.DARK
+    colorTheme: ColorTheme.DARK
 })
 
 export default function ColorThemeContextProvider({children}: ColorThemeContextProviderProps) {
-    const [colorTheme, setColorTheme] = useState<ColorThemes>(ColorThemes.DARK);
+    const [colorTheme, setColorTheme] = useState<ColorTheme>(getPreferredColorTheme());
 
     function toggleColorTheme() {
-        setColorTheme(prevColorTheme => prevColorTheme === ColorThemes.DARK ? ColorThemes.LIGHT : ColorThemes.DARK)
+        setColorTheme(prevColorTheme => prevColorTheme === ColorTheme.DARK ? ColorTheme.LIGHT : ColorTheme.DARK)
     }
 
     return (

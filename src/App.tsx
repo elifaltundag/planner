@@ -11,7 +11,7 @@ import "./design/globals/main-layout.scss";
 import "./design/utilities/media-queries.scss"
 
 // Types, interfaces, classes and enums
-import { TasksData } from './app/model/dataStructures';
+import { TasksData } from './app/model/tasksDataModel';
 
 
 // Components
@@ -22,7 +22,7 @@ import ColorModeToggler from './app/components/ColorModeToggler';
 
 
 // Functions
-import { getTasksData } from './app/functions/tasksDataFunctions';
+import { getTasksData } from './app/functions/accessLocalStorage';
 
 
 import { ColorThemeContext } from './app/colorThemeContext/ColorThemeContext';
@@ -31,6 +31,7 @@ import { ColorThemeContext } from './app/colorThemeContext/ColorThemeContext';
 
 const App: React.FC = () => {
   const [tasksData, setTasksData] = useState<TasksData>(getTasksData())
+
   let newTaskInputRef = useRef<HTMLInputElement>(null)
   
   // Color mode and styles
@@ -141,9 +142,9 @@ const App: React.FC = () => {
         localStorage.setItem("tasksData", JSON.stringify(tasksData))
     }, [tasksData])
 
-    console.log(colorTheme)
-
-
+    useEffect(() => {
+        localStorage.setItem("preferredColorTheme", JSON.stringify(colorTheme))
+    }, [colorTheme])
 
     return (
         <div className = "app-container"

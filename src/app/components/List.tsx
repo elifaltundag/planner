@@ -1,8 +1,8 @@
 import React from "react";
 
 import SingleTask from "./SingleTask";
-import { Status } from "../model/dataStructures";
-import { ListProps } from "../model/componentPropsInterfaces";
+import { Status } from "../model/enums";
+import { ListProps } from "../model/componentsPropsModel";
 
 import { Droppable } from "react-beautiful-dnd";
 
