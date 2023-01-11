@@ -5,13 +5,11 @@ import { ColorTheme } from "../model/enums";
 import { getPreferredColorTheme } from "../functions/accessLocalStorage";
 
 export interface ColorThemeSettings {
-    colorTheme: ColorTheme
+    colorTheme?: ColorTheme
     toggleColorTheme?: () => void
 }
 
-export const ColorThemeContext = createContext<ColorThemeSettings>({
-    colorTheme: ColorTheme.DARK
-})
+export const ColorThemeContext = createContext<ColorThemeSettings>({})
 
 export default function ColorThemeContextProvider({children}: ColorThemeContextProviderProps) {
     const [colorTheme, setColorTheme] = useState<ColorTheme>(getPreferredColorTheme());
