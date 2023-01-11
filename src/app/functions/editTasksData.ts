@@ -1,4 +1,5 @@
 import { Task, TasksData } from "../model/tasksData";
+import { Status } from "../model/enums";
 
 export function addNewTask(updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>, newTask: Task)/* : TasksData */ {
     updateTasksData(prevTasksData => ({
@@ -49,5 +50,17 @@ export function deleteTask(currentTasksData: TasksData, updateTasksData: React.D
     // Delete taskId from TaskLists.order
     updatedTasksData.TaskLists[taskStatus].TaskIdsOrder.splice(taskIndex, 1)
 
+    updateTasksData(updatedTasksData)
+}
+
+
+export function deleteTasksInList(currentTasksData: TasksData, updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>, listStatus: Status) {
+    const taskIdsToDelete = currentTasksData.TaskLists[listStatus].TaskIdsOrder;
+
+    let updatedTasksData = {...currentTasksData}
+
+    taskIdsToDelete.forEach(taskId => delete updatedTasksData.Tasks[taskId])
+    updatedTasksData.TaskLists[listStatus].TaskIdsOrder = []
+    
     updateTasksData(updatedTasksData)
 }

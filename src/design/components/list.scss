@@ -5,11 +5,13 @@ ul, li {
 }
 
 .list-0, .list-1, .list-2 {
+    position: relative;
     border-radius: 1em;
     display: flex;
     flex-direction: column;
     padding-block: 1.5em;
     border: 1px solid purple;
+    font-size: $fs-task;
     
     
     &__title {
@@ -19,10 +21,6 @@ ul, li {
         margin: 0;
         font-family: $ff-expanded;
     }
-    
-    /* [data-isDraggingOver = true] {
-        background-color: darkblue;
-    } */
     
     &:has(div[data-isDraggingOver = true]) {
         background-color: hsl(4, 93%, 61%) !important;
@@ -37,5 +35,10 @@ ul, li {
     row-gap: $list-row-gap;
 }
 
-
+.btn--delete-all {
+    position: absolute;
+    font-size: 1.4em;
+    top: 1.4em;
+    right: 1em;
+}
 

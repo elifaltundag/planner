@@ -2,7 +2,7 @@
 
 /* FORM */
 .single-task__container {
-    font-size: $fs-task;
+    /* font-size: $fs-task; */
     /* font-family: $ff-condensed; */
     padding: 1.5em 1em;
     border-radius: 0.8em;
@@ -15,12 +15,12 @@
     grid-template-columns: 1fr repeat(2, auto);
     grid-template-areas: "task-def save delete";
     align-items: center;
-    word-break: break-all;
+    word-break: break-word;
     
 
     &__btn--save, &__btn--delete {
         padding: 0.3em;
-        font-size: 1.15em;
+        font-size: 1.2em;
     }
 
     &__definition {

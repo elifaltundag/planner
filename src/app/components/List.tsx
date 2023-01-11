@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 
 import SingleTask from "./SingleTask";
 import { Status } from "../model/enums";
@@ -6,13 +6,14 @@ import { ListProps } from "../model/componentsProps";
 
 import { Droppable } from "react-beautiful-dnd";
 import { ColorThemeContext } from "../colorThemeContext/ColorThemeContext";
-import "../../design/components/list.scss"
+import "../../design/components/list.scss";
+
+import { MdDeleteSweep } from "react-icons/md";
+
+import DeletePopUp from "./DeletePopUp";
 
 function List({status, tasksData, setTasksData}: ListProps) {
-    /* const styles:React.CSSProperties = {
-        backgroundColor: `var(--clr-bg-${status})`,
-        color: `var(--clr-txt-${status})`
-    } */
+    const [deleteIsClicked, setDeleteIsClicked] = useState<boolean>(false)
     const { colorTheme } = useContext(ColorThemeContext)  
     function generateListTitle(listStatus: Status): string {
         let title = "";
@@ -46,6 +47,12 @@ function List({status, tasksData, setTasksData}: ListProps) {
             <h2 className = {`list-${status}__title`}>
                 {generateListTitle(status)}
             </h2>
+            
+            <button className = "btn--delete-all"
+                onClick = {() => setDeleteIsClicked(true)}
+            >
+                <MdDeleteSweep />
+            </button>
 
             <Droppable droppableId = {status.toString()}>
                 {(provided, snapshot) => (
@@ -55,6 +62,8 @@ function List({status, tasksData, setTasksData}: ListProps) {
                         ref = {provided.innerRef}
                         data-isDraggingOver = {snapshot.isDraggingOver}
                     >
+
+
                         {TaskIdsOrder.map((taskId: string, index: number) => (<SingleTask 
                             key = {taskId}
                             task = {tasksData.Tasks[taskId]} 
@@ -70,6 +79,13 @@ function List({status, tasksData, setTasksData}: ListProps) {
                     </div>
                 )}
             </Droppable>
+
+            {deleteIsClicked && <DeletePopUp 
+                tasksData = {tasksData}
+                setTasksData = {setTasksData}
+                listStatus = {status}
+                setDeleteIsClicked = {setDeleteIsClicked}
+            />}
         </div>
     )    
 }

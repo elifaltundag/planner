@@ -5,6 +5,7 @@ $delete-pop-up-width: min(600px, 90%);
     background-color: darkgreen;
     padding: 2em;
     width: $delete-pop-up-width;
+    z-index: 50;
     left: 0;
     right: 0;
     margin-inline: auto;
