@@ -35,13 +35,7 @@ const App: React.FC = () => {
   let newTaskInputRef = useRef<HTMLInputElement>(null)
   
   // Color mode and styles
-  const { colorTheme } = useContext(ColorThemeContext)
-  
-  const styles: React.CSSProperties = {
-        backgroundColor: `var(--clr-bg-${colorTheme})`,
-        color: `var(--clr-txt-${colorTheme})`
-  }
-  
+  const { colorTheme } = useContext(ColorThemeContext)  
   
   // DRAG & DROP
     function handleDragEnd(result: DropResult): void {
@@ -148,7 +142,7 @@ const App: React.FC = () => {
 
     return (
         <div className = "app-container"
-            style = {styles}
+            data-colorTheme = {colorTheme}
         >
             <div className = "main-layout">
                 

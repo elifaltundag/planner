@@ -1,5 +1,35 @@
+$delete-pop-up-width: min(600px, 90%);
+
 .delete-pop-up {
-    position: fixed;
-    /* background-color: darkgreen; */
+    position: absolute;
+    background-color: darkgreen;
     padding: 2em;
+    width: $delete-pop-up-width;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas: 
+        "warning warning"
+        "btn-delete btn-keep";
+
+
+
+    &__warning {
+        grid-area: warning;
+    }
+
+    &__btn-delete {
+        grid-area: btn-delete;
+    }
+
+    &__btn-keep {
+        grid-area: btn-keep;
+    }
+    /* 
+    ! set responsive typography
+    */ 
 }

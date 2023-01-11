@@ -9,12 +9,11 @@ import "../../design/components/color-mode-toggler.scss";
 
 export default function ColorModeToggler() {
     const {colorTheme, toggleColorTheme} = useContext(ColorThemeContext)    
-    console.log(colorTheme)
 
-    
     return (
         <button  className = "color-mode-toggler"
             onClick = {toggleColorTheme}
+            data-colorTheme = {colorTheme}
         >
             Toggle Color Theme
         </button>

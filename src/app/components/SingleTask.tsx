@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 
 
 import "../../design/components/single-task.scss"
@@ -13,10 +13,14 @@ import { MdDelete, MdCheckCircle, MdEdit } from "react-icons/md"
 import TextareaAutosize  from "react-textarea-autosize";
 import DeletePopUp from "./DeletePopUp";
 
+import { ColorThemeContext } from "../colorThemeContext/ColorThemeContext";
+
 function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
     const [isEditModeOn, setIsEditModeOn] = useState<boolean>(false)
     const [deleteIsClicked, setDeleteIsClicked] = useState<boolean>(false)
     const [taskDefinition, setTaskDefinition] = useState<string>(task.definition)
+
+    const { colorTheme } = useContext(ColorThemeContext)  
 
     // Generate task Ref 
     const textAreaRef = useRef<HTMLTextAreaElement>(null)
@@ -42,7 +46,8 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
         if (e.code === "Enter" && !e.shiftKey) {
             e.preventDefault();
             formRef.current?.requestSubmit();
-        }
+            return
+        }        
     }
 
     function handleFocus() {
@@ -71,19 +76,22 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         data-isDragging = {snapshot.isDragging}
+                        data-colorTheme = {colorTheme}                        
                     >
                         <form 
                             className = "single-task" 
                             ref = {formRef}
                             onSubmit = {(e) => handleSubmit(e)}
+                            data-colorTheme = {colorTheme}
                         >   
 
                             {isEditModeOn ? (
                                 <TextareaAutosize className = "single-task__textarea"
-                                ref = {textAreaRef}
-                                value = {taskDefinition}
-                                onChange = {(e) => handleTaskDefinitionChange(e)}
-                                onKeyDown = {(e) => handleHitReturn(e, formRef)}
+                                    ref = {textAreaRef}
+                                    value = {taskDefinition}
+                                    onChange = {(e) => handleTaskDefinitionChange(e)}
+                                    onKeyDown = {(e) => handleHitReturn(e, formRef)}
+                                    data-colorTheme = {colorTheme}
                             />
                             ) : (
                                 <p className = "single-task__textarea">
@@ -95,20 +103,20 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
 
 
                             {isEditModeOn ? (
-                                <button 
-                                    className = "single-task__btn--save"
+                                <button className = "single-task__btn--save"
                                     type = "submit"
+                                    data-colorTheme = {colorTheme}
                                 >
                                     <MdCheckCircle />
                                 </button>
                             ) : (
-                                <button 
-                                    className = "single-task__btn--save"
+                                <button className = "single-task__btn--save"
                                     type = "button"
                                     onClick = {(e) => {
                                         e.preventDefault()
                                         setIsEditModeOn(true)
                                     }}
+                                    data-colorTheme = {colorTheme}
                                 >
                                     <MdEdit />
                                 </button>
@@ -119,6 +127,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                             <button className = "single-task__btn--delete"
                                 type = "button"
                                 onClick = {() => setDeleteIsClicked(true)}
+                                data-colorTheme = {colorTheme}
                             >
                                 <MdDelete />
                             </button>

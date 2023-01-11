@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import SingleTask from "./SingleTask";
 import { Status } from "../model/enums";
 import { ListProps } from "../model/componentsProps";
 
 import { Droppable } from "react-beautiful-dnd";
-
+import { ColorThemeContext } from "../colorThemeContext/ColorThemeContext";
 import "../../design/components/list.scss"
 
 function List({status, tasksData, setTasksData}: ListProps) {
@@ -13,7 +13,7 @@ function List({status, tasksData, setTasksData}: ListProps) {
         backgroundColor: `var(--clr-bg-${status})`,
         color: `var(--clr-txt-${status})`
     } */
-
+    const { colorTheme } = useContext(ColorThemeContext)  
     function generateListTitle(listStatus: Status): string {
         let title = "";
 
@@ -41,7 +41,7 @@ function List({status, tasksData, setTasksData}: ListProps) {
     return (
         <div 
             className = {`list-${status}`}
-            /* style = {styles} */
+            data-colorTheme = {colorTheme}
         >
             <h2 className = {`list-${status}__title`}>
                 {generateListTitle(status)}
@@ -49,8 +49,8 @@ function List({status, tasksData, setTasksData}: ListProps) {
 
             <Droppable droppableId = {status.toString()}>
                 {(provided, snapshot) => (
-                    <div
-                        className = "droppable-list"
+                    <div className = "droppable-list"
+                        data-colorTheme = {colorTheme}
                         {...provided.droppableProps}
                         ref = {provided.innerRef}
                         data-isDraggingOver = {snapshot.isDraggingOver}

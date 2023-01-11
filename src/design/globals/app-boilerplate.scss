@@ -1,5 +1,6 @@
 @use "../utilities" as *;
 @use "reset-defaults" as *; 
+@use "scrollbar" as *;
 
 html {
     box-sizing: border-box;
@@ -12,7 +13,7 @@ html {
 
 body {
     margin: 0;
-    overflow-x: hidden;
+    overflow: overlay;
     font-family: $ff-condensed;
     line-height: 1.4;
 }
@@ -20,4 +21,7 @@ body {
 .app-container {
     min-height: 100vh;
     min-width: 100vw;
+
+    background-color: var(--clr-bg);
+    color: var(--clr-txt);
 }

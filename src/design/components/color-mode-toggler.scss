@@ -5,4 +5,8 @@
     height: $fs-header__title;
     display: grid;
     align-items: center;
-}
+
+    &:focus {
+        outline: 2px solid var(--clr-toggler-focus-outline)
+    }
+}   

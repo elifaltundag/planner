@@ -1,29 +1,61 @@
 :root {
-    // COLOR VARIABLES
+    // COLOR VARIABLES: HUES
     --hue-main: 295;
     --hue-accent--task: 35;
     --hue-accent--list: 170;
 
+    // COLOR VARIABLES: SATURATION & BRIGHTNESS (%)
     --pct-0: 0%;
+    --pct-5: 5%;
     --pct-10: 10%;
+    --pct-15: 15%;
     --pct-20: 20%;
+    --pct-25: 25%;
     --pct-30: 30%;
+    --pct-35: 35%;
     --pct-40: 40%;
+    --pct-45: 45%;
     --pct-50: 50%;
+    --pct-55: 55%;
     --pct-60: 60%;
+    --pct-65: 65%;
     --pct-70: 70%;
+    --pct-75: 75%;
     --pct-80: 80%;
+    --pct-85: 85%;
     --pct-90: 90%;
+}
+
+/*
+? Text - general
+? Background - general
 
 
+* Buttons (toggle, edit, delete), new task input, added tasks
+? none    : default styling
+? :hover  : background (& text) color / size
+? :focus  : outline / size 
+? :active : background (& text) color / size
 
-    // COLORS
-    --clr-bg-dark: hsl(var(--hue-main), var(--pct-20), var(--pct-10));
-    --clr-txt-dark: hsl(0, var(--pct-0), var(--pct-90));
+* New task input
+? placeholder text color
+*/
 
-    --clr-bg-light: hsl(var(--hue-main),var(--pct-20), var(--pct-90));
-    --clr-txt-light: hsl(0, var(--pct-0), var(--pct-10));
+
+// COLORS: DARK MODE
+[data-colorTheme = dark] {
+    --clr-bg: hsl(var(--hue-main), var(--pct-15), var(--pct-10));
+    --clr-txt: hsl(0, var(--pct-0), var(--pct-90));
+    
+    --clr-toggler-focus-outline: hsl(var(--hue-accent--list), var(--pct-50), var(--pct-50));
 }
 
 
+// COLORS: LIGHT MODE
+[data-colorTheme = light] {
+    --clr-bg: hsl(var(--hue-main),var(--pct-15), var(--pct-90));
+    --clr-txt: hsl(0, var(--pct-0), var(--pct-10));
+
+    --clr-toggler-focus-outline: hsl(var(--hue-accent--task), var(--pct-50), var(--pct-50));
+}
 

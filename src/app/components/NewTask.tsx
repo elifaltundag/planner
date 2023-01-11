@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 // Design - SCSS
 import "../../design/components/new-task.scss";
@@ -13,11 +13,11 @@ import { addNewTask } from "../functions/editTasksData";
 
 import { MdOutlineAddCircle } from "react-icons/md";
 
-
+import { ColorThemeContext } from "../colorThemeContext/ColorThemeContext";
 
 function NewTask({newTaskInputRef, setTasksData}: NewTaskProps) {
     const [newTaskDef, setNewTaskDef] = useState<string>(""); 
-
+    const { colorTheme } = useContext(ColorThemeContext)  
 
     function handleTaskDefinitionChange(e: React.FormEvent<HTMLInputElement>) {
         setNewTaskDef(e.currentTarget.value);
@@ -43,21 +43,23 @@ function NewTask({newTaskInputRef, setTasksData}: NewTaskProps) {
     }
 
     return (
-        <div className = "new-task__container">
-            <form 
-                className = "new-task" 
+        <div className = "new-task__container"
+            data-colorTheme = {colorTheme}  
+        >
+            <form className = "new-task" 
                 onSubmit = {(e) => handleNewTaskSubmit(e)} 
+                data-colorTheme = {colorTheme}
             >
-                <input 
+                <input className = "new-task__input"
                     ref = {newTaskInputRef}
                     value = {newTaskDef}            
                     placeholder = "Enter a task" 
-                    className = "new-task__input"
                     onChange = {(e) => handleTaskDefinitionChange(e)}
+                    data-colorTheme = {colorTheme}
                 />
-                <button
-                    className = "new-task__btn"
+                <button className = "new-task__btn"
                     type = "submit"
+                    data-colorTheme = {colorTheme}
                 >
                     <MdOutlineAddCircle />
                 </button>
