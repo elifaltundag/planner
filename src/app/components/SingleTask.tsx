@@ -53,6 +53,8 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
     function handleFocus() {
         const taskDefinitionLength = textAreaRef.current?.value.length;
         textAreaRef.current?.focus()
+
+        // Put the text cursor at the end of the text when focused on
         if (taskDefinitionLength) {
             textAreaRef.current?.setSelectionRange(taskDefinitionLength, taskDefinitionLength)
         }
@@ -86,7 +88,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                         >   
 
                             {isEditModeOn ? (
-                                <TextareaAutosize className = "single-task__textarea"
+                                <TextareaAutosize className = "single-task__definition single-task__textarea"
                                     ref = {textAreaRef}
                                     value = {taskDefinition}
                                     onChange = {(e) => handleTaskDefinitionChange(e)}
@@ -94,7 +96,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                     data-colorTheme = {colorTheme}
                             />
                             ) : (
-                                <p className = "single-task__textarea">
+                                <p className = "single-task__definition single-task__paragraph">
                                     {taskDefinition}
                                 </p>
                             )}

@@ -15,6 +15,7 @@
     grid-template-columns: 1fr repeat(2, auto);
     grid-template-areas: "task-def save delete";
     align-items: center;
+    word-break: break-all;
     
 
     &__btn--save, &__btn--delete {
@@ -22,7 +23,7 @@
         font-size: 1.15em;
     }
 
-    &__textarea {
+    &__definition {
         grid-area: task-def;
         resize: none;
         font-family: inherit;
@@ -30,14 +31,27 @@
         line-height: 1.4;
         margin: 0;
     }
-
+    
     &__btn--save {
         grid-area: save;
     }
-
+    
     &__btn--delete {
         grid-area: delete;
         margin-right: -0.6em;
+    }
+    
+    &__paragraph {
+        /* 
+        ! inline below is just to remind you that you might have to work on styling paragraph
+        */ 
+        padding-inline: 0.1em;
+    }
+    
+    &__textarea {
+        &:focus {
+            outline: 2px solid greenyellow;
+        }
     }
 }
 
