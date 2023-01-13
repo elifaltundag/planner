@@ -1,4 +1,4 @@
-import { Task, TasksData } from "../model/tasksData";
+import { Task, TasksData, emptyTasksData } from "../model/tasksData";
 import { Status } from "../model/enums";
 
 export function addNewTask(updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>, newTask: Task)/* : TasksData */ {
@@ -63,4 +63,8 @@ export function deleteTasksInList(currentTasksData: TasksData, updateTasksData: 
     updatedTasksData.TaskLists[listStatus].TaskIdsOrder = []
     
     updateTasksData(updatedTasksData)
+}
+
+export function resetTasksData(updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>) {
+    updateTasksData({...emptyTasksData}) 
 }

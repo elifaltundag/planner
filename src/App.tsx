@@ -21,16 +21,19 @@ import List from './app/components/List';
 import ColorModeToggler from './app/components/ColorModeToggler';
 
 
+
 // Functions
 import { getTasksData } from './app/functions/accessLocalStorage';
 
 
 import { ColorThemeContext } from './app/colorThemeContext/ColorThemeContext';
+import DeletePopUp from './app/components/DeletePopUp';
 
 
 
 const App: React.FC = () => {
   const [tasksData, setTasksData] = useState<TasksData>(getTasksData())
+  const [resetIsClicked, setResetIsClicked] = useState<boolean>(false)
 
   let newTaskInputRef = useRef<HTMLInputElement>(null)
   
@@ -167,7 +170,18 @@ const App: React.FC = () => {
                         }
                     </DragDropContext>
                 </main>
+
+                <button className = "btn--reset-board"
+                    onClick = {() => setResetIsClicked(true)}
+                >
+                    Reset Board
+                </button>
+                
+                {resetIsClicked && <DeletePopUp 
+                setTasksData = {setTasksData} 
+                setDeleteIsClicked = {setResetIsClicked} />}
             </div>
+            
         </div>
         
     );

@@ -1,5 +1,5 @@
-import { TasksData } from "../model/tasksData";
-import { Status, ColorTheme } from "../model/enums";
+import { TasksData, emptyTasksData } from "../model/tasksData";
+import { ColorTheme } from "../model/enums";
 
 
 export function getTasksData(): TasksData {
@@ -9,26 +9,7 @@ export function getTasksData(): TasksData {
         return JSON.parse(savedTasksData)
     } 
     
-    return {
-        Tasks: { },
-        TaskListOrder: [Status.TODO, Status.INPROGRESS, Status.DONE],
-        TaskLists: {
-            [Status.TODO]: {
-                TaskListStatus: Status.TODO,
-                TaskIdsOrder: []
-            },
-            
-            [Status.INPROGRESS]: {
-                TaskListStatus: Status.INPROGRESS,
-                TaskIdsOrder: []
-            },
-            
-            [Status.DONE]: {
-                TaskListStatus: Status.DONE,
-                TaskIdsOrder: []
-            }
-        }
-    }
+    return {...emptyTasksData}
 }
 
 

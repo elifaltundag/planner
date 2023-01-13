@@ -7,10 +7,11 @@
     display: grid;
     position: relative;
     grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "title toggler"
-        "lists lists";
+        "lists lists"
+        "reset-board reset-board";
     row-gap: $row-gap--mobile;
     padding-top: 1em;
     padding-bottom: 5em;
@@ -30,14 +31,21 @@
         grid-area: lists;
     }
 
+    .btn--reset-board {
+        grid-area: reset-board;
+    }
+
+
     @include grid-layout-desktop;
     @include media-query("min-width", "medium") {
+        min-height: 100%;
         padding-block: 2em;
-        grid-template-rows: repeat(3, auto);
+        grid-template-rows: auto auto 1fr auto;
         grid-template-areas: 
             "title title . . . toggler"
             ". new-task new-task new-task new-task ."
             "lists lists lists lists lists lists"
+            ". . reset-board reset-board . ."
         ;
 
         .new-task__container {
