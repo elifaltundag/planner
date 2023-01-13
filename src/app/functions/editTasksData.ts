@@ -1,7 +1,7 @@
 import { Task, TasksData, emptyTasksData } from "../model/tasksData";
 import { Status } from "../model/enums";
 
-export function addNewTask(updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>, newTask: Task)/* : TasksData */ {
+export function addNewTask(updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>, newTask: Task) {
     updateTasksData(prevTasksData => ({
         ...prevTasksData,
 
@@ -22,7 +22,6 @@ export function addNewTask(updateTasksData: React.Dispatch<React.SetStateAction<
 
 
 export function updateTaskDefinition(updateTasksData: React.Dispatch<React.SetStateAction<TasksData>>, taskId: string, newDefinition: string) {
-    // Implement function in SingleTask.tsx
     updateTasksData(prevTasksData => ({
         ...prevTasksData,
         Tasks: {

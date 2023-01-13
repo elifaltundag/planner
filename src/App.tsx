@@ -19,6 +19,7 @@ import Header from './app/components/Header';
 import NewTask from './app/components/NewTask';
 import List from './app/components/List';
 import ColorModeToggler from './app/components/ColorModeToggler';
+import DeletePopUp from './app/components/DeletePopUp';
 
 
 
@@ -27,7 +28,6 @@ import { getTasksData } from './app/functions/accessLocalStorage';
 
 
 import { ColorThemeContext } from './app/colorThemeContext/ColorThemeContext';
-import DeletePopUp from './app/components/DeletePopUp';
 
 
 
@@ -142,6 +142,7 @@ const App: React.FC = () => {
     useEffect(() => {
         localStorage.setItem("preferredColorTheme", JSON.stringify(colorTheme))
     }, [colorTheme])
+
 
     return (
         <div className = "app-container"
