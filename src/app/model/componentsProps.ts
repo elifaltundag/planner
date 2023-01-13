@@ -35,6 +35,12 @@ export interface DeletePopUpProps {
     taskId?: string;
     listStatus?: Status;
     setDeleteIsClicked: React.Dispatch<React.SetStateAction<boolean>>;
+    
+    /* 
+    ! CURRENTLY USELESS
+    */ 
+    innerRef: React.RefObject<HTMLButtonElement>;
+
 }
 
 export interface ColorThemeContextProviderProps {

@@ -18,6 +18,7 @@ import { ColorThemeContext } from "../colorThemeContext/ColorThemeContext";
 function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
     const [isEditModeOn, setIsEditModeOn] = useState<boolean>(false)
     const [deleteIsClicked, setDeleteIsClicked] = useState<boolean>(false)
+    /* const [isTaskFocusedOn, setIsTaskFocusedOn] = useState<boolean>(false) */
     const [taskDefinition, setTaskDefinition] = useState<string>(task.definition)
 
     const { colorTheme } = useContext(ColorThemeContext)  
@@ -25,6 +26,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
     // Generate task Ref 
     const textAreaRef = useRef<HTMLTextAreaElement>(null)
     const formRef = useRef<HTMLFormElement>(null)
+    const btnDeleteRef = useRef<HTMLButtonElement>(null)
 
     
     // FUNCTIONS
@@ -41,7 +43,6 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
         updateTaskDefinition(setTasksData, task.id, taskDefinition);
     }
 
-
     function handleHitReturn(e: React.KeyboardEvent, formRef:  React.RefObject<HTMLFormElement>) {
         if (e.code === "Enter" && !e.shiftKey) {
             e.preventDefault();
@@ -50,7 +51,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
         }        
     }
 
-    function handleFocus() {
+    function handleTextAreaFocus() {
         const taskDefinitionLength = textAreaRef.current?.value.length;
         textAreaRef.current?.focus()
 
@@ -60,10 +61,36 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
         }
     }
 
+    function handleKeyboardOperations(e: React.KeyboardEvent<HTMLDivElement>) {
+        if (!isEditModeOn) {
+            if (e.code === "Enter") { 
+                /* 
+                ! FIX: don't add new line
+                */
+                setIsEditModeOn(true)
+            } else if (e.code === "Delete") {
+                /* 
+                ! FIX: when the user hits tab, they should get to pop-up
+                */
+                setDeleteIsClicked(true)
+            } /* else if (e.code === "Escape") {
+                
+            } */
+        }
+    }
+
 
     useEffect(() => {
-        isEditModeOn ? handleFocus() : textAreaRef.current?.blur()
+        isEditModeOn ? handleTextAreaFocus() : textAreaRef.current?.blur()
     }, [isEditModeOn])
+
+    /* useEffect(() => {
+        if (deleteIsClicked) {
+            window.addEventListener("keydown", (e) => {
+                btnDeleteRef.current?.focus()   
+            })
+        }
+    }) */
 
 
     return (
@@ -78,7 +105,8 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         data-isDragging = {snapshot.isDragging}
-                        data-colorTheme = {colorTheme}                        
+                        data-colorTheme = {colorTheme}  
+                        onKeyDown = {(e) => handleKeyboardOperations(e)}
                     >
                         <form 
                             className = "single-task" 
@@ -140,6 +168,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                 setTasksData = {setTasksData}
                                 taskId = {task.id}
                                 setDeleteIsClicked = {setDeleteIsClicked}
+                                innerRef = {btnDeleteRef}
                             />}
                         </form>
                     </div>

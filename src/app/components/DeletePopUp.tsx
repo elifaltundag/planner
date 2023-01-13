@@ -8,7 +8,7 @@ import { deleteTask, deleteTasksInList, resetTasksData } from "../functions/edit
 
 import { ColorThemeContext } from "../colorThemeContext/ColorThemeContext";
 
-export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus, setDeleteIsClicked}: DeletePopUpProps) {
+export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus, setDeleteIsClicked, innerRef}: DeletePopUpProps) {
     const { colorTheme } = useContext(ColorThemeContext);
 
     let warningText = "This is a permanent action. Are you sure you want to "
