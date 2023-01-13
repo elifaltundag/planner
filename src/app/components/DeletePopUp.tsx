@@ -15,7 +15,7 @@ export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus
 
     if (taskId) {
         warningText += " this task?"
-    } else if (listStatus) {
+    } else if (listStatus !== undefined) {
         warningText += " every task in this list?"
     }
 
@@ -31,10 +31,11 @@ export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus
                 onClick = {() => {
                     if (taskId) {
                         deleteTask(tasksData, setTasksData, taskId)
-                    } else if (listStatus) {
+                    } else if (listStatus !== undefined) {
                         deleteTasksInList(tasksData, setTasksData, listStatus)
                         setDeleteIsClicked(false)
                     }
+                    console.log(listStatus)
                 }}
             >
                 DELETE

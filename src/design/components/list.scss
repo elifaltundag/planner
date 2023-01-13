@@ -5,13 +5,17 @@ ul, li {
 }
 
 .list-0, .list-1, .list-2 {
-    position: relative;
     border-radius: 1em;
-    display: flex;
-    flex-direction: column;
     padding-block: 1.5em;
     border: 1px solid purple;
     font-size: $fs-task;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:   
+        ". list-title list-title list-title list-title btn-delete-all"
+        "droppable-list droppable-list droppable-list droppable-list droppable-list droppable-list";
     
     
     &__title {
@@ -20,6 +24,7 @@ ul, li {
         text-transform: uppercase;
         margin: 0;
         font-family: $ff-expanded;
+        grid-area: list-title;
     }
     
     &:has(div[data-isDraggingOver = true]) {
@@ -33,12 +38,11 @@ ul, li {
     flex-direction: column;
     padding: 1em;
     row-gap: $list-row-gap;
+    grid-area: droppable-list;
 }
 
 .btn--delete-all {
-    position: absolute;
     font-size: 1.4em;
-    top: 1.4em;
-    right: 1em;
+    grid-area: btn-delete-all;
 }
 

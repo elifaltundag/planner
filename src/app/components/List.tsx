@@ -62,19 +62,15 @@ function List({status, tasksData, setTasksData}: ListProps) {
                         ref = {provided.innerRef}
                         data-isDraggingOver = {snapshot.isDraggingOver}
                     >
-
-
                         {TaskIdsOrder.map((taskId: string, index: number) => (<SingleTask 
                             key = {taskId}
                             task = {tasksData.Tasks[taskId]} 
                             index = {index}
                             tasksData = {tasksData}
                             setTasksData = {setTasksData}
-                            />))
-                            
+                            />))       
                         }
                         {provided.placeholder}
-                        
 
                     </div>
                 )}
