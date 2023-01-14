@@ -16,18 +16,22 @@ import DeletePopUp from "./DeletePopUp";
 import { ColorThemeContext } from "../colorThemeContext/ColorThemeContext";
 
 function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
+    // STATES
     const [isEditModeOn, setIsEditModeOn] = useState<boolean>(false)
     const [isDeleteClicked, setIsDeleteClicked] = useState<boolean>(false)
     const [taskDefinition, setTaskDefinition] = useState<string>(task.definition)
 
+
+    // COLOR THEME CONTEXT
     const { colorTheme } = useContext(ColorThemeContext)  
 
-    // Generate task Ref 
+
+    // REFS
     const textAreaRef = useRef<HTMLTextAreaElement>(null)
     const formRef = useRef<HTMLFormElement>(null)
-    const btnDeleteRef = useRef<HTMLButtonElement>(null)
+    const btnDeleteRef = useRef<HTMLButtonElement>(null)    
 
-    
+
     // FUNCTIONS
     function handleTaskDefinitionChange(e: React.ChangeEvent<HTMLTextAreaElement>): void {
         if (!isEditModeOn) {
@@ -51,36 +55,28 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
         }        
     }
 
-    
-
+    // Enable editting without mouse, keyboard only
     function handleKeyboardOperations(e: React.KeyboardEvent<HTMLDivElement>) {
         if (!isEditModeOn) {
-            if (e.code === "Enter" && document.activeElement !== btnDeleteRef.current) { 
-                /* 
-                ! FIX: don't add new line
-                */
+            if (e.code === "Enter" && document.activeElement !== btnDeleteRef.current && !isDeleteClicked) { 
                 setIsEditModeOn(true)
             } else if (e.code === "Delete") {
-                /* 
-                ! FIX: when the user hits tab, they should get to pop-up
-                */
                 setIsDeleteClicked(true)
             } 
         }
     }
 
+    // Put the text cursor at the end of the text when focused on
     useEffect(() => {
         function handleTextAreaFocus() {
             const taskDefinitionLength = task.definition.length;
             textAreaRef.current?.focus()
     
-            // Put the text cursor at the end of the text when focused on
             if (taskDefinitionLength) {
                 textAreaRef.current?.setSelectionRange(taskDefinitionLength, taskDefinitionLength)
             }
         }
 
-                
         isEditModeOn ? handleTextAreaFocus() : textAreaRef.current?.blur()
     }, [isEditModeOn, task.definition.length])
 
@@ -150,6 +146,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                 type = "button"
                                 onClick = {() => setIsDeleteClicked(true)}
                                 data-colorTheme = {colorTheme}
+                                ref = {btnDeleteRef}
                             >
                                 <MdDelete />
                             </button>
@@ -160,7 +157,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                 setTasksData = {setTasksData}
                                 taskId = {task.id}
                                 setIsDeleteClicked = {setIsDeleteClicked}
-                                innerRef = {btnDeleteRef}
+                                
                             />}
                         </form>
                     </div>

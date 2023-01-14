@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext} from "react";
 
 import SingleTask from "./SingleTask";
 import { Status } from "../model/enums";
@@ -15,7 +15,7 @@ import DeletePopUp from "./DeletePopUp";
 function List({status, tasksData, setTasksData}: ListProps) {
     const [isDeleteClicked, setIsDeleteClicked] = useState<boolean>(false)
     const { colorTheme } = useContext(ColorThemeContext)  
-    const btnDeleteRef = useRef<HTMLButtonElement>(null)
+    
     
     
     function generateListTitle(listStatus: Status): string {
@@ -62,7 +62,7 @@ function List({status, tasksData, setTasksData}: ListProps) {
                 setTasksData = {setTasksData}
                 listStatus = {status}
                 setIsDeleteClicked = {setIsDeleteClicked}
-                innerRef = {btnDeleteRef}
+                
             />}
 
             <Droppable droppableId = {status.toString()}>

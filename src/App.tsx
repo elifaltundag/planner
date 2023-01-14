@@ -34,7 +34,7 @@ import { ColorThemeContext } from './app/colorThemeContext/ColorThemeContext';
 const App: React.FC = () => {
   const [tasksData, setTasksData] = useState<TasksData>(getTasksData())
   const [resetIsClicked, setResetIsClicked] = useState<boolean>(false)
-  const btnDeleteRef = useRef<HTMLButtonElement>(null)
+  
 
   const newTaskInputRef = useRef<HTMLInputElement>(null)
   
@@ -182,7 +182,7 @@ const App: React.FC = () => {
                 {resetIsClicked && <DeletePopUp 
                     setTasksData = {setTasksData} 
                     setIsDeleteClicked = {setResetIsClicked} 
-                    innerRef = {btnDeleteRef}
+                    
                 />}
             </div>
             
