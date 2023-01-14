@@ -41,6 +41,7 @@ export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus
                         setIsDeleteClicked(false)
                     }
                 }}
+                autoFocus = {true}
             >
                 DELETE
             </button>
