@@ -61,7 +61,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
     // Enable editting without mouse, keyboard only
     function handleKeyboardOperations(e: React.KeyboardEvent<HTMLDivElement>) {       
         if (!isEditModeOn) {
-            if (e.code === Keyboard.ENT && document.activeElement !== btnDeleteRef.current && !isDeleteClicked) { 
+            if (e.code === Keyboard.ENT && !isDeleteClicked) { 
                 setIsEditModeOn(true)
             } else if (e.code === Keyboard.DEL) {
                 setIsDeleteClicked(true)
@@ -128,6 +128,12 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                 <button className = "single-task__btn--save"
                                     type = "submit"
                                     data-colorTheme = {colorTheme}
+                                    onKeyDown = {(e) => {
+                                        if (e.code === Keyboard.ENT) {
+                                            setIsEditModeOn(false)
+                                            updateTaskDefinition(setTasksData, task.id, taskDefinition);
+                                        }
+                                    }}
                                 >
                                     <MdCheckCircle />
                                 </button>
