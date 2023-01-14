@@ -2,13 +2,14 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 
 
 import "../../design/components/single-task.scss"
-/* import { Status } from "../model/dataStructures"; */
 
 import { updateTaskDefinition} from "../functions/editTasksData";
 
 import { SingleTaskProps } from "../model/componentsProps";
 import { Draggable } from "react-beautiful-dnd";
 import { MdDelete, MdCheckCircle, MdEdit } from "react-icons/md"
+
+import { Keyboard } from "../model/enums";
 
 import TextareaAutosize  from "react-textarea-autosize";
 import DeletePopUp from "./DeletePopUp";
@@ -57,12 +58,25 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
 
     // Enable editting without mouse, keyboard only
     function handleKeyboardOperations(e: React.KeyboardEvent<HTMLDivElement>) {
+        if (e.code === Keyboard.TAB) {
+            /* 
+            ! FOCUS ON NEXT TASK, NOT EDIT BTN 
+            */
+        }
+        
         if (!isEditModeOn) {
-            if (e.code === "Enter" && document.activeElement !== btnDeleteRef.current && !isDeleteClicked) { 
+            if (e.code === Keyboard.ENT && document.activeElement !== btnDeleteRef.current && !isDeleteClicked) { 
                 setIsEditModeOn(true)
-            } else if (e.code === "Delete") {
+            } else if (e.code === Keyboard.DEL) {
                 setIsDeleteClicked(true)
             } 
+        }
+
+        if (e.code === Keyboard.ESC) {
+            return
+            /* 
+            ! UNFOCUS / BLUR
+            */
         }
     }
 
@@ -135,6 +149,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                         setIsEditModeOn(true)
                                     }}
                                     data-colorTheme = {colorTheme}
+                                    tabIndex = {-1}
                                 >
                                     <MdEdit />
                                 </button>
@@ -147,6 +162,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                 onClick = {() => setIsDeleteClicked(true)}
                                 data-colorTheme = {colorTheme}
                                 ref = {btnDeleteRef}
+                                tabIndex = {isEditModeOn ? 0 : -1}
                             >
                                 <MdDelete />
                             </button>
