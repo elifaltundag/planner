@@ -17,8 +17,7 @@ import { ColorThemeContext } from "../colorThemeContext/ColorThemeContext";
 
 function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
     const [isEditModeOn, setIsEditModeOn] = useState<boolean>(false)
-    const [deleteIsClicked, setDeleteIsClicked] = useState<boolean>(false)
-    /* const [isTaskFocusedOn, setIsTaskFocusedOn] = useState<boolean>(false) */
+    const [isDeleteClicked, setIsDeleteClicked] = useState<boolean>(false)
     const [taskDefinition, setTaskDefinition] = useState<string>(task.definition)
 
     const { colorTheme } = useContext(ColorThemeContext)  
@@ -34,7 +33,8 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
         if (!isEditModeOn) {
             setIsEditModeOn(true)
         }
-        setTaskDefinition(textAreaRef.current?.value || "")
+
+        setTaskDefinition(textAreaRef.current?.value.replaceAll("\n", "") || "")
     }
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
@@ -51,19 +51,11 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
         }        
     }
 
-    function handleTextAreaFocus() {
-        const taskDefinitionLength = textAreaRef.current?.value.length;
-        textAreaRef.current?.focus()
-
-        // Put the text cursor at the end of the text when focused on
-        if (taskDefinitionLength) {
-            textAreaRef.current?.setSelectionRange(taskDefinitionLength, taskDefinitionLength)
-        }
-    }
+    
 
     function handleKeyboardOperations(e: React.KeyboardEvent<HTMLDivElement>) {
         if (!isEditModeOn) {
-            if (e.code === "Enter") { 
+            if (e.code === "Enter" && document.activeElement !== btnDeleteRef.current) { 
                 /* 
                 ! FIX: don't add new line
                 */
@@ -72,25 +64,25 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                 /* 
                 ! FIX: when the user hits tab, they should get to pop-up
                 */
-                setDeleteIsClicked(true)
-            } /* else if (e.code === "Escape") {
-                
-            } */
+                setIsDeleteClicked(true)
+            } 
         }
     }
 
-
     useEffect(() => {
-        isEditModeOn ? handleTextAreaFocus() : textAreaRef.current?.blur()
-    }, [isEditModeOn])
-
-    /* useEffect(() => {
-        if (deleteIsClicked) {
-            window.addEventListener("keydown", (e) => {
-                btnDeleteRef.current?.focus()   
-            })
+        function handleTextAreaFocus() {
+            const taskDefinitionLength = task.definition.length;
+            textAreaRef.current?.focus()
+    
+            // Put the text cursor at the end of the text when focused on
+            if (taskDefinitionLength) {
+                textAreaRef.current?.setSelectionRange(taskDefinitionLength, taskDefinitionLength)
+            }
         }
-    }) */
+
+                
+        isEditModeOn ? handleTextAreaFocus() : textAreaRef.current?.blur()
+    }, [isEditModeOn, task.definition.length])
 
 
     return (
@@ -156,18 +148,18 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
 
                             <button className = "single-task__btn--delete"
                                 type = "button"
-                                onClick = {() => setDeleteIsClicked(true)}
+                                onClick = {() => setIsDeleteClicked(true)}
                                 data-colorTheme = {colorTheme}
                             >
                                 <MdDelete />
                             </button>
 
 
-                            {deleteIsClicked && <DeletePopUp 
+                            {isDeleteClicked && <DeletePopUp 
                                 tasksData = {tasksData}
                                 setTasksData = {setTasksData}
                                 taskId = {task.id}
-                                setDeleteIsClicked = {setDeleteIsClicked}
+                                setIsDeleteClicked = {setIsDeleteClicked}
                                 innerRef = {btnDeleteRef}
                             />}
                         </form>

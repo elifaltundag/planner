@@ -181,7 +181,7 @@ const App: React.FC = () => {
                 
                 {resetIsClicked && <DeletePopUp 
                     setTasksData = {setTasksData} 
-                    setDeleteIsClicked = {setResetIsClicked} 
+                    setIsDeleteClicked = {setResetIsClicked} 
                     innerRef = {btnDeleteRef}
                 />}
             </div>

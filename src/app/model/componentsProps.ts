@@ -34,7 +34,7 @@ export interface DeletePopUpProps {
     setTasksData: React.Dispatch<React.SetStateAction<TasksData>>;
     taskId?: string;
     listStatus?: Status;
-    setDeleteIsClicked: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsDeleteClicked: React.Dispatch<React.SetStateAction<boolean>>;
     
     /* 
     ! CURRENTLY USELESS

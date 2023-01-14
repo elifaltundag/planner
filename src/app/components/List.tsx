@@ -13,7 +13,7 @@ import { MdDeleteSweep } from "react-icons/md";
 import DeletePopUp from "./DeletePopUp";
 
 function List({status, tasksData, setTasksData}: ListProps) {
-    const [deleteIsClicked, setDeleteIsClicked] = useState<boolean>(false)
+    const [isDeleteClicked, setIsDeleteClicked] = useState<boolean>(false)
     const { colorTheme } = useContext(ColorThemeContext)  
     const btnDeleteRef = useRef<HTMLButtonElement>(null)
     
@@ -52,10 +52,18 @@ function List({status, tasksData, setTasksData}: ListProps) {
             </h2>
             
             <button className = "btn--delete-all"
-                onClick = {() => setDeleteIsClicked(true)}
+                onClick = {() => setIsDeleteClicked(true)}
             >
                 <MdDeleteSweep />
             </button>
+            
+            {isDeleteClicked && <DeletePopUp 
+                tasksData = {tasksData}
+                setTasksData = {setTasksData}
+                listStatus = {status}
+                setIsDeleteClicked = {setIsDeleteClicked}
+                innerRef = {btnDeleteRef}
+            />}
 
             <Droppable droppableId = {status.toString()}>
                 {(provided, snapshot) => (
@@ -79,13 +87,6 @@ function List({status, tasksData, setTasksData}: ListProps) {
                 )}
             </Droppable>
 
-            {deleteIsClicked && <DeletePopUp 
-                tasksData = {tasksData}
-                setTasksData = {setTasksData}
-                listStatus = {status}
-                setDeleteIsClicked = {setDeleteIsClicked}
-                innerRef = {btnDeleteRef}
-            />}
         </div>
     )    
 }
