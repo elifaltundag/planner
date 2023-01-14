@@ -48,15 +48,12 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
         updateTaskDefinition(setTasksData, task.id, taskDefinition);
     }
 
-    function handleTextAreaKeyDown(e: React.KeyboardEvent, formRef: React.RefObject<HTMLFormElement>, containerRef: (element: HTMLElement | null) => void) {
+    function handleTextAreaKeyUp(e: React.KeyboardEvent, formRef: React.RefObject<HTMLFormElement>/* , containerRef: (element: HTMLElement | null) => void */) {
         if (e.code === Keyboard.ENT && !e.shiftKey) {
             e.preventDefault();
             formRef.current?.requestSubmit();
         } else if (e.code === Keyboard.ESC) {
             setIsEditModeOn(false)
-            /* 
-            ! FOCUS ON DRAGGABLE TASK: the previous HTML element || parent?
-            */
         }       
     }
 
@@ -101,7 +98,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                         {...provided.dragHandleProps}
                         data-isDragging = {snapshot.isDragging}
                         data-colorTheme = {colorTheme}  
-                        onKeyDown = {(e) => handleKeyboardOperations(e)}
+                        onKeyUp = {(e) => handleKeyboardOperations(e)}
                     >
                         <form 
                             className = "single-task" 
@@ -115,7 +112,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                     ref = {textAreaRef}
                                     value = {taskDefinition}
                                     onChange = {(e) => handleTaskDefinitionChange(e)}
-                                    onKeyDown = {(e) => handleTextAreaKeyDown(e, formRef, provided.innerRef)}
+                                    onKeyUp = {(e) => handleTextAreaKeyUp(e, formRef/* , provided.innerRef */)}
                                     data-colorTheme = {colorTheme}
                             />
                             ) : (
@@ -153,6 +150,11 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                             <button className = "single-task__btn--delete"
                                 type = "button"
                                 onClick = {() => setIsDeleteClicked(true)}
+                                onKeyUp = {(e) => {
+                                    if (isEditModeOn && e.code === Keyboard.TAB) {
+                                        setIsEditModeOn(false)
+                                    }
+                                }}
                                 data-colorTheme = {colorTheme}
                                 ref = {btnDeleteRef}
                                 tabIndex = {isEditModeOn ? 0 : -1}
