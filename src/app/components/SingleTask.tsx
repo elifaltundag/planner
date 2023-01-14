@@ -48,37 +48,30 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
         updateTaskDefinition(setTasksData, task.id, taskDefinition);
     }
 
-    function handleHitReturn(e: React.KeyboardEvent, formRef:  React.RefObject<HTMLFormElement>) {
-        if (e.code === "Enter" && !e.shiftKey) {
+    function handleTextAreaKeyDown(e: React.KeyboardEvent, formRef: React.RefObject<HTMLFormElement>, containerRef: (element: HTMLElement | null) => void) {
+        if (e.code === Keyboard.ENT && !e.shiftKey) {
             e.preventDefault();
             formRef.current?.requestSubmit();
-            return
-        }        
+        } else if (e.code === Keyboard.ESC) {
+            setIsEditModeOn(false)
+            /* 
+            ! FOCUS ON DRAGGABLE TASK: the previous HTML element || parent?
+            */
+        }       
     }
 
+
     // Enable editting without mouse, keyboard only
-    function handleKeyboardOperations(e: React.KeyboardEvent<HTMLDivElement>) {
-        if (e.code === Keyboard.TAB) {
-            /* 
-            ! FOCUS ON NEXT TASK, NOT EDIT BTN 
-            */
-        }
-        
+    function handleKeyboardOperations(e: React.KeyboardEvent<HTMLDivElement>) {       
         if (!isEditModeOn) {
             if (e.code === Keyboard.ENT && document.activeElement !== btnDeleteRef.current && !isDeleteClicked) { 
                 setIsEditModeOn(true)
             } else if (e.code === Keyboard.DEL) {
                 setIsDeleteClicked(true)
             } 
-        }
-
-        if (e.code === Keyboard.ESC) {
-            return
-            /* 
-            ! UNFOCUS / BLUR
-            */
-        }
+        } 
     }
+
 
     // Put the text cursor at the end of the text when focused on
     useEffect(() => {
@@ -122,7 +115,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                     ref = {textAreaRef}
                                     value = {taskDefinition}
                                     onChange = {(e) => handleTaskDefinitionChange(e)}
-                                    onKeyDown = {(e) => handleHitReturn(e, formRef)}
+                                    onKeyDown = {(e) => handleTextAreaKeyDown(e, formRef, provided.innerRef)}
                                     data-colorTheme = {colorTheme}
                             />
                             ) : (
