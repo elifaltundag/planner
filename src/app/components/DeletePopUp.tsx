@@ -22,6 +22,13 @@ export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus
         warningText += "reset your lists?"
     }
 
+    // Focus on delete pop-up after first render
+    useEffect(() => {
+        deletePopUpRef.current?.focus()
+    }, [])
+
+
+    // Close delete pop-up when the user clicks on outside
     useEffect(() => {
         function closeDeletePopUpWhenClickedOnOutside(e: MouseEvent) {
             if (e.target instanceof Element && !deletePopUpRef.current?.contains(e.target)) {
@@ -34,10 +41,12 @@ export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus
         return () => (document.removeEventListener("mousedown", closeDeletePopUpWhenClickedOnOutside))
     }) 
 
+
     return (
         <div className = "delete-pop-up"
             data-colorTheme = {colorTheme}
             ref = {deletePopUpRef}
+            tabIndex = {0}
         >
             <p className = "delete-pop-up__warning">
                 {warningText}
@@ -55,7 +64,6 @@ export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus
                         setIsDeleteClicked(false)
                     }
                 }}
-                autoFocus = {true}
             >
                 DELETE
             </button>
