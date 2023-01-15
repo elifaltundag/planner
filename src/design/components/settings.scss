@@ -1,0 +1,14 @@
+@use "../utilities" as *;
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;   
+    row-gap: $row-gap--mobile;
+    font-size: $fs-task;
+
+    * {
+        font-size: 1.2em;
+    }
+}

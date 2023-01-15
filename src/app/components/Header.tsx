@@ -11,7 +11,7 @@ export default function Header() {
         <header className = "header"
             data-colorTheme = {colorTheme}
         >
-            <h1 className = "header__title">Planner</h1>
+            <h1 className = "header__title">Kanban</h1>
             <p className = "header__info">Track your day</p>
         </header>
     )

@@ -1,6 +1,8 @@
 @use "../utilities" as *;
 
 .lists-layout {
+    display: flex;
+    flex-direction: column;
     row-gap: $row-gap--mobile;
     
     @include grid-layout-desktop; 
@@ -13,10 +15,6 @@
 
 .list-1 {
     grid-area: to-do-list;
-
-    /* @include media-query("min-width", "medium") {
-    
-    } */
 }
 
 .list-2 {

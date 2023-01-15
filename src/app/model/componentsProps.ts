@@ -2,11 +2,15 @@ import { Task, TaskList, TasksData } from "./tasksData";
 import { Status } from "./enums";
 
 /* REACT COMPONENTS' PROPS */ 
+export interface SettingsProps {
+    isResetClicked: boolean;
+    setIsResetClicked: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export interface NewTaskProps {
     newTaskInputRef: React.RefObject<HTMLInputElement>;
     setTasksData: React.Dispatch<React.SetStateAction<TasksData>>;
 };
-
 
 export interface ListProps {
     status: Status;

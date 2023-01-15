@@ -1,8 +1,10 @@
 import React, {useContext} from "react";
 
-/* import { MdLightMode, MdDarkMode } from "react-icons/md"; */
+import { MdLightMode, MdDarkMode } from "react-icons/md";
 
-import { ColorThemeContext/* , ColorThemes */ } from "../colorThemeContext/ColorThemeContext";
+import { ColorTheme } from "../model/enums";
+
+import { ColorThemeContext } from "../colorThemeContext/ColorThemeContext";
 
 
 import "../../design/components/color-mode-toggler.scss";
@@ -15,7 +17,7 @@ export default function ColorModeToggler() {
             onClick = {toggleColorTheme}
             data-colorTheme = {colorTheme}
         >
-            Toggle Color Theme
+            {colorTheme === ColorTheme.DARK ? <MdLightMode /> : <MdDarkMode />}   
         </button>
     )
 }

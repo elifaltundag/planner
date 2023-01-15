@@ -1,11 +1,6 @@
 @use "../utilities" as *;
 
-.color-mode-toggler {
-    width: 100%;
-    height: $fs-header__title;
-    display: grid;
-    align-items: center;
-
+.color-mode-toggler {   
     &:focus {
         outline: 2px solid var(--clr-toggler-focus-outline)
     }
