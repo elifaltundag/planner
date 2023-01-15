@@ -114,6 +114,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                     onChange = {(e) => handleTaskDefinitionChange(e)}
                                     onKeyUp = {(e) => handleTextAreaKeyUp(e, formRef/* , provided.innerRef */)}
                                     data-colorTheme = {colorTheme}
+                                    required = {true}
                             />
                             ) : (
                                 <p className = "single-task__definition single-task__paragraph">
