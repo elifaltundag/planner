@@ -44,18 +44,28 @@
 
 // COLORS: DARK MODE
 [data-colorTheme = dark] {
-    --clr-bg: hsl(var(--hue-main), var(--pct-15), var(--pct-10));
-    --clr-txt: hsl(0, var(--pct-0), var(--pct-90));
+    --clr-bg: hsl(var(--hue-main), 5%, 10%);
+    --clr-txt: hsl(0, 0%, 90%);
+
+    --clr-bg-1: hsl(var(--hue-main), 35%, 15%);
+    --clr-bg-2: hsl(var(--hue-main), 35%, 22%);
+    --clr-bg-3: hsl(var(--hue-main), 10%, 15%);
+    --clr-txt-3: hsla(0, 0%, 90%, 0.9);
     
-    --clr-toggler-focus-outline: hsl(var(--hue-accent--list), var(--pct-50), var(--pct-50));
+    --clr-toggler-focus-outline: hsl(var(--hue-accent--list), 50%, 50%);
 }
 
 
 // COLORS: LIGHT MODE
 [data-colorTheme = light] {
-    --clr-bg: hsl(var(--hue-main),var(--pct-15), var(--pct-90));
-    --clr-txt: hsl(0, var(--pct-0), var(--pct-10));
+    --clr-bg: hsl(var(--hue-main), 5%, 88%);
+    --clr-txt: hsl(0, 0%, 18%);
 
-    --clr-toggler-focus-outline: hsl(var(--hue-accent--task), var(--pct-50), var(--pct-50));
+    --clr-bg-1: hsl(var(--hue-main), 25%, 75%);
+    --clr-bg-2: hsl(var(--hue-main), 30%, 65%);
+    --clr-bg-3: hsl(var(--hue-main), 10%, 70%);
+    --clr-txt-3: hsla(0, 0%, 18%, 0.9);
+
+    --clr-toggler-focus-outline: hsl(var(--hue-accent--task), 50%, 50%);
 }
 
