@@ -8,3 +8,7 @@ button {
     display: grid;
     place-content: center; 
 }
+
+input, textarea {
+    font-family: inherit;
+}

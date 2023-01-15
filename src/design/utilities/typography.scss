@@ -1,10 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@font-face {
+    font-family: "Coplette";
+    src: url("../fonts/Coplette.otf") format("opentype"),   
+         url("../fonts/Coplette.ttf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Planc";
+    src: url("../fonts/Planc-ExtraLight.otf") format("opentype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Planc";
+    src: url("../fonts/Planc-ExtraLightItalic.otf") format("opentype");
+    font-style: italic;
+    font-weight: normal;
+}
 
 
 // FONT FAMILIES
-$ff-condensed: "Sofia Sans Semi Condensed", Calibri, 'Trebuchet MS', sans-serif;
-$ff-expanded: "Prompt", 'Arial Narrow Bold', sans-serif; 
+$ff-accent: "Coplette", "Arial Black", sans-serif;
+$ff-main: "Planc", "Arial", sans-serif;
 
 
 // FONT SIZES
@@ -13,3 +31,4 @@ $fs-header__info: clamp(1rem, 0.5rem + 1vw, 1.3rem);
 $fs-new-task: clamp(1.1rem, 0.6rem + 1.2vw, 1.3rem);
 $fs-list-title: clamp(1.2rem, 0.8rem + 1vw, 2rem);
 $fs-task: clamp(0.8rem, 0.6rem + 0.5vw, 1.1rem);
+

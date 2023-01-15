@@ -16,10 +16,10 @@ export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus
 
     if (taskId) {
         warningText += "delete this task?"
-    } else if (listStatus !== undefined) {
+    } else if (listStatus) {
         warningText += "delete each task on this list?"
     } else {
-        warningText += "reset your lists?"
+        warningText += "reset your Kanban board?"
     }
 
     // Focus on delete pop-up after first render

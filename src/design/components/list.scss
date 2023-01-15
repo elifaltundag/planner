@@ -23,7 +23,8 @@ ul, li {
         text-align: center;
         text-transform: uppercase;
         margin: 0;
-        font-family: $ff-expanded;
+        font-family: $ff-accent;
+        font-weight: normal;
         grid-area: list-title;
     }
     

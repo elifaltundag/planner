@@ -4,7 +4,8 @@
     line-height: 1;
     
     &__title {
-        font-family: $ff-expanded;
+        font-family: $ff-accent;
+        font-weight: normal;
         font-size: $fs-header__title;
         margin: 0;
     }

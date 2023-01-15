@@ -18,7 +18,3 @@ export default function Settings({ isResetClicked, setIsResetClicked }: Settings
         </div>
     )
 }
-
-/* 
-! Resetter props === Setting props : prop drilling ama bir seviye ok
-*/
