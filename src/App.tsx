@@ -146,10 +146,10 @@ const App: React.FC = () => {
 
 
     return (
-        <div className = "app-container"
+        <div className="app-container"
             data-colorTheme = {colorTheme}
         >
-            <div className = "main-layout">
+            <div className="main-layout">
                 
                 <Header />
                 <Settings 
@@ -163,7 +163,7 @@ const App: React.FC = () => {
                 />
 
             
-                <main className = "lists-layout">                                
+                <main className="lists-layout">                                
                     <DragDropContext onDragEnd = {handleDragEnd}>
                         {
                             tasksData.TaskListOrder.map((TaskListId: number) => (<List 

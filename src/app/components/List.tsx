@@ -44,14 +44,14 @@ function List({status, tasksData, setTasksData}: ListProps) {
 
     return (
         <div 
-            className = {`list-${status}`}
+            className={`list-${status}`}
             data-colorTheme = {colorTheme}
         >
-            <h2 className = {`list-${status}__title`}>
+            <h2 className={`list-${status}__title`}>
                 {generateListTitle(status)}
             </h2>
             
-            <button className = "btn--delete-all"
+            <button className="btn--delete-all"
                 onClick = {() => setIsDeleteClicked(true)}
             >
                 <MdDeleteSweep />
@@ -67,7 +67,7 @@ function List({status, tasksData, setTasksData}: ListProps) {
 
             <Droppable droppableId = {status.toString()}>
                 {(provided, snapshot) => (
-                    <div className = "droppable-list"
+                    <div className="droppable-list"
                         data-colorTheme = {colorTheme}
                         {...provided.droppableProps}
                         ref = {provided.innerRef}

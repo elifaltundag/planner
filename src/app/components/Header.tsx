@@ -8,11 +8,11 @@ export default function Header() {
     const { colorTheme } = useContext(ColorThemeContext)
 
     return (
-        <header className = "header"
+        <header className="header"
             data-colorTheme = {colorTheme}
         >
-            <h1 className = "header__title">Kanban</h1>
-            <p className = "header__info">Track your day</p>
+            <h1 className="header__title">Kanban</h1>
+            <p className="header__info">Track your day</p>
         </header>
     )
 }

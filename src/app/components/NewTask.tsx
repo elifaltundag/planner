@@ -43,21 +43,21 @@ function NewTask({newTaskInputRef, setTasksData}: NewTaskProps) {
     }
 
     return (
-        <div className = "new-task__container"
+        <div className="new-task__container"
             data-colorTheme = {colorTheme}  
         >
-            <form className = "new-task" 
+            <form className="new-task" 
                 onSubmit = {(e) => handleNewTaskSubmit(e)} 
                 data-colorTheme = {colorTheme}
             >
-                <input className = "new-task__input"
+                <input className="new-task__input"
                     ref = {newTaskInputRef}
                     value = {newTaskDef}            
                     placeholder = "Enter a task" 
                     onChange = {(e) => handleTaskDefinitionChange(e)}
                     data-colorTheme = {colorTheme}
                 />
-                <button className = "new-task__btn"
+                <button className="new-task__btn"
                     type = "submit"
                     data-colorTheme = {colorTheme}
                 >

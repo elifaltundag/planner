@@ -5,7 +5,7 @@ import { MdRestorePage } from "react-icons/md";
 
 export default function Resetter({ isResetClicked, setIsResetClicked }: SettingsProps) {
     return (
-        <button className = "btn--reset-board"
+        <button className="btn--reset-board"
             onClick = {() => setIsResetClicked(true)}
         >
             <MdRestorePage />

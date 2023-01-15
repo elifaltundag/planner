@@ -101,14 +101,14 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                         onKeyUp = {(e) => handleKeyboardOperations(e)}
                     >
                         <form 
-                            className = "single-task" 
+                            className="single-task" 
                             ref = {formRef}
                             onSubmit = {(e) => handleSubmit(e)}
                             data-colorTheme = {colorTheme}
                         >   
 
                             {isEditModeOn ? (
-                                <TextareaAutosize className = "single-task__definition single-task__textarea"
+                                <TextareaAutosize className="single-task__definition single-task__textarea"
                                     ref = {textAreaRef}
                                     value = {taskDefinition}
                                     onChange = {(e) => handleTaskDefinitionChange(e)}
@@ -117,7 +117,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                     required = {true}
                             />
                             ) : (
-                                <p className = "single-task__definition single-task__paragraph">
+                                <p className="single-task__definition single-task__paragraph">
                                     {taskDefinition}
                                 </p>
                             )}
@@ -126,7 +126,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
 
 
                             {isEditModeOn ? (
-                                <button className = "single-task__btn--save"
+                                <button className="single-task__btn--save"
                                     type = "submit"
                                     data-colorTheme = {colorTheme}
                                     onKeyDown = {(e) => {
@@ -139,7 +139,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                                     <MdCheckCircle />
                                 </button>
                             ) : (
-                                <button className = "single-task__btn--save"
+                                <button className="single-task__btn--save"
                                     type = "button"
                                     onClick = {(e) => {
                                         e.preventDefault()
@@ -154,7 +154,7 @@ function SingleTask({task, index, tasksData, setTasksData}: SingleTaskProps) {
                             
                             
 
-                            <button className = "single-task__btn--delete"
+                            <button className="single-task__btn--delete"
                                 type = "button"
                                 onClick = {() => setIsDeleteClicked(true)}
                                 onKeyUp = {(e) => {

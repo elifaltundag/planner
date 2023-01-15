@@ -3,16 +3,18 @@ import React, { useContext, useEffect, useRef } from "react";
 import "../../design/components/delete-pop-up.scss";
 
 import { DeletePopUpProps } from "../model/componentsProps";
+import { MdWarning } from "react-icons/md";
 
 import { deleteTask, deleteTasksInList, resetTasksData } from "../functions/editTasksData";
 
 import { ColorThemeContext } from "../colorThemeContext/ColorThemeContext";
 
+
 export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus, setIsDeleteClicked}: DeletePopUpProps) {
     const { colorTheme } = useContext(ColorThemeContext);
     const deletePopUpRef = useRef<HTMLDivElement>(null)
 
-    let warningText = "This is a permanent action. Are you sure you want to "
+    let warningText = "Are you sure you want to "
 
     if (taskId) {
         warningText += "delete this task?"
@@ -43,16 +45,20 @@ export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus
 
 
     return (
-        <div className = "delete-pop-up"
+        <div className="delete-pop-up"
             data-colorTheme = {colorTheme}
             ref = {deletePopUpRef}
             tabIndex = {0}
         >
-            <p className = "delete-pop-up__warning">
+            <p className="delete-pop-up__warning">
+                <span className="delete-pop-up__warning__icon"><MdWarning /></span>
+                
+                This is a permanent action.
+                <br />
                 {warningText}
             </p>
 
-            <button className = "delete-pop-up__btn-delete" 
+            <button className="delete-pop-up__btn-delete" 
                 onClick = {() => {
                     if (tasksData && taskId) {
                         deleteTask(tasksData, setTasksData, taskId)
@@ -68,7 +74,7 @@ export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus
                 DELETE
             </button>
 
-            <button className = "delete-pop-up__btn-keep"
+            <button className="delete-pop-up__btn-keep"
                 onClick = {() => setIsDeleteClicked(false)}
             >
                 CANCEL

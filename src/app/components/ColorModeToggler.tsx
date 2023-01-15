@@ -13,7 +13,7 @@ export default function ColorModeToggler() {
     const {colorTheme, toggleColorTheme} = useContext(ColorThemeContext)    
 
     return (
-        <button  className = "color-mode-toggler"
+        <button  className="color-mode-toggler"
             onClick = {toggleColorTheme}
             data-colorTheme = {colorTheme}
         >

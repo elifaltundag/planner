@@ -9,7 +9,7 @@ import { SettingsProps } from "../model/componentsProps";
 
 export default function Settings({ isResetClicked, setIsResetClicked }: SettingsProps) {
     return (
-        <div className = "settings">
+        <div className="settings">
             <ColorModeToggler />
             <Resetter 
                 isResetClicked = {isResetClicked}
