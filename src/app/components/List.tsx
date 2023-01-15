@@ -22,13 +22,13 @@ function List({status, tasksData, setTasksData}: ListProps) {
         let title = "";
 
         switch (listStatus) {
-            case 0:
+            case 1:
                 title += "TO DO";
                 break;
-            case 1:
+            case 2:
                 title += "IN PROGRESS";
                 break;
-            case 2:
+            case 3:
                 title += "DONE";
                 break;
             default:

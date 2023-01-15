@@ -11,7 +11,7 @@
 }
 
 
-.list-0 {
+.list-1 {
     grid-area: to-do-list;
 
     /* @include media-query("min-width", "medium") {
@@ -19,10 +19,10 @@
     } */
 }
 
-.list-1 {
+.list-2 {
     grid-area: in-progress-list;
 }
 
-.list-2 {
+.list-3 {
     grid-area: done-list;
 }

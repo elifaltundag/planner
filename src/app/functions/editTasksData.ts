@@ -12,9 +12,9 @@ export function addNewTask(updateTasksData: React.Dispatch<React.SetStateAction<
 
         TaskLists: {
             ...prevTasksData.TaskLists,
-            0 : {
-                ...prevTasksData.TaskLists[0],
-                TaskIdsOrder: prevTasksData.TaskLists[0].TaskIdsOrder.concat([newTask.id])
+            1 : {
+                ...prevTasksData.TaskLists[1],
+                TaskIdsOrder: prevTasksData.TaskLists[1].TaskIdsOrder.concat([newTask.id])
             }
         }
     }))

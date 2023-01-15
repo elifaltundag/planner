@@ -1,7 +1,7 @@
 export const enum Status {
-    TODO,
-    INPROGRESS,
-    DONE
+    TODO = 1,
+    INPROGRESS = 2,
+    DONE = 3
 }
 
 export enum ColorTheme {
