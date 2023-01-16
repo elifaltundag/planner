@@ -1,28 +1,29 @@
 @font-face {
-    font-family: "Coplette";
-    src: url("../fonts/Coplette.otf") format("opentype"),   
-         url("../fonts/Coplette.ttf") format("truetype");
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: "Planc";
-    src: url("../fonts/Planc-ExtraLight.otf") format("opentype");
+    font-family: "Raleway";
+    src: url("../fonts/raleway/Raleway-Regular.ttf") format("truetype");
+    font-weight: 400;
     font-style: normal;
-    font-weight: normal;
 }
 
 @font-face {
-    font-family: "Planc";
-    src: url("../fonts/Planc-ExtraLightItalic.otf") format("opentype");
-    font-style: italic;
-    font-weight: normal;
+    font-family: "Raleway";
+    src: url("../fonts/raleway/Raleway-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
 }
+
+@font-face {
+    font-family: "Raleway";
+    src: url("../fonts/raleway/Raleway-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+
 
 
 // FONT FAMILIES
-$ff-accent: "Coplette", "Arial Black", sans-serif;
-$ff-main: "Planc", "Arial", sans-serif;
+$ff-accent: "Arial Black", sans-serif;
+$ff-main: "Raleway", "Arial", sans-serif;
 
 
 // FONT SIZES
@@ -32,3 +33,13 @@ $fs-new-task: clamp(1.1rem, 0.6rem + 1.2vw, 1.3rem);
 $fs-list-title: clamp(1.2rem, 0.8rem + 1vw, 2rem);
 $fs-task: clamp(0.8rem, 0.6rem + 0.5vw, 1.1rem);
 
+
+[data-colorTheme = dark] {
+    --fw: 500;
+}
+
+
+// COLORS: LIGHT MODE
+[data-colorTheme = light] {
+    --fw: 600;
+}

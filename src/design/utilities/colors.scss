@@ -53,6 +53,8 @@
     --clr-txt-3: hsla(0, 0%, 90%, 0.9);
     
     --clr-toggler-focus-outline: hsl(var(--hue-accent--list), 50%, 50%);
+
+    --fw: 400;
 }
 
 
@@ -67,5 +69,7 @@
     --clr-txt-3: hsla(0, 0%, 18%, 0.9);
 
     --clr-toggler-focus-outline: hsl(var(--hue-accent--task), 50%, 50%);
+
+    --fw: 500;
 }
 
