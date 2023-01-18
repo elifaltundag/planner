@@ -1,5 +1,5 @@
 body::-webkit-scrollbar {
-    width: min(14px, 3vw);
+    width: clamp(4px, 1vw, 8px);
     border-radius: 100px;
 }
 
@@ -11,7 +11,6 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background-color: darkorange;
     border-radius: 100px;
-    border: 3px solid darkred;
 }
 
 body::-webkit-scrollbar-thumb:hover {
@@ -19,7 +18,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+    width: clamp(2px, .5vw, 4px);
     border-radius: 100px;
 }
 
@@ -31,7 +30,6 @@ body::-webkit-scrollbar-thumb:hover {
 ::-webkit-scrollbar-thumb {
     background-color: aquamarine;
     border-radius: 100px;
-    border: 2px solid blue;
 }
 
 ::-webkit-scrollbar-thumb:hover {
