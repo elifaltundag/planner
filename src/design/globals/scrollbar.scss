@@ -1,3 +1,5 @@
+@use "../utilities/" as *;
+
 body::-webkit-scrollbar {
     width: clamp(4px, 1vw, 8px);
     border-radius: 100px;
@@ -9,7 +11,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: darkorange;
+    background-color: orange;
     border-radius: 100px;
 }
 
@@ -24,11 +26,11 @@ body::-webkit-scrollbar-thumb:hover {
 
 ::-webkit-scrollbar-track {
     border-radius: 100px;
-    background-color: blue;
+    background-color: darkblue;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: aquamarine;
+    background-color: cyan;
     border-radius: 100px;
 }
 

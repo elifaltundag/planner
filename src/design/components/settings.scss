@@ -3,9 +3,8 @@
 .settings {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-end;   
-    row-gap: $row-gap--mobile;
     font-size: $fs-task;
 
     * {

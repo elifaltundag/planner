@@ -5,13 +5,14 @@
     
     &__title {
         font-family: $ff-accent;
-        font-weight: normal;
+        font-weight: 500;
         font-size: $fs-header__title;
         margin: 0;
     }
 
     &__info {
         font-size: $fs-header__info;
+        margin-top: 0.8em;
         margin-bottom: 0;
     }
 }
