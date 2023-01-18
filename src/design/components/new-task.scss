@@ -29,13 +29,19 @@
     margin: 0 auto;
 
     &__input {
-        border-radius: 38rem;
         font-size: $fs-new-task;
-        width: 100%;
         line-height: 1;
+        
+        width: 100%;
+        border-radius: 38rem;
         padding: $ws--input--block $ws--input--inline;
         padding-right: 2em;
-        background-color: transparent;
+        
+        background-color: var(--clr-bg);
+
+        &::placeholder {
+            color: var(--clr-txt);
+        }
     }
 
     &__btn {

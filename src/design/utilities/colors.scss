@@ -47,14 +47,17 @@
     --clr-bg: hsl(var(--hue-main), 5%, 10%);
     --clr-txt: hsl(0, 0%, 90%);
 
-    --clr-bg-1: hsl(var(--hue-main), 35%, 15%);
-    --clr-bg-2: hsl(var(--hue-main), 35%, 22%);
-    --clr-bg-3: hsl(var(--hue-main), 10%, 15%);
-    --clr-txt-3: hsla(0, 0%, 90%, 0.9);
+    --clr-bg-1: hsla(var(--hue-main), 35%, 25%, 1);
+    --clr-bg-2: hsla(var(--hue-main), 35%, 25%, 0.75);
+    --clr-bg-3: hsla(var(--hue-main), 35%, 25%, 0.5);
+    
+    --fw: 400;
+    --clr-txt-1: hsla(0, 0%, 90%, 0.85);
+    --clr-txt-2: hsla(0, 0%, 90%, 1);
+    --clr-txt-3: hsla(0, 0%, 90%, 0.7);
     
     --clr-toggler-focus-outline: hsl(var(--hue-accent--list), 50%, 50%);
 
-    --fw: 400;
 }
 
 
@@ -63,13 +66,32 @@
     --clr-bg: hsl(var(--hue-main), 5%, 88%);
     --clr-txt: hsl(0, 0%, 18%);
 
-    --clr-bg-1: hsl(var(--hue-main), 25%, 75%);
-    --clr-bg-2: hsl(var(--hue-main), 30%, 65%);
-    --clr-bg-3: hsl(var(--hue-main), 10%, 70%);
-    --clr-txt-3: hsla(0, 0%, 18%, 0.9);
+    --clr-bg-1: hsla(var(--hue-main), 30%, 75%, 1);
+    --clr-bg-2: hsla(var(--hue-main), 30%, 75%, 0.75);
+    --clr-bg-3: hsla(var(--hue-main), 30%, 75%, 0.5);
+    
+    --fw: 500;
+    --clr-txt-1: hsla(0, 0%, 18%, 0.85);
+    --clr-txt-2: hsla(0, 0%, 18%, 1);
+    --clr-txt-3: hsla(0, 0%, 18%, 0.7);
 
     --clr-toggler-focus-outline: hsl(var(--hue-accent--task), 50%, 50%);
 
-    --fw: 500;
 }
 
+/* 
+dark
+--clr-bg-1: hsl(var(--hue-main), 35%, 25%);
+    --clr-bg-2: hsl(var(--hue-main), 27%, 20%);
+    --clr-bg-3: hsl(var(--hue-main), 10%, 15%);
+    --clr-txt-3: hsla(0, 0%, 90%, 0.7);
+
+
+
+light
+    --clr-bg-1: hsl(var(--hue-main), 26%, 85%);
+    --clr-bg-2: hsl(var(--hue-main), 18%, 77%);
+    --clr-bg-3: hsl(var(--hue-main), 10%, 70%);
+    --clr-txt-3: hsla(0, 0%, 18%, 0.7);
+
+*/
