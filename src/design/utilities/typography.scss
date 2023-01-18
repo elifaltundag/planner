@@ -19,10 +19,25 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Ranade";
+    src: url("../fonts/ranade/Ranade-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Ranade";
+    src: url("../fonts/ranade/Ranade-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+
 
 
 // FONT FAMILIES
-$ff-accent: "Arial Black", sans-serif;
+$ff-accent: "Ranade", sans-serif;
 $ff-main: "Raleway", "Arial", sans-serif;
 
 
@@ -31,7 +46,7 @@ $fs-header__title: clamp(1.25rem, 1rem + 2vw, 3rem);
 $fs-header__info: clamp(1rem, 0.5rem + 1vw, 1.3rem);
 $fs-new-task: clamp(1.1rem, 0.6rem + 1.2vw, 1.3rem);
 $fs-list-title: clamp(1.2rem, 0.8rem + 1vw, 2rem);
-$fs-task: clamp(0.8rem, 0.6rem + 0.5vw, 1.1rem);
+$fs-task: clamp(0.8rem, 0.6rem + 0.4vw, 1.1rem);
 
 
 [data-colorTheme = dark] {
