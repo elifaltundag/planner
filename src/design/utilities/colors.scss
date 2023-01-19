@@ -1,29 +1,9 @@
 :root {
     // COLOR VARIABLES: HUES
-    --hue-main: 295;
-    --hue-accent--task: 35;
-    --hue-accent--list: 170;
-
-    // COLOR VARIABLES: SATURATION & BRIGHTNESS (%)
-    --pct-0: 0%;
-    --pct-5: 5%;
-    --pct-10: 10%;
-    --pct-15: 15%;
-    --pct-20: 20%;
-    --pct-25: 25%;
-    --pct-30: 30%;
-    --pct-35: 35%;
-    --pct-40: 40%;
-    --pct-45: 45%;
-    --pct-50: 50%;
-    --pct-55: 55%;
-    --pct-60: 60%;
-    --pct-65: 65%;
-    --pct-70: 70%;
-    --pct-75: 75%;
-    --pct-80: 80%;
-    --pct-85: 85%;
-    --pct-90: 90%;
+    --hue-main: 15;
+    --hue-accent: 220;
+    --satur-dark: 47%;
+    --satur-light: 60%;
 }
 
 /*
@@ -47,17 +27,19 @@
     --clr-bg-main: hsl(var(--hue-main), 5%, 10%);
     --clr-txt-main: hsl(0, 0%, 90%);
 
-    --clr-bg-1: hsla(var(--hue-main), 35%, 25%, 1);
-    --clr-bg-2: hsla(var(--hue-main), 35%, 25%, 0.75);
-    --clr-bg-3: hsla(var(--hue-main), 35%, 25%, 0.5);
+    --clr-bg-1: hsla(var(--hue-main), var(--satur-dark), 45%, 1);
+    --clr-bg-2: hsla(var(--hue-main), var(--satur-dark), 45%, 0.7);
+    --clr-bg-3: hsla(var(--hue-main), var(--satur-dark), 45%, 0.4);
     
     --fw: 400;
-    --clr-txt-1: hsla(0, 0%, 90%, 0.88);
-    --clr-txt-2: hsla(0, 0%, 90%, 1);
-    --clr-txt-3: hsla(0, 0%, 90%, 0.75);
-    
-    --clr-toggler-focus-outline: hsl(var(--hue-accent--list), 50%, 50%);
+    --clr-txt-1: hsla(0, 0%, 88%, 0.88);
+    --clr-txt-2: hsla(0, 0%, 88%, 1);
+    --clr-txt-3: hsla(0, 0%, 88%, 0.75);
 
+    --clr-outline: hsl(var(--hue-accent), 100%, 50%);
+
+    --filter-btn-hover: 200%;
+    
     --clr-scrollbar: hsl(var(--hue-main), 30%, 75%);
     --clr-scrollbar-thumb: hsl(var(--hue-main), 30%, 50%);
 }
@@ -68,34 +50,46 @@
     --clr-bg-main: hsl(var(--hue-main), 5%, 88%);
     --clr-txt-main: hsl(0, 0%, 18%);
 
-    --clr-bg-1: hsla(var(--hue-main), 30%, 75%, 1);
-    --clr-bg-2: hsla(var(--hue-main), 30%, 75%, 0.75);
-    --clr-bg-3: hsla(var(--hue-main), 30%, 75%, 0.5);
+    --clr-bg-1: hsla(var(--hue-main), var(--satur-light), 75%, 1);
+    --clr-bg-2: hsla(var(--hue-main), var(--satur-light), 75%, 0.7);
+    --clr-bg-3: hsla(var(--hue-main), var(--satur-light), 75%, 0.4);
     
     --fw: 500;
     --clr-txt-1: hsla(0, 0%, 18%, 0.88);
     --clr-txt-2: hsla(0, 0%, 18%, 1);
     --clr-txt-3: hsla(0, 0%, 18%, 0.75);
 
-    --clr-toggler-focus-outline: hsl(var(--hue-accent--task), 50%, 50%);
+    --clr-outline: hsl(var(--hue-accent), 100%, 45%);
+
+    --filter-btn-hover: -150%;
+
 
     --clr-scrollbar: hsl(var(--hue-main), 30%, 10%);
     --clr-scrollbar-thumb: hsl(var(--hue-main), 30%, 20%);
 }
 
+
+
+
 /* 
-dark
---clr-bg-1: hsl(var(--hue-main), 35%, 25%);
-    --clr-bg-2: hsl(var(--hue-main), 27%, 20%);
-    --clr-bg-3: hsl(var(--hue-main), 10%, 15%);
-    --clr-txt-3: hsla(0, 0%, 90%, 0.7);
-
-
-
-light
-    --clr-bg-1: hsl(var(--hue-main), 26%, 85%);
-    --clr-bg-2: hsl(var(--hue-main), 18%, 77%);
-    --clr-bg-3: hsl(var(--hue-main), 10%, 70%);
-    --clr-txt-3: hsla(0, 0%, 18%, 0.7);
-
+    // COLOR VARIABLES: SATURATION & BRIGHTNESS (%)
+    --pct-0: 0%;
+    --pct-5: 5%;
+    --pct-10: 10%;
+    --pct-15: 15%;
+    --pct-20: 20%;
+    --pct-25: 25%;
+    --pct-30: 30%;
+    --pct-35: 35%;
+    --pct-40: 40%;
+    --pct-45: 45%;
+    --pct-50: 50%;
+    --pct-55: 55%;
+    --pct-60: 60%;
+    --pct-65: 65%;
+    --pct-70: 70%;
+    --pct-75: 75%;
+    --pct-80: 80%;
+    --pct-85: 85%;
+    --pct-90: 90%;
 */

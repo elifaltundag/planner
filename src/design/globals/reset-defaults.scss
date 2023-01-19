@@ -1,14 +1,29 @@
+@use "../utilities" as *;
+
+input, textarea {
+    font-family: inherit;
+}
+
+
 button {
-    background-color: unset;
+    background-color: transparent;
     color: unset;
     border: unset;
+    border-radius: 0.45rem;
     
     cursor: pointer;
 
     display: grid;
     place-content: center; 
+
+    transition: transform 200ms ease;
+
+    &:hover {
+        @include btn-hover;
+    }
 }
 
-input, textarea {
-    font-family: inherit;
+
+*:focus {
+    @include all-focus;
 }

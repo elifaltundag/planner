@@ -7,8 +7,6 @@ import { ColorTheme } from "../model/enums";
 import { ColorThemeContext } from "../colorThemeContext/ColorThemeContext";
 
 
-import "../../design/components/color-mode-toggler.scss";
-
 export default function ColorModeToggler() {
     const {colorTheme, toggleColorTheme} = useContext(ColorThemeContext)    
 

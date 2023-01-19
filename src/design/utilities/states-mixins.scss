@@ -1,0 +1,10 @@
+@mixin btn-hover {
+    transform-origin: center;
+    transform: scale(130%);
+    filter: brightness(var(--filter-btn-hover));
+}
+
+@mixin all-focus {
+    outline: 3px solid var(--clr-outline);
+    box-shadow: 0 0 0 4px var(--clr-txt-main) !important;
+}

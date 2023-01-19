@@ -49,13 +49,6 @@
         right: 0;
         font-size: 1.8em;
         font-weight: 600;
-
-        &:hover {
-            transform-origin: center;
-            transform: scale(0.95);
-        }
+        border-radius: 100px;
     }
-
-
-
 }
