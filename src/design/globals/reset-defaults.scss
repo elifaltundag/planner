@@ -19,7 +19,7 @@ button {
     transform-origin: center;
     transition: transform 200ms ease;
 
-    &:hover {
+    &:not(.delete-pop-up__btn, .new-task__btn):hover {
         @include btn-hover;
     }
 
@@ -29,9 +29,17 @@ button {
 }
 
 
-button:focus, 
 input:focus, 
 textarea:focus,
-div:focus {
+.single-task__container:focus,
+/* .btn--reset-board:focus,
+.color-mode-toggler:focus,
+.new-task__btn:focus,
+.btn--delete-all:focus,
+.single-task__textarea:focus,
+.single-task__btn--save:focus,
+.single-task__btn--delete:focus */
+button:focus {
     @include all-focus;
 }
+

@@ -8,7 +8,7 @@
     top: 40%;
     margin-inline: auto;
     border-radius: 1em;
-    font-weight: 500;
+    font-weight: 600;
     
     
     display: grid;
@@ -32,22 +32,33 @@
             height: 1em;
             position: relative;
             top: 0.25em;
-            color: hsl(0, 80%, 45%);
+            color: hsl(0, 80%, 40%);
         }
     }
 
-    button {
+    &__btn {
         width: max-content;
         font-size: 1.1em;
         padding: 0.4em 1.2em;
         font-weight: 700;
         text-align: center;
+        transform-origin: center;
+        
+        &:focus {
+            outline: 3px solid var(--clr-txt-main);
+            box-shadow: 0 0 0 4px var(--clr-txt-main);
+        }
+
+        &:hover {
+            transform: scale(105%);
+        }
     }
 
     &__btn-delete {
         grid-area: btn-delete;
-        background-color: hsl(0, 80%, 45%);
+        background-color: hsl(0, 80%, 40%);
         color: hsl(0, 0%, 85%);
+
     }
 
     &__btn-keep {

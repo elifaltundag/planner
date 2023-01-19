@@ -58,7 +58,7 @@ export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus
                 {warningText}
             </p>
 
-            <button className="delete-pop-up__btn-delete" 
+            <button className="delete-pop-up__btn delete-pop-up__btn-delete" 
                 onClick = {() => {
                     if (tasksData && taskId) {
                         deleteTask(tasksData, setTasksData, taskId)
@@ -75,7 +75,7 @@ export default function DeletePopUp({tasksData, setTasksData, taskId, listStatus
                 DELETE
             </button>
 
-            <button className="delete-pop-up__btn-keep"
+            <button className="delete-pop-up__btn delete-pop-up__btn-keep"
                 onClick = {() => setIsDeleteClicked(false)}
                 onMouseDown = {(e) => e.preventDefault()} // Removes focus outline on clicking
             >

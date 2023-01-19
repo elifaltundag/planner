@@ -1,28 +1,4 @@
 @font-face {
-    font-family: "Raleway";
-    src: url("../fonts/raleway/Raleway-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Raleway";
-    src: url("../fonts/raleway/Raleway-Medium.ttf") format("truetype");
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Raleway";
-    src: url("../fonts/raleway/Raleway-SemiBold.ttf") format("truetype");
-    font-weight: 600;
-    font-style: normal;
-}
-
-
-
-
-@font-face {
     font-family: "Ranade";
     src: url("../fonts/ranade/Ranade-Medium.ttf") format("truetype");
     font-weight: 500;
@@ -40,7 +16,7 @@
 
 
 // FONT FAMILIES
-$ff-accent: "Ranade", sans-serif;
+$ff-accent: "Ranade", "Arial Black", sans-serif;
 $ff-main: "Raleway", "Arial", sans-serif;
 
 

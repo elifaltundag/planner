@@ -23,17 +23,16 @@
 [data-colorTheme = dark] {
     --fw: 400;
     --clr-txt-main: hsl(0, 0%, 75%);
+    --clt-txt-placeholder: hsl(0, 0%, 55%);
     
     --clr-bg-main: hsl(0, 0%, 20%);
-    --clr-bg-list: hsl(0, 0%, 15%);
-    --clr-bg-popup: hsl(0, 0%, 10%);
+    --clr-bg-list: hsl(0, 0%, 17%);
+    --clr-bg-popup: hsl(0, 0%, 14%);
 
-    --box-shadow-thick: 0 0 6px hsla(0, 0%, 2%, 0.5);
-    --box-shadow-thin: 0 0 4px hsla(0, 0%, 2%, 0.5);
+    --box-shadow-thick: 0 0 6px hsla(0, 0%, 8%, 0.5);
+    --box-shadow-thin: 0 0 4px hsla(0, 0%, 8%, 0.5);
     
     --clr-outline: hsl(var(--hue-accent), 100%, 60%);
-
-    --filter-btn-hover: 200%;
 }
 
 
@@ -41,15 +40,14 @@
 [data-colorTheme = light] {
     --fw: 500;
     --clr-txt-main: hsl(0, 0%, 25%);
+    --clt-txt-placeholder: hsl(0, 0%, 45%);
 
     --clr-bg-main: hsl(0, 0%, 80%);
-    --clr-bg-list: hsl(0, 0%, 85%);
-    --clr-bg-popup: hsl(0, 0%, 90%);
+    --clr-bg-list: hsl(0, 0%, 83%);
+    --clr-bg-popup: hsl(0, 0%, 86%);
 
     --box-shadow-thick: 0 0 6px hsla(0, 0%, 50%, 0.5);
     --box-shadow-thin: 0 0 4px hsla(0, 0%, 50%, 0.5);
 
     --clr-outline: hsl(var(--hue-accent), 100%, 50%);
-
-    --filter-btn-hover: -150%;
 }

@@ -30,6 +30,7 @@
 
     &__input {
         font-size: $fs-new-task;
+        font-weight: 600;
         line-height: 1;
         
         width: 100%;
@@ -37,11 +38,11 @@
         padding: $ws--input--block $ws--input--inline;
         padding-right: 2em;
         
-        background-color: var(--clr-bg-main);
+        background-color: var(--clr-bg-list);
         box-shadow: var(--box-shadow-thick);
 
         &::placeholder {
-            color: var(--clr-txt-main);
+            color: var(--clt-txt-placeholder);
         }
     }
 
@@ -51,5 +52,10 @@
         font-size: 1.8em;
         font-weight: 600;
         border-radius: 100px;
+        transform-origin: center;
+
+        &:hover {
+            transform: scale(110%);
+        }
     }
 }
