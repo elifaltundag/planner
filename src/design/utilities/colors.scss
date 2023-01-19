@@ -1,6 +1,6 @@
 :root {
     // COLOR VARIABLES: HUES
-    --hue-accent: 25;
+    --hue-accent: 22;
 }
 
 /*
@@ -26,6 +26,7 @@
     
     --clr-bg-main: hsl(0, 0%, 20%);
     --clr-bg-list: hsl(0, 0%, 15%);
+    --clr-bg-popup: hsl(0, 0%, 10%);
 
     --box-shadow-thick: 0 0 6px hsla(0, 0%, 2%, 0.5);
     --box-shadow-thin: 0 0 4px hsla(0, 0%, 2%, 0.5);
@@ -43,6 +44,7 @@
 
     --clr-bg-main: hsl(0, 0%, 80%);
     --clr-bg-list: hsl(0, 0%, 85%);
+    --clr-bg-popup: hsl(0, 0%, 90%);
 
     --box-shadow-thick: 0 0 6px hsla(0, 0%, 50%, 0.5);
     --box-shadow-thin: 0 0 4px hsla(0, 0%, 50%, 0.5);

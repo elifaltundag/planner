@@ -1,6 +1,9 @@
 @mixin btn-hover {
-    transform-origin: center;
     transform: scale(130%);
+}
+
+@mixin btn-active {
+    transform: scale(95%);
 }
 
 @mixin all-focus {

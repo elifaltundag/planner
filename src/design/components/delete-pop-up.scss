@@ -1,45 +1,58 @@
-$delete-pop-up-width: min(600px, 90%);
-
 .delete-pop-up {
     position: fixed;
     padding: 2em;
-    width: $delete-pop-up-width;
+    width: max-content;
     z-index: 50;
     left: 0;
     right: 0;
     top: 40%;
     margin-inline: auto;
+    border-radius: 1em;
+    font-weight: 500;
     
     
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: auto 3em;
     grid-template-areas: 
-    "warning warning"
-    "btn-delete btn-keep";
+        "warning warning"
+        "btn-delete btn-keep";
+    justify-items: center;
+    align-content: center;
     
-    background-color: darkgreen;
+    background-color: var(--clr-bg-popup);
  
     &__warning {
         grid-area: warning;
-        text-align: center;
         font-size: 1.2em;
 
         &__icon {
             font-size: 2em;
-            margin-right: 0.5em;
+            margin-right: 0.3em;
             height: 1em;
             position: relative;
             top: 0.25em;
+            color: hsl(0, 80%, 45%);
         }
+    }
+
+    button {
+        width: max-content;
+        font-size: 1.1em;
+        padding: 0.4em 1.2em;
+        font-weight: 700;
+        text-align: center;
     }
 
     &__btn-delete {
         grid-area: btn-delete;
+        background-color: hsl(0, 80%, 45%);
+        color: hsl(0, 0%, 85%);
     }
 
     &__btn-keep {
         grid-area: btn-keep;
+        background-color: var(--clr-bg-main);
     }
 }
 
