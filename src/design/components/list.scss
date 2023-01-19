@@ -10,7 +10,7 @@ ul, li {
     font-size: $fs-task;
 
     background-color: var(--clr-bg-list);
-    /* box-shadow: var(--box-shadow-list); */
+    box-shadow: var(--box-shadow-thick);
 
     display: grid;
     grid-template-rows: auto 1fr;

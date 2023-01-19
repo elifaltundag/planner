@@ -38,6 +38,7 @@
         padding-right: 2em;
         
         background-color: var(--clr-bg-main);
+        box-shadow: var(--box-shadow-thick);
 
         &::placeholder {
             color: var(--clr-txt-main);

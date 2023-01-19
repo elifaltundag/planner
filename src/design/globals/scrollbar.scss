@@ -1,6 +1,6 @@
 @use "../utilities/" as *;
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
     width: clamp(4px, 1vw, 8px);
     border-radius: 100px;
 }
@@ -36,4 +36,4 @@ body::-webkit-scrollbar-thumb:hover {
 
 ::-webkit-scrollbar-thumb:hover {
     background-color: chartreuse;
-}
+} */

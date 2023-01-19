@@ -24,6 +24,9 @@ button {
 }
 
 
-*:focus {
+button:focus, 
+input:focus, 
+textarea:focus,
+div:focus {
     @include all-focus;
 }
