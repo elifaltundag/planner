@@ -7,6 +7,7 @@ export default function Resetter({ isResetClicked, setIsResetClicked }: Settings
     return (
         <button className="btn--reset-board"
             onClick = {() => setIsResetClicked(true)}
+            
         >
             <MdRestorePage />
         </button>

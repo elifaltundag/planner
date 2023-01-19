@@ -13,6 +13,7 @@ export default function ColorModeToggler() {
     return (
         <button  className="color-mode-toggler"
             onClick = {toggleColorTheme}
+            onMouseDown = {(e) => e.preventDefault()} // Removes focus outline after clicking
             data-colorTheme = {colorTheme}
         >
             {colorTheme === ColorTheme.DARK ? <MdLightMode /> : <MdDarkMode />}   
