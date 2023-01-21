@@ -1,6 +1,7 @@
 :root {
     // COLOR VARIABLES: HUES
-    --hue-accent: 22;
+    --hue-accent: 28;
+    --hue-dnd: 190;
 }
 
 /*
@@ -29,6 +30,9 @@
     --clr-bg-list: hsl(0, 0%, 17%);
     --clr-bg-popup: hsl(0, 0%, 14%);
 
+    --clr-bg-dnd-list: hsl(var(--hue-dnd), 50%, 20%);
+    --clr-bg-dnd-task: hsl(var(--hue-dnd), 50%, 32%);
+
     --box-shadow-thick: 0 0 6px hsla(0, 0%, 8%, 0.5);
     --box-shadow-thin: 0 0 4px hsla(0, 0%, 8%, 0.5);
     
@@ -45,6 +49,9 @@
     --clr-bg-main: hsl(0, 0%, 80%);
     --clr-bg-list: hsl(0, 0%, 83%);
     --clr-bg-popup: hsl(0, 0%, 86%);
+
+    --clr-bg-dnd-list: hsl(var(--hue-dnd), 50%, 60%);
+    --clr-bg-dnd-task: hsl(var(--hue-dnd), 50%, 70%);
 
     --box-shadow-thick: 0 0 6px hsla(0, 0%, 50%, 0.5);
     --box-shadow-thin: 0 0 4px hsla(0, 0%, 50%, 0.5);

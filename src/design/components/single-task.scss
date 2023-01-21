@@ -55,5 +55,6 @@
 
 
 [data-isDragging = true] {
-    background-color: rgb(190, 59, 241) !important;
+    /* background-color: rgb(190, 59, 241) !important; */
+    background-color: var(--clr-bg-dnd-task) !important;
 }
