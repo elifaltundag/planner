@@ -1,7 +1,10 @@
+@use "../utilities" as *;
+
+
 .delete-pop-up {
     position: fixed;
     padding: 2em;
-    width: max-content;
+    width: min(500px, 90%);
     z-index: 50;
     left: 0;
     right: 0;
@@ -13,26 +16,23 @@
     
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto 3em;
-    grid-template-areas: 
-        "warning warning"
-        "btn-delete btn-keep";
+        grid-template-rows: auto 3em;
+        grid-template-areas: 
+            "warning warning"
+            "btn-delete btn-keep";
     justify-items: center;
     align-content: center;
     
     background-color: var(--clr-bg-popup);
+    box-shadow: var(--box-shadow-thick);
 
-    /* 
-    TRANSITIONS
-    */ 
 
  
     &__warning {
         grid-area: warning;
-        font-size: 1.2em;
 
         &__icon {
-            font-size: 2em;
+            font-size: 1.6em;
             margin-right: 0.3em;
             height: 1em;
             position: relative;
@@ -43,7 +43,7 @@
 
     &__btn {
         width: max-content;
-        font-size: 1.1em;
+        font-size: 1.05em;
         padding: 0.4em 1.2em;
         font-weight: 700;
         text-align: center;
@@ -70,5 +70,22 @@
         grid-area: btn-keep;
         background-color: var(--clr-bg-main);
     }
+
+
+
+    @include media-query("min-width", "small") {
+        width: max-content;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto 3em;
+        grid-template-areas: 
+            "warning warning"
+            "btn-delete btn-keep";
+
+
+            &__warning {
+                font-size: 1.2em;
+            }
+    }
+
 }
 
