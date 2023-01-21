@@ -29,6 +29,7 @@
     margin: 0 auto;
 
     &__input {
+        border: unset;
         font-size: $fs-new-task;
         font-weight: 600;
         line-height: 1;
@@ -39,7 +40,7 @@
         padding-right: 2em;
         
         color: var(--clr-txt-main);
-        background-color: var(--clr-bg-list);
+        background-color: var(--clr-bg-input);
         box-shadow: var(--box-shadow-thick);
 
         &::placeholder {
