@@ -1,3 +1,5 @@
+@use "media-queries" as *;
+
 @mixin btn-hover {
     transform: scale(130%);
 }
@@ -7,6 +9,11 @@
 }
 
 @mixin all-focus {
-    outline: 3px solid var(--clr-outline);
-    box-shadow: 0 0 0 4px var(--clr-txt-main);
+    outline: 2px solid var(--clr-outline);
+    box-shadow: 0 0 0 3px var(--clr-txt-main);
+
+    @include media-query("min-width", "small") {
+        outline: 3px solid var(--clr-outline);
+        box-shadow: 0 0 0 4px var(--clr-txt-main);
+    }
 }

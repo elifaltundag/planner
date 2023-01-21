@@ -29,6 +29,7 @@
         line-height: 1.4;
         margin: 0;
         font-weight: var(--fw);
+        margin-right: 1em;
     }
     
     &__btn--save {
@@ -40,15 +41,8 @@
         margin-right: -0.6em;
     }
     
-    &__paragraph {
-        /* 
-        ! inline below is just to remind you that you might have to work on styling paragraph
-        */ 
-        padding-inline: 0.1em;
-    }
     
     &__textarea {
-        margin-right: 5px;
         border-radius: 0.5em;
     }
 }
