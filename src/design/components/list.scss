@@ -31,7 +31,6 @@ ul, li {
     }
     
     &:has(div[data-isDraggingOver = true]) {
-        background-color: hsl(4, 93%, 61%) !important;
         background-color: var(--clr-bg-dnd-list) !important;
     }
 }

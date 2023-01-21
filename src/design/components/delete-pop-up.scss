@@ -21,6 +21,11 @@
     align-content: center;
     
     background-color: var(--clr-bg-popup);
+
+    /* 
+    TRANSITIONS
+    */ 
+
  
     &__warning {
         grid-area: warning;

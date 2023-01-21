@@ -12,5 +12,5 @@ $list-row-gap: 0.8em;
 $ws--input--block: 0.2em;
 $ws--input--inline: 4 * $ws--input--block;
 
-$ws--btn--block: $ws--input--block / 2;
+$ws--btn--block: $ws--input--block * 0.5;
 $ws--btn--inline: 4 * $ws--btn--block;
