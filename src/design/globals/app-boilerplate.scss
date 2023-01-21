@@ -1,6 +1,5 @@
 @use "../utilities" as *;
 @use "reset-defaults" as *; 
-@use "scrollbar" as *;
 
 html {
     box-sizing: border-box;
@@ -21,6 +20,5 @@ body {
 .app-container {
     background-color: var(--clr-bg-main);
     color: var(--clr-txt-main);
-    
     display: grid;
 }
