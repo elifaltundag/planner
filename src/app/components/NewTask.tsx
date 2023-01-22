@@ -62,7 +62,7 @@ function NewTask({newTaskInputRef, setTasksData}: NewTaskProps) {
                 <input className="new-task__input"
                     ref = {newTaskInputRef}
                     value = {newTaskDef}            
-                    placeholder = "Enter a task" 
+                    placeholder = "Enter a new task" 
                     onChange = {(e) => handleTaskDefinitionChange(e)}
                     data-colorTheme = {colorTheme}
                 />
