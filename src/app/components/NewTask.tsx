@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 // Design - SCSS
 import "../../design/components/new-task.scss";
@@ -35,12 +35,21 @@ function NewTask({newTaskInputRef, setTasksData}: NewTaskProps) {
             addNewTask(setTasksData, newTask)
         }
 
-
         // Reset input area
         setNewTaskDef("")
-
-        newTaskInputRef.current?.focus()
     }
+
+    useEffect(() => {
+        function unfocus(e: MouseEvent) {
+            if (e.target instanceof Element && !newTaskInputRef.current?.contains(e.target)) {
+                newTaskInputRef.current?.blur()
+            }
+        }
+
+        document.addEventListener("mousedown", unfocus)
+
+        return () => document.removeEventListener("mousedown", unfocus)
+    })
 
     return (
         <div className="new-task__container"
