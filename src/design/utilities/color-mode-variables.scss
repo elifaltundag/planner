@@ -1,6 +1,5 @@
 :root {
     // COLOR VARIABLES: HUES
-    --hue-accent: 28;
     --hue-dnd: 190;
 }
 
@@ -39,7 +38,7 @@
     --box-shadow-thin: 0 0 4px hsla(0, 0%, 8%, 0.5);
     --box-shadow-dnd-thin: 0 0 4px hsla(0, 0%, 5%, 0.5);
     
-    --clr-outline: hsl(var(--hue-accent), 100%, 60%);
+    --clr-outline: hsl(var(--hue-dnd), 80%, 50%);
 }
 
 
@@ -62,5 +61,5 @@
     --box-shadow-thin: 0 0 4px hsla(0, 0%, 50%, 0.5);
     --box-shadow-dnd-thin: 0 0 4px hsla(0, 0%, 35%, 0.5);
 
-    --clr-outline: hsl(var(--hue-accent), 100%, 50%);
+    --clr-outline: hsl(var(--hue-dnd), 100%, 35%);
 }
