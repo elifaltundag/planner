@@ -11,8 +11,8 @@ export default function Header() {
         <header className="header"
             data-colorTheme = {colorTheme}
         >
-            <h1 className="header__title">Kanban</h1>
-            <p className="header__info">Add new tasks, drag and drop them</p>
+            <h1 className="header__title">Kanban Board</h1>
+            <p className="header__info">Add new tasks, drag & drop them</p>
         </header>
     )
 }
