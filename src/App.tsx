@@ -20,6 +20,7 @@ import NewTask from './app/components/NewTask';
 import List from './app/components/List';
 import Settings from './app/components/Settings';
 import DeletePopUp from './app/components/DeletePopUp';
+import Footer from "./app/components/Footer";
 
 
 
@@ -159,7 +160,10 @@ const App: React.FC = () => {
                         }
                     </DragDropContext>
                 </main>
+
+                <Footer />
                 
+
                 {isResetClicked && <DeletePopUp 
                     setTasksData = {setTasksData} 
                     setIsDeleteClicked = {setIsResetClicked} 

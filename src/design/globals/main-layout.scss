@@ -7,10 +7,11 @@
     display: grid;
     position: relative;
     grid-template-columns: repeat(2, auto);
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "title settings"
-        "lists lists";
+        "lists lists"
+        "foot foot";
     row-gap: $row-gap--mobile;
     padding-top: 1em;
     padding-bottom: 5em;
@@ -29,17 +30,21 @@
         grid-area: lists;
     }
 
+    .footer {
+        grid-area: foot;
+    }
+
 
     @include grid-layout-desktop;
     @include media-query("min-width", "medium") {
         min-height: 100%;
         padding-block: 2em;
-        grid-template-rows: repeat(3, auto) 1fr;
+        grid-template-rows: repeat(2, auto) 10fr auto;
         grid-template-areas: 
             "title title . . . settings"
             ". new-task new-task new-task new-task ."
             "lists lists lists lists lists lists"
-        ;
+            "foot foot foot foot foot foot";
 
         .new-task__container {
             grid-area: new-task;

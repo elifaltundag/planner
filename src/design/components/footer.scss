@@ -1,0 +1,51 @@
+@use "../utilities" as *;
+
+.footer {
+    border-top: 1px solid var(--clr-txt-main);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+    &__info {
+        margin-top: 1em;
+
+        &__link {
+            @include link;
+            display: inline-block;
+            padding-inline: 0.5ch;
+            border-radius: 0.5em;
+
+            &__icon {
+                font-size: $fs-link-icon;
+                padding-inline: 0.1em;
+                position: relative;
+                top: 0.1em;
+            }
+
+            &:link {
+                @include link-link;
+            }
+
+            &:visited {
+                @include link-visited;
+            }
+
+            &:hover {
+                @include link-hover;
+            }
+
+            &:active {
+                @include link-active;
+            }
+
+            &:focus {
+                @include all-focus;
+            }
+        }
+    }
+    
+    /* @include media-query("min-width", "medium") {
+        flex-direction: row;
+        justify-content: space-between;
+    } */
+}

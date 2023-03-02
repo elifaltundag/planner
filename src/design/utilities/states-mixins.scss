@@ -1,5 +1,6 @@
 @use "media-queries" as *;
 
+/* BUTTONS */
 @mixin btn-hover {
     transform: scale(130%);
 }
@@ -7,6 +8,33 @@
 @mixin btn-active {
     transform: scale(95%);
 }
+
+
+
+
+/* FOOTER LINKS */
+@mixin link {
+    text-decoration: none;
+} 
+
+@mixin link-link {
+    color: var(--clr-txt-main);
+}
+
+@mixin link-visited {
+    color: var(--clr-txt-placeholder);
+}
+
+@mixin link-hover {
+    color: var(--clr-outline);
+}
+
+@mixin link-active {
+    color: var(--clr-outline);   
+}
+
+
+
 
 @mixin all-focus {
     outline: 2px solid var(--clr-outline);
