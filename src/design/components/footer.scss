@@ -1,7 +1,7 @@
 @use "../utilities" as *;
 
 .footer {
-    border-top: 1px solid var(--clr-txt-main);
+    border-top: 1px solid var(--clr-txt-placeholder);
     display: flex;
     flex-direction: column;
     text-align: center;

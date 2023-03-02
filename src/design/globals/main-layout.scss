@@ -38,7 +38,8 @@
     @include grid-layout-desktop;
     @include media-query("min-width", "medium") {
         min-height: 100%;
-        padding-block: 2em;
+        padding-top: 2em;
+        padding-bottom: 0.5em;
         grid-template-rows: repeat(2, auto) 10fr auto;
         grid-template-areas: 
             "title title . . . settings"
