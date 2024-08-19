@@ -13,7 +13,7 @@ export default function Footer() {
             data-colorTheme = {colorTheme}
         >
             <p className="footer__info">Design & Development by  
-                <a className="footer__info__link" href="https://elifaltundag.com/" target="_blank" rel="noreferrer">Elif Altundag
+                <a className="footer__info__link" href="https://elifaltundag.github.io/portfolio/" target="_blank" rel="noreferrer">Elif Altundag
                     <span className="footer__info__link__icon">
                         <FaExternalLinkSquareAlt />
                     </span> 
